@@ -41,7 +41,7 @@ public:
 	{
 		if (fstream_.is_open() == true)
 		{
-			//Значит поток на данный момент открыт, закроем его.
+			//Р—РЅР°С‡РёС‚ РїРѕС‚РѕРє РЅР° РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ РѕС‚РєСЂС‹С‚, Р·Р°РєСЂРѕРµРј РµРіРѕ.
 
 			fstream_.close();
 		}
@@ -55,7 +55,7 @@ public:
 
 
 
-	//********************************************************************************************Проверка наличие сущестовования файла:начало*********************************************************************************
+	//********************************************************************************************РџСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёРµ СЃСѓС‰РµСЃС‚РѕРІРѕРІР°РЅРёСЏ С„Р°Р№Р»Р°:РЅР°С‡Р°Р»Рѕ*********************************************************************************
 	template<typename T> const result_flag check__FileExist(const T& path_name, const T& file_name)
 	{
 		try { FS_path = path_name + file_name; } catch (const std::filesystem::filesystem_error& e) { ErrorName = e.what(); return  result_flag::std__FileSystem_error; }
@@ -98,12 +98,12 @@ public:
 		//-----------------------------------------------------
 
 	}
-	//********************************************************************************************Проверка наличие сущестовования файла:конец*********************************************************************************
+	//********************************************************************************************РџСЂРѕРІРµСЂРєР° РЅР°Р»РёС‡РёРµ СЃСѓС‰РµСЃС‚РѕРІРѕРІР°РЅРёСЏ С„Р°Р№Р»Р°:РєРѕРЅРµС†*********************************************************************************
 
 
 
 
-	//********************************************************************************************Создание пустого файла:начало*********************************************************************************
+	//********************************************************************************************РЎРѕР·РґР°РЅРёРµ РїСѓСЃС‚РѕРіРѕ С„Р°Р№Р»Р°:РЅР°С‡Р°Р»Рѕ*********************************************************************************
 	template<typename T> const result_flag create__EmptyFile(const T& path_name, const T& file_name)
 	{
 		return Run_create__EmptyFile<T>(path_name, file_name);
@@ -112,11 +112,11 @@ public:
 	{
 		return Run_create__EmptyFile<T>(FullPath_name);
 	}
-	//********************************************************************************************Создание пустого файла:конец*********************************************************************************
+	//********************************************************************************************РЎРѕР·РґР°РЅРёРµ РїСѓСЃС‚РѕРіРѕ С„Р°Р№Р»Р°:РєРѕРЅРµС†*********************************************************************************
 
 
 
-	//********************************************************************************************Получить размер файла в байтах:начало*********************************************************************************
+	//********************************************************************************************РџРѕР»СѓС‡РёС‚СЊ СЂР°Р·РјРµСЂ С„Р°Р№Р»Р° РІ Р±Р°Р№С‚Р°С…:РЅР°С‡Р°Р»Рѕ*********************************************************************************
 	template<typename T> const result_flag get__FilebyteSize(const T& path_name, const T& file_name, size_t& File_size)
 	{
 		return Run_get__FilebyteSize<T>(path_name, file_name, File_size);
@@ -125,210 +125,210 @@ public:
 	{
 		return Run_get__FilebyteSize<T>(FullPath_name, File_size);
 	}
-	//********************************************************************************************Получить размер файла в байтах:конец*********************************************************************************
+	//********************************************************************************************РџРѕР»СѓС‡РёС‚СЊ СЂР°Р·РјРµСЂ С„Р°Р№Р»Р° РІ Р±Р°Р№С‚Р°С…:РєРѕРЅРµС†*********************************************************************************
 
 
 
 
 
 
-	//********************************************************************************************ЧТЕНИЕ ФАЙЛА ЦЕЛИКОМ В КОНЕЦ STD::STRING:начало*********************************************************************************		
+	//********************************************************************************************Р§РўР•РќРР• Р¤РђР™Р›Рђ Р¦Р•Р›РРљРћРњ Р’ РљРћРќР•Р¦ STD::STRING:РЅР°С‡Р°Р»Рѕ*********************************************************************************		
 	template<typename T> const result_flag read__FullFile_to_StringBack(const T& path_name, const T& file_name, std::string& string_for_read)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
-		return Run_Read_FullFile_to_StringBack(string_for_read);     //Читаем файл целиком в конец "string_for_read".
+		return Run_Read_FullFile_to_StringBack(string_for_read);     //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РєРѕРЅРµС† "string_for_read".
 	}
 	
 	template<typename T> const result_flag read__FullFile_to_StringBack(const T& FullPath_name, std::string& string_for_read)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false); if (res != result_flag::OK) { return res; }     //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false); if (res != result_flag::OK) { return res; }     //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
-		return Run_Read_FullFile_to_StringBack(string_for_read);     //Читаем файл целиком в конец "string_for_read".
+		return Run_Read_FullFile_to_StringBack(string_for_read);     //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РєРѕРЅРµС† "string_for_read".
 	}	
-	//********************************************************************************************ЧТЕНИЕ ФАЙЛА ЦЕЛИКОМ В КОНЕЦ STD::STRING:конец*********************************************************************************
+	//********************************************************************************************Р§РўР•РќРР• Р¤РђР™Р›Рђ Р¦Р•Р›РРљРћРњ Р’ РљРћРќР•Р¦ STD::STRING:РєРѕРЅРµС†*********************************************************************************
 	
-	//********************************************************************************************ЧТЕНИЕ ЗАДАННОЙ ЧАСТИ ФАЙЛА В КОНЕЦ STD::STRING:НАЧАЛО*********************************************************************************
+	//********************************************************************************************Р§РўР•РќРР• Р—РђР”РђРќРќРћР™ Р§РђРЎРўР Р¤РђР™Р›Рђ Р’ РљРћРќР•Р¦ STD::STRING:РќРђР§РђР›Рћ*********************************************************************************
 	template<typename T> const result_flag read__PartFile_to_StringBack(const T& path_name, const T& file_name, std::string& string_for_read, const size_t PosInFile_beg, const size_t PosInFile_end)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
-		return Run_Read_PartFile_to_StringBack(string_for_read, PosInFile_beg, PosInFile_end);     //Читаем файл целиком в конец "string_for_read".
+		return Run_Read_PartFile_to_StringBack(string_for_read, PosInFile_beg, PosInFile_end);     //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РєРѕРЅРµС† "string_for_read".
 	}
 	
 	template<typename T> const result_flag read__PartFile_to_StringBack(const T& FullPath_name, std::string& string_for_read, const size_t PosInFile_beg, const size_t PosInFile_end)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
-		return Run_Read_PartFile_to_StringBack(string_for_read, PosInFile_beg, PosInFile_end);     //Читаем файл целиком в конец "string_for_read".
+		return Run_Read_PartFile_to_StringBack(string_for_read, PosInFile_beg, PosInFile_end);     //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РєРѕРЅРµС† "string_for_read".
 	}
-	//********************************************************************************************ЧТЕНИЕ ЗАДАННОЙ ЧАСТИ ФАЙЛА В КОНЕЦ STD::STRING:конец*********************************************************************************
+	//********************************************************************************************Р§РўР•РќРР• Р—РђР”РђРќРќРћР™ Р§РђРЎРўР Р¤РђР™Р›Рђ Р’ РљРћРќР•Р¦ STD::STRING:РєРѕРЅРµС†*********************************************************************************
 
-	//********************************************************************************************ЧТЕНИЕ ЗАДАННОЙ ЧАСТИ ФАЙЛА(с указанием смещения от конца) В КОНЕЦ STD::STRING:НАЧАЛО*********************************************************************************
+	//********************************************************************************************Р§РўР•РќРР• Р—РђР”РђРќРќРћР™ Р§РђРЎРўР Р¤РђР™Р›Рђ(СЃ СѓРєР°Р·Р°РЅРёРµРј СЃРјРµС‰РµРЅРёСЏ РѕС‚ РєРѕРЅС†Р°) Р’ РљРћРќР•Р¦ STD::STRING:РќРђР§РђР›Рћ*********************************************************************************
 	template<typename T> const result_flag read__PartFile_to_StringBack__OffsetEnd(const T& path_name, const T& file_name, std::string& string_for_read, const size_t PosInFile_beg, const size_t offset_from_end)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
-		return Run_Read_PartFile_to_StringBack__OffsetEnd(string_for_read, PosInFile_beg, offset_from_end);     //Читаем файл целиком в конец "string_for_read".
+		return Run_Read_PartFile_to_StringBack__OffsetEnd(string_for_read, PosInFile_beg, offset_from_end);     //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РєРѕРЅРµС† "string_for_read".
 	}
 	
 	template<typename T> const result_flag read__PartFile_to_StringBack__OffsetEnd(const T& FullPath_name, std::string& string_for_read, const size_t PosInFile_beg, const size_t offset_from_end)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
-		return Run_Read_PartFile_to_StringBack__OffsetEnd(string_for_read, PosInFile_beg, offset_from_end);     //Читаем файл целиком в конец "string_for_read".
+		return Run_Read_PartFile_to_StringBack__OffsetEnd(string_for_read, PosInFile_beg, offset_from_end);     //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РєРѕРЅРµС† "string_for_read".
 	}
 
-	//********************************************************************************************ЧТЕНИЕ ЗАДАННОЙ ЧАСТИ ФАЙЛА(с указанием смещения от конца) В КОНЕЦ STD::STRING:конец*********************************************************************************
+	//********************************************************************************************Р§РўР•РќРР• Р—РђР”РђРќРќРћР™ Р§РђРЎРўР Р¤РђР™Р›Рђ(СЃ СѓРєР°Р·Р°РЅРёРµРј СЃРјРµС‰РµРЅРёСЏ РѕС‚ РєРѕРЅС†Р°) Р’ РљРћРќР•Р¦ STD::STRING:РєРѕРЅРµС†*********************************************************************************
 
-	//********************************************************************************************ЧТЕНИЕ ЗАДАННОЙ ЧАСТИ ФАЙЛА(с двойным указанием смещения от конца) В КОНЕЦ STD::STRING:НАЧАЛО*********************************************************************************
+	//********************************************************************************************Р§РўР•РќРР• Р—РђР”РђРќРќРћР™ Р§РђРЎРўР Р¤РђР™Р›Рђ(СЃ РґРІРѕР№РЅС‹Рј СѓРєР°Р·Р°РЅРёРµРј СЃРјРµС‰РµРЅРёСЏ РѕС‚ РєРѕРЅС†Р°) Р’ РљРћРќР•Р¦ STD::STRING:РќРђР§РђР›Рћ*********************************************************************************
 	template<typename T> const result_flag read__PartFile_to_StringBack__DoubleOffsetEnd(const T& path_name, const T& file_name, std::string& string_for_read, const size_t Beg_offset_from_end, const size_t End_offset_from_end)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
-		return Run_Read_PartFile_to_StringBack__DoubleOffsetEnd(string_for_read, Beg_offset_from_end, End_offset_from_end);     //Читаем файл целиком в конец "string_for_read".
+		return Run_Read_PartFile_to_StringBack__DoubleOffsetEnd(string_for_read, Beg_offset_from_end, End_offset_from_end);     //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РєРѕРЅРµС† "string_for_read".
 	}
 
 	template<typename T> const result_flag read__PartFile_to_StringBack__DoubleOffsetEnd(const T& FullPath_name, std::string& string_for_read, const size_t Beg_offset_from_end, const size_t End_offset_from_end)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
-		return Run_Read_PartFile_to_StringBack__DoubleOffsetEnd(string_for_read, Beg_offset_from_end, End_offset_from_end);     //Читаем файл целиком в конец "string_for_read".
+		return Run_Read_PartFile_to_StringBack__DoubleOffsetEnd(string_for_read, Beg_offset_from_end, End_offset_from_end);     //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РєРѕРЅРµС† "string_for_read".
 	}
-	//********************************************************************************************ЧТЕНИЕ ЗАДАННОЙ ЧАСТИ ФАЙЛА(с  двойным указанием смещения от конца) В КОНЕЦ STD::STRING:конец*********************************************************************************
+	//********************************************************************************************Р§РўР•РќРР• Р—РђР”РђРќРќРћР™ Р§РђРЎРўР Р¤РђР™Р›Рђ(СЃ  РґРІРѕР№РЅС‹Рј СѓРєР°Р·Р°РЅРёРµРј СЃРјРµС‰РµРЅРёСЏ РѕС‚ РєРѕРЅС†Р°) Р’ РљРћРќР•Р¦ STD::STRING:РєРѕРЅРµС†*********************************************************************************
 
 
 
-	//********************************************************************************************ЧТЕНИЕ ФАЙЛА ЦЕЛИКОМ В ПЕРЕДАННЫЙ УКАЗАТЕЛЬ:начало*********************************************************************************
+	//********************************************************************************************Р§РўР•РќРР• Р¤РђР™Р›Рђ Р¦Р•Р›РРљРћРњ Р’ РџР•Р Р•Р”РђРќРќР«Р™ РЈРљРђР—РђРўР•Р›Р¬:РЅР°С‡Р°Р»Рѕ*********************************************************************************
 	template<typename T> const result_flag read__FullFile_to_FixSizeCharPointer(const T& path_name, const T& file_name, char* char_for_read)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
-		return Run_Read_FullFile_to_FixSizeCharPointer(char_for_read);     //Читаем файл целиком в конец "string_for_read".
+		return Run_Read_FullFile_to_FixSizeCharPointer(char_for_read);     //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РєРѕРЅРµС† "string_for_read".
 	}
 
 	template<typename T> const result_flag read__FullFile_to_FixSizeCharPointer(const T& FullPath_name, char* char_for_read)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
-		return Run_Read_FullFile_to_FixSizeCharPointer(char_for_read);     //Читаем файл целиком в конец "string_for_read".
+		return Run_Read_FullFile_to_FixSizeCharPointer(char_for_read);     //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РєРѕРЅРµС† "string_for_read".
 	}
-	//********************************************************************************************ЧТЕНИЕ ФАЙЛА ЦЕЛИКОМ В ПЕРЕДАННЫЙ УКАЗАТЕЛЬ:конец*********************************************************************************
+	//********************************************************************************************Р§РўР•РќРР• Р¤РђР™Р›Рђ Р¦Р•Р›РРљРћРњ Р’ РџР•Р Р•Р”РђРќРќР«Р™ РЈРљРђР—РђРўР•Р›Р¬:РєРѕРЅРµС†*********************************************************************************
 
-	//********************************************************************************************ЧТЕНИЕ ЗАДАННОЙ ЧАСТИ ФАЙЛА В ПЕРЕДАННЫЙ УКАЗАТЕЛЬ:НАЧАЛО*********************************************************************************
+	//********************************************************************************************Р§РўР•РќРР• Р—РђР”РђРќРќРћР™ Р§РђРЎРўР Р¤РђР™Р›Рђ Р’ РџР•Р Р•Р”РђРќРќР«Р™ РЈРљРђР—РђРўР•Р›Р¬:РќРђР§РђР›Рћ*********************************************************************************
 	template<typename T> const result_flag read__PartFile_to_FixSizeCharPointer(const T& path_name, const T& file_name, char* char_for_read, const size_t PosInFile_beg, const size_t PosInFile_end)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
-		return Run_Read_PartFile_to_FixSizeCharPointer(char_for_read, PosInFile_beg, PosInFile_end);     //Читаем файл целиком в конец "string_for_read".
+		return Run_Read_PartFile_to_FixSizeCharPointer(char_for_read, PosInFile_beg, PosInFile_end);     //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РєРѕРЅРµС† "string_for_read".
 	}
 	
 	template<typename T> const result_flag read__PartFile_to_FixSizeCharPointer(const T& FullPath_name, char* char_for_read, const size_t PosInFile_beg, const size_t PosInFile_end)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
-		return Run_Read_PartFile_to_FixSizeCharPointer(char_for_read, PosInFile_beg, PosInFile_end);     //Читаем файл целиком в конец "string_for_read".
+		return Run_Read_PartFile_to_FixSizeCharPointer(char_for_read, PosInFile_beg, PosInFile_end);     //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РєРѕРЅРµС† "string_for_read".
 	}
-	//********************************************************************************************ЧТЕНИЕ ЗАДАННОЙ ЧАСТИ ФАЙЛА В ПЕРЕДАННЫЙ УКАЗАТЕЛЬ:конец*********************************************************************************
+	//********************************************************************************************Р§РўР•РќРР• Р—РђР”РђРќРќРћР™ Р§РђРЎРўР Р¤РђР™Р›Рђ Р’ РџР•Р Р•Р”РђРќРќР«Р™ РЈРљРђР—РђРўР•Р›Р¬:РєРѕРЅРµС†*********************************************************************************
 
-	//********************************************************************************************ЧТЕНИЕ ЗАДАННОЙ ЧАСТИ ФАЙЛА(с указанием смещения от конца) В ПЕРЕДАННЫЙ УКАЗАТЕЛЬ:НАЧАЛО*********************************************************************************
+	//********************************************************************************************Р§РўР•РќРР• Р—РђР”РђРќРќРћР™ Р§РђРЎРўР Р¤РђР™Р›Рђ(СЃ СѓРєР°Р·Р°РЅРёРµРј СЃРјРµС‰РµРЅРёСЏ РѕС‚ РєРѕРЅС†Р°) Р’ РџР•Р Р•Р”РђРќРќР«Р™ РЈРљРђР—РђРўР•Р›Р¬:РќРђР§РђР›Рћ*********************************************************************************
 	template<typename T> const result_flag read__PartFile_to_FixSizeCharPointer__OffsetEnd(const T& path_name, const T& file_name, char* char_for_read, const size_t PosInFile_beg, const size_t offset_from_end, size_t& read_size)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
-		return Run_Read_PartFile_to_FixSizeCharPointer__OffsetEnd(char_for_read, PosInFile_beg, offset_from_end, read_size);     //Читаем файл целиком в конец "string_for_read".
+		return Run_Read_PartFile_to_FixSizeCharPointer__OffsetEnd(char_for_read, PosInFile_beg, offset_from_end, read_size);     //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РєРѕРЅРµС† "string_for_read".
 	}
 	
 	template<typename T> const result_flag read__PartFile_to_FixSizeCharPointer__OffsetEnd(const T& FullPath_name, char* char_for_read, const size_t PosInFile_beg, const size_t offset_from_end, size_t& read_size)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
-		return Run_Read_PartFile_to_FixSizeCharPointer__OffsetEnd(char_for_read, PosInFile_beg, offset_from_end, read_size);     //Читаем файл целиком в конец "string_for_read".
+		return Run_Read_PartFile_to_FixSizeCharPointer__OffsetEnd(char_for_read, PosInFile_beg, offset_from_end, read_size);     //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РєРѕРЅРµС† "string_for_read".
 	}
-	//********************************************************************************************ЧТЕНИЕ ЗАДАННОЙ ЧАСТИ ФАЙЛА(с указанием смещения от конца) В ПЕРЕДАННЫЙ УКАЗАТЕЛЬ:конец*********************************************************************************
+	//********************************************************************************************Р§РўР•РќРР• Р—РђР”РђРќРќРћР™ Р§РђРЎРўР Р¤РђР™Р›Рђ(СЃ СѓРєР°Р·Р°РЅРёРµРј СЃРјРµС‰РµРЅРёСЏ РѕС‚ РєРѕРЅС†Р°) Р’ РџР•Р Р•Р”РђРќРќР«Р™ РЈРљРђР—РђРўР•Р›Р¬:РєРѕРЅРµС†*********************************************************************************
 
-	//********************************************************************************************ЧТЕНИЕ ЗАДАННОЙ ЧАСТИ ФАЙЛА(с двойным указанием смещения от конца) В ПЕРЕДАННЫЙ УКАЗАТЕЛЬ:НАЧАЛО*********************************************************************************
+	//********************************************************************************************Р§РўР•РќРР• Р—РђР”РђРќРќРћР™ Р§РђРЎРўР Р¤РђР™Р›Рђ(СЃ РґРІРѕР№РЅС‹Рј СѓРєР°Р·Р°РЅРёРµРј СЃРјРµС‰РµРЅРёСЏ РѕС‚ РєРѕРЅС†Р°) Р’ РџР•Р Р•Р”РђРќРќР«Р™ РЈРљРђР—РђРўР•Р›Р¬:РќРђР§РђР›Рћ*********************************************************************************
 	template<typename T> const result_flag read__PartFile_to_FixSizeCharPointer__DoubleOffsetEnd(const T& path_name, const T& file_name, char* char_for_read, const size_t Beg_offset_from_end, const size_t End_offset_from_end, size_t& read_size)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
-		return Run_Read_PartFile_to_FixSizeCharPointer__DoubleOffsetEnd(char_for_read, Beg_offset_from_end, End_offset_from_end, read_size);     //Читаем файл целиком в конец "string_for_read".
+		return Run_Read_PartFile_to_FixSizeCharPointer__DoubleOffsetEnd(char_for_read, Beg_offset_from_end, End_offset_from_end, read_size);     //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РєРѕРЅРµС† "string_for_read".
 	}
 
 	template<typename T> const result_flag read__PartFile_to_FixSizeCharPointer__DoubleOffsetEnd(const T& FullPath_name, char* char_for_read, const size_t Beg_offset_from_end, const size_t End_offset_from_end, size_t& read_size)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
-		return Run_Read_PartFile_to_FixSizeCharPointer__DoubleOffsetEnd(char_for_read, Beg_offset_from_end, End_offset_from_end, read_size);     //Читаем файл целиком в конец "string_for_read".
+		return Run_Read_PartFile_to_FixSizeCharPointer__DoubleOffsetEnd(char_for_read, Beg_offset_from_end, End_offset_from_end, read_size);     //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РєРѕРЅРµС† "string_for_read".
 	}
-	//********************************************************************************************ЧТЕНИЕ ЗАДАННОЙ ЧАСТИ ФАЙЛА(с двойным указанием смещения от конца) В ПЕРЕДАННЫЙ УКАЗАТЕЛЬ:конец*********************************************************************************
+	//********************************************************************************************Р§РўР•РќРР• Р—РђР”РђРќРќРћР™ Р§РђРЎРўР Р¤РђР™Р›Рђ(СЃ РґРІРѕР№РЅС‹Рј СѓРєР°Р·Р°РЅРёРµРј СЃРјРµС‰РµРЅРёСЏ РѕС‚ РєРѕРЅС†Р°) Р’ РџР•Р Р•Р”РђРќРќР«Р™ РЈРљРђР—РђРўР•Р›Р¬:РєРѕРЅРµС†*********************************************************************************
 
 
 
 	
-	//********************************************************************************************ЧТЕНИЕ ФАЙЛА ЦЕЛИКОМ ВЫДЕЛЕННУЮ ПАМЯТЬ:начало*********************************************************************************
+	//********************************************************************************************Р§РўР•РќРР• Р¤РђР™Р›Рђ Р¦Р•Р›РРљРћРњ Р’Р«Р”Р•Р›Р•РќРќРЈР® РџРђРњРЇРўР¬:РЅР°С‡Р°Р»Рѕ*********************************************************************************
 	template<typename T> const result_flag read__FullFile_to_DynamicRawPointer(const T& path_name, const T& file_name, char** char_p_p, size_t& read_size)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
-		return Run_Read_FullFile_to_DynamicRawPointer(char_p_p, read_size);     //Читаем файл целиком в конец "string_for_read".
+		return Run_Read_FullFile_to_DynamicRawPointer(char_p_p, read_size);     //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РєРѕРЅРµС† "string_for_read".
 	}
 
 	template<typename T> const result_flag read__FullFile_to_DynamicRawPointer(const T& FullPath_name, char** char_p_p, size_t& read_size)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
-		return Run_Read_FullFile_to_DynamicRawPointer(char_p_p, read_size);     //Читаем файл целиком в конец "string_for_read".
+		return Run_Read_FullFile_to_DynamicRawPointer(char_p_p, read_size);     //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РєРѕРЅРµС† "string_for_read".
 	}
-	//********************************************************************************************ЧТЕНИЕ ФАЙЛА ЦЕЛИКОМ В ВЫДЕЛЕННУЮ ПАМЯТЬ:конец*********************************************************************************
+	//********************************************************************************************Р§РўР•РќРР• Р¤РђР™Р›Рђ Р¦Р•Р›РРљРћРњ Р’ Р’Р«Р”Р•Р›Р•РќРќРЈР® РџРђРњРЇРўР¬:РєРѕРЅРµС†*********************************************************************************
 
-	//********************************************************************************************ЧТЕНИЕ ЗАДАННОЙ ЧАСТИ ФАЙЛА В ВЫДЕЛЕННУЮ ПАМЯТЬ:НАЧАЛО*********************************************************************************
+	//********************************************************************************************Р§РўР•РќРР• Р—РђР”РђРќРќРћР™ Р§РђРЎРўР Р¤РђР™Р›Рђ Р’ Р’Р«Р”Р•Р›Р•РќРќРЈР® РџРђРњРЇРўР¬:РќРђР§РђР›Рћ*********************************************************************************
 	template<typename T> const result_flag read__PartFile_to_DynamicRawPointer(const T& path_name, const T& file_name, char** char_p_p, const size_t PosInFile_beg, const size_t PosInFile_end)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
-		return Run_Read_PartFile_to_DynamicRawPointer(char_p_p, PosInFile_beg, PosInFile_end);     //Читаем файл целиком в конец "string_for_read".
+		return Run_Read_PartFile_to_DynamicRawPointer(char_p_p, PosInFile_beg, PosInFile_end);     //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РєРѕРЅРµС† "string_for_read".
 	}
 
 	template<typename T> const result_flag read__PartFile_to_DynamicRawPointer(const T& FullPath_name, char** char_p_p, const size_t PosInFile_beg, const size_t PosInFile_end)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
-		return Run_Read_PartFile_to_DynamicRawPointer(char_p_p, PosInFile_beg, PosInFile_end);     //Читаем файл целиком в конец "string_for_read".
+		return Run_Read_PartFile_to_DynamicRawPointer(char_p_p, PosInFile_beg, PosInFile_end);     //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РєРѕРЅРµС† "string_for_read".
 	}
-	//********************************************************************************************ЧТЕНИЕЗАДАННОЙ ЧАСТИ ФАЙЛА В ВЫДЕЛЕННУЮ ПАМЯТЬ:конец*********************************************************************************
+	//********************************************************************************************Р§РўР•РќРР•Р—РђР”РђРќРќРћР™ Р§РђРЎРўР Р¤РђР™Р›Рђ Р’ Р’Р«Р”Р•Р›Р•РќРќРЈР® РџРђРњРЇРўР¬:РєРѕРЅРµС†*********************************************************************************
 
-	//********************************************************************************************ЧТЕНИЕ ЗАДАННОЙ ЧАСТИ ФАЙЛА(с указанием смещения от конца) В ВЫДЕЛЕННУЮ ПАМЯТЬ:НАЧАЛО*********************************************************************************
+	//********************************************************************************************Р§РўР•РќРР• Р—РђР”РђРќРќРћР™ Р§РђРЎРўР Р¤РђР™Р›Рђ(СЃ СѓРєР°Р·Р°РЅРёРµРј СЃРјРµС‰РµРЅРёСЏ РѕС‚ РєРѕРЅС†Р°) Р’ Р’Р«Р”Р•Р›Р•РќРќРЈР® РџРђРњРЇРўР¬:РќРђР§РђР›Рћ*********************************************************************************
 	template<typename T> const result_flag read__PartFile_to_DynamicRawPointer__OffsetEnd(const T& path_name, const T& file_name, char** char_p_p, const size_t PosInFile_beg, const size_t offset_from_end, size_t& read_size)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
-		return Run_Read_PartFile_to_DynamicRawPointer__OffsetEnd(char_p_p, PosInFile_beg, offset_from_end, read_size);     //Читаем файл целиком в конец "string_for_read".
+		return Run_Read_PartFile_to_DynamicRawPointer__OffsetEnd(char_p_p, PosInFile_beg, offset_from_end, read_size);     //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РєРѕРЅРµС† "string_for_read".
 	}
 
 	template<typename T> const result_flag read__PartFile_to_DynamicRawPointer__OffsetEnd(const T& FullPath_name, char** char_p_p, const size_t PosInFile_beg, const size_t offset_from_end, size_t& read_size)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
-		return Run_Read_PartFile_to_DynamicRawPointer__OffsetEnd(char_p_p, PosInFile_beg, offset_from_end, read_size);     //Читаем файл целиком в конец "string_for_read".
+		return Run_Read_PartFile_to_DynamicRawPointer__OffsetEnd(char_p_p, PosInFile_beg, offset_from_end, read_size);     //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РєРѕРЅРµС† "string_for_read".
 	}
-	//********************************************************************************************ЧТЕНИЕЗАДАННОЙ ЧАСТИ ФАЙЛА(с указанием смещения от конца) В ВЫДЕЛЕННУЮ ПАМЯТЬ:конец*********************************************************************************
+	//********************************************************************************************Р§РўР•РќРР•Р—РђР”РђРќРќРћР™ Р§РђРЎРўР Р¤РђР™Р›Рђ(СЃ СѓРєР°Р·Р°РЅРёРµРј СЃРјРµС‰РµРЅРёСЏ РѕС‚ РєРѕРЅС†Р°) Р’ Р’Р«Р”Р•Р›Р•РќРќРЈР® РџРђРњРЇРўР¬:РєРѕРЅРµС†*********************************************************************************
 
-	//********************************************************************************************ЧТЕНИЕ ЗАДАННОЙ ЧАСТИ ФАЙЛА(с двойным указанием смещения от конца) В ВЫДЕЛЕННУЮ ПАМЯТЬ:НАЧАЛО*********************************************************************************
+	//********************************************************************************************Р§РўР•РќРР• Р—РђР”РђРќРќРћР™ Р§РђРЎРўР Р¤РђР™Р›Рђ(СЃ РґРІРѕР№РЅС‹Рј СѓРєР°Р·Р°РЅРёРµРј СЃРјРµС‰РµРЅРёСЏ РѕС‚ РєРѕРЅС†Р°) Р’ Р’Р«Р”Р•Р›Р•РќРќРЈР® РџРђРњРЇРўР¬:РќРђР§РђР›Рћ*********************************************************************************
 	template<typename T> const result_flag read__PartFile_to_DynamicRawPointer__DoubleOffsetEnd(const T& path_name, const T& file_name, char** char_p_p, const size_t Beg_offset_from_end, const size_t End_offset_from_end, size_t& read_size)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
-		return Run_Read_PartFile_to_DynamicRawPointer__DoubleOffsetEnd(char_p_p, Beg_offset_from_end, End_offset_from_end, read_size);     //Читаем файл целиком в конец "string_for_read".
+		return Run_Read_PartFile_to_DynamicRawPointer__DoubleOffsetEnd(char_p_p, Beg_offset_from_end, End_offset_from_end, read_size);     //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РєРѕРЅРµС† "string_for_read".
 	}
 
 	template<typename T> const result_flag read__PartFile_to_DynamicRawPointer__DoubleOffsetEnd(const T& FullPath_name, char** char_p_p, const size_t Beg_offset_from_end, const size_t End_offset_from_end, size_t& read_size)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
-		return Run_Read_PartFile_to_DynamicRawPointer__DoubleOffsetEnd(char_p_p, Beg_offset_from_end, End_offset_from_end, read_size);     //Читаем файл целиком в конец "string_for_read".
+		return Run_Read_PartFile_to_DynamicRawPointer__DoubleOffsetEnd(char_p_p, Beg_offset_from_end, End_offset_from_end, read_size);     //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РєРѕРЅРµС† "string_for_read".
 	}
-	//********************************************************************************************ЧТЕНИЕ ЗАДАННОЙ ЧАСТИ ФАЙЛА(с двойным указанием смещения от конца) В ВЫДЕЛЕННУЮ ПАМЯТЬ:конец*********************************************************************************
+	//********************************************************************************************Р§РўР•РќРР• Р—РђР”РђРќРќРћР™ Р§РђРЎРўР Р¤РђР™Р›Рђ(СЃ РґРІРѕР№РЅС‹Рј СѓРєР°Р·Р°РЅРёРµРј СЃРјРµС‰РµРЅРёСЏ РѕС‚ РєРѕРЅС†Р°) Р’ Р’Р«Р”Р•Р›Р•РќРќРЈР® РџРђРњРЇРўР¬:РєРѕРЅРµС†*********************************************************************************
 
 
 
@@ -336,59 +336,59 @@ public:
 	
 	
 
-	//***************************************************************************************ЗАПИСЬ В ФАЙЛ С ПРЕДВАРИТЕЛЬНЫМ ЕГО ОБНУЛЕНИЕМ:начало*************************************************************************************************
+	//***************************************************************************************Р—РђРџРРЎР¬ Р’ Р¤РђР™Р› РЎ РџР Р•Р”Р’РђР РРўР•Р›Р¬РќР«Рњ Р•Р“Рћ РћР‘РќРЈР›Р•РќРР•Рњ:РЅР°С‡Р°Р»Рѕ*************************************************************************************************
 	template<typename T> const result_flag write__to_PreClear_File(const T& path_name, const T& file_name, const char* char_p, const size_t ByteSize_for_write)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, true); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, true); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
 		return Run_Write_to_PreClearFile(char_p, ByteSize_for_write);     
 	}
 
 	template<typename T> const result_flag write__to_PreClear_File(const T& FullPath_name, const char* char_p, const size_t ByteSize_for_write)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, true); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, true); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
 		return Run_Write_to_PreClearFile(char_p, ByteSize_for_write);     
 	}
-	//********************************************************************************************ЗАПИСЬ В ФАЙЛ С ПРЕДВАРИТЕЛЬНЫМ ЕГО ОБНУЛЕНИЕМ:конец*************************************************************************************************
+	//********************************************************************************************Р—РђРџРРЎР¬ Р’ Р¤РђР™Р› РЎ РџР Р•Р”Р’РђР РРўР•Р›Р¬РќР«Рњ Р•Р“Рћ РћР‘РќРЈР›Р•РќРР•Рњ:РєРѕРЅРµС†*************************************************************************************************
 
-	//***************************************************************************************ЗАПИСЬ В ФАЙЛ С КОНКРЕТНОГО МЕСТА БЕЗ ОБНУЛЕНИЯ:начало*************************************************************************************************
+	//***************************************************************************************Р—РђРџРРЎР¬ Р’ Р¤РђР™Р› РЎ РљРћРќРљР Р•РўРќРћР“Рћ РњР•РЎРўРђ Р‘Р•Р— РћР‘РќРЈР›Р•РќРРЇ:РЅР°С‡Р°Р»Рѕ*************************************************************************************************
 	template<typename T> const result_flag write__to_SelectPos_File(const T& path_name, const T& file_name, const char* char_p, const size_t ByteSize_for_write, const size_t Pos_in_File)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
 		return Run_Write__to_SelectPos_File(char_p, ByteSize_for_write, Pos_in_File);     
 	}
 
 	template<typename T> const result_flag write__to_SelectPos_File(const T& FullPath_name, const char* char_p, const size_t ByteSize_for_write, const size_t Pos_in_File)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
 		return Run_Write__to_SelectPos_File(char_p, ByteSize_for_write, Pos_in_File);    
 	}
-	//********************************************************************************************ЗАПИСЬ В ФАЙЛ С КОНКРЕТНОГО МЕСТА БЕЗ ОБНУЛЕНИЯ:конец*************************************************************************************************
+	//********************************************************************************************Р—РђРџРРЎР¬ Р’ Р¤РђР™Р› РЎ РљРћРќРљР Р•РўРќРћР“Рћ РњР•РЎРўРђ Р‘Р•Р— РћР‘РќРЈР›Р•РќРРЇ:РєРѕРЅРµС†*************************************************************************************************
 	
 	
-	//*************************************************************************************ЗАПИСЬ В ФАЙЛ С КОНКРЕТНОГО МЕСТА(с указанием смещения от конца) БЕЗ ОБНУЛЕНИЯ:начало*************************************************************************************************
+	//*************************************************************************************Р—РђРџРРЎР¬ Р’ Р¤РђР™Р› РЎ РљРћРќРљР Р•РўРќРћР“Рћ РњР•РЎРўРђ(СЃ СѓРєР°Р·Р°РЅРёРµРј СЃРјРµС‰РµРЅРёСЏ РѕС‚ РєРѕРЅС†Р°) Р‘Р•Р— РћР‘РќРЈР›Р•РќРРЇ:РЅР°С‡Р°Р»Рѕ*************************************************************************************************
 	template<typename T> const result_flag write__to_SelectPos_File__OffsetEnd(const T& path_name, const T& file_name, const char* char_p, const size_t ByteSize_for_write, const size_t offset_from_end)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(path_name, file_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
 		return Run_Write__to_SelectPos_File__OffsetEnd(char_p, ByteSize_for_write, offset_from_end);
 	}
 
 	template<typename T> const result_flag write__to_SelectPos_File__OffsetEnd(const T& FullPath_name, const char* char_p, const size_t ByteSize_for_write, const size_t offset_from_end)
 	{
-		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(FullPath_name, false); if (res != result_flag::OK) { return res; }   //Устанавливаем новый переданный путь и Проверям на необходимость закрытия потока к предыдущему файлу.
+		const result_flag res = Check_for_SetNewPath_and_CheckStreamClose(FullPath_name, false); if (res != result_flag::OK) { return res; }   //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІС‹Р№ РїРµСЂРµРґР°РЅРЅС‹Р№ РїСѓС‚СЊ Рё РџСЂРѕРІРµСЂСЏРј РЅР° РЅРµРѕР±С…РѕРґРёРјРѕСЃС‚СЊ Р·Р°РєСЂС‹С‚РёСЏ РїРѕС‚РѕРєР° Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ.
 
 		return Run_Write__to_SelectPos_File__OffsetEnd(char_p, ByteSize_for_write, offset_from_end);
 	}
-	//******************************************************************************************ЗАПИСЬ В ФАЙЛ С КОНКРЕТНОГО МЕСТА(с указанием смещения от конца) БЕЗ ОБНУЛЕНИЯ:конец*************************************************************************************************
+	//******************************************************************************************Р—РђРџРРЎР¬ Р’ Р¤РђР™Р› РЎ РљРћРќРљР Р•РўРќРћР“Рћ РњР•РЎРўРђ(СЃ СѓРєР°Р·Р°РЅРёРµРј СЃРјРµС‰РµРЅРёСЏ РѕС‚ РєРѕРЅС†Р°) Р‘Р•Р— РћР‘РќРЈР›Р•РќРРЇ:РєРѕРЅРµС†*************************************************************************************************
 	
 
 
 
-	//**************************************************************************************ЧТЕНИЕ ИЗ ФАЙЛА SPLIT-LINE`ом:Начало***********************************************************************
+	//**************************************************************************************Р§РўР•РќРР• РР— Р¤РђР™Р›Рђ SPLIT-LINE`РѕРј:РќР°С‡Р°Р»Рѕ***********************************************************************
 	template<typename T> const result_flag read__SplitLine_From_Begin(const T& path_name, const T& file_name, const char* poiter_to_SplitSubstr, const size_t size_SplitSubstr, std::vector<std::string>& vec__SplitLine_result, const size_t number_Line)
 	{
 
@@ -407,10 +407,10 @@ public:
 
 
 
-		//----------------------Определим размер файла:---------------------------
-		fstream_.seekg(0, std::ios::end);   //seekg - устанавливает курсор в файле при Чтении: первый параметр задает смещение относительно второго параметра: то есть смещение влево или вправо от конечного положения курсора в файле. Устанавливаем курсор в конец файла - для того, чтобы узнать кол-во байт в файле.
+		//----------------------РћРїСЂРµРґРµР»РёРј СЂР°Р·РјРµСЂ С„Р°Р№Р»Р°:---------------------------
+		fstream_.seekg(0, std::ios::end);   //seekg - СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РєСѓСЂСЃРѕСЂ РІ С„Р°Р№Р»Рµ РїСЂРё Р§С‚РµРЅРёРё: РїРµСЂРІС‹Р№ РїР°СЂР°РјРµС‚СЂ Р·Р°РґР°РµС‚ СЃРјРµС‰РµРЅРёРµ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РІС‚РѕСЂРѕРіРѕ РїР°СЂР°РјРµС‚СЂР°: С‚Рѕ РµСЃС‚СЊ СЃРјРµС‰РµРЅРёРµ РІР»РµРІРѕ РёР»Рё РІРїСЂР°РІРѕ РѕС‚ РєРѕРЅРµС‡РЅРѕРіРѕ РїРѕР»РѕР¶РµРЅРёСЏ РєСѓСЂСЃРѕСЂР° РІ С„Р°Р№Р»Рµ. РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РєСѓСЂСЃРѕСЂ РІ РєРѕРЅРµС† С„Р°Р№Р»Р° - РґР»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ СѓР·РЅР°С‚СЊ РєРѕР»-РІРѕ Р±Р°Р№С‚ РІ С„Р°Р№Р»Рµ.
 
-		size_t File_size = fstream_.tellg();    //tellg() возвращает значение позиции на котором сейчас находится курсор, то есть в данном случае, курсор поставлен в конец файла и таким образом получилим номер позцию этого курсора, тем самым мы получили кол-во байт в файле, то есть по сути размер данных файла.
+		size_t File_size = fstream_.tellg();    //tellg() РІРѕР·РІСЂР°С‰Р°РµС‚ Р·РЅР°С‡РµРЅРёРµ РїРѕР·РёС†РёРё РЅР° РєРѕС‚РѕСЂРѕРј СЃРµР№С‡Р°СЃ РЅР°С…РѕРґРёС‚СЃСЏ РєСѓСЂСЃРѕСЂ, С‚Рѕ РµСЃС‚СЊ РІ РґР°РЅРЅРѕРј СЃР»СѓС‡Р°Рµ, РєСѓСЂСЃРѕСЂ РїРѕСЃС‚Р°РІР»РµРЅ РІ РєРѕРЅРµС† С„Р°Р№Р»Р° Рё С‚Р°РєРёРј РѕР±СЂР°Р·РѕРј РїРѕР»СѓС‡РёР»РёРј РЅРѕРјРµСЂ РїРѕР·С†РёСЋ СЌС‚РѕРіРѕ РєСѓСЂСЃРѕСЂР°, С‚РµРј СЃР°РјС‹Рј РјС‹ РїРѕР»СѓС‡РёР»Рё РєРѕР»-РІРѕ Р±Р°Р№С‚ РІ С„Р°Р№Р»Рµ, С‚Рѕ РµСЃС‚СЊ РїРѕ СЃСѓС‚Рё СЂР°Р·РјРµСЂ РґР°РЅРЅС‹С… С„Р°Р№Р»Р°.
 		
 		if (File_size == 0)
 		{
@@ -466,19 +466,19 @@ public:
 
 				if (chunk_string.compare(poiter_to_SplitSubstr) == 0)
 				{
-					//Значит прочитанный диапазон из файла - это разделитель:
+					//Р—РЅР°С‡РёС‚ РїСЂРѕС‡РёС‚Р°РЅРЅС‹Р№ РґРёР°РїР°Р·РѕРЅ РёР· С„Р°Р№Р»Р° - СЌС‚Рѕ СЂР°Р·РґРµР»РёС‚РµР»СЊ:
 
-					const size_t pos_delimeter = chunk_diapazon_start;   //Позиция в файле найденного разделителя.
+					const size_t pos_delimeter = chunk_diapazon_start;   //РџРѕР·РёС†РёСЏ РІ С„Р°Р№Р»Рµ РЅР°Р№РґРµРЅРЅРѕРіРѕ СЂР°Р·РґРµР»РёС‚РµР»СЏ.
 
 					Line_diapazon_end = pos_delimeter - 1;
 
 
 					if (Line_diapazon_end >= Line_diapazon_start)
 					{
-						//Значит есть данные для копирования их как Line-строки:
+						//Р—РЅР°С‡РёС‚ РµСЃС‚СЊ РґР°РЅРЅС‹Рµ РґР»СЏ РєРѕРїРёСЂРѕРІР°РЅРёСЏ РёС… РєР°Рє Line-СЃС‚СЂРѕРєРё:
 
 						//------------------------------------------------------------------------------
-						//Прочитаем этот диапазон из файла:
+						//РџСЂРѕС‡РёС‚Р°РµРј СЌС‚РѕС‚ РґРёР°РїР°Р·РѕРЅ РёР· С„Р°Р№Р»Р°:
 						
 						if (number_Line == 0 || number_Line > add_Line_cntr)
 						{
@@ -500,24 +500,24 @@ public:
 						//------------------------------------------------------------------------------
 
 
-						Line_diapazon_start = pos_delimeter + size_SplitSubstr;    //Устанавливаем новую стартовую позицию для чтения следующей Line-строки из файла.
+						Line_diapazon_start = pos_delimeter + size_SplitSubstr;    //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІСѓСЋ СЃС‚Р°СЂС‚РѕРІСѓСЋ РїРѕР·РёС†РёСЋ РґР»СЏ С‡С‚РµРЅРёСЏ СЃР»РµРґСѓСЋС‰РµР№ Line-СЃС‚СЂРѕРєРё РёР· С„Р°Р№Р»Р°.
 
 
 						if (Line_diapazon_start > File_size)
 						{
-							//Значит вышли за пределы файла и все Line-строки уже сохранены.
+							//Р—РЅР°С‡РёС‚ РІС‹С€Р»Рё Р·Р° РїСЂРµРґРµР»С‹ С„Р°Р№Р»Р° Рё РІСЃРµ Line-СЃС‚СЂРѕРєРё СѓР¶Рµ СЃРѕС…СЂР°РЅРµРЅС‹.
 
 							return result_flag::OK;
 						}
 						else
 						{
-							//Значит еще есть байты до конца файла:
+							//Р—РЅР°С‡РёС‚ РµС‰Рµ РµСЃС‚СЊ Р±Р°Р№С‚С‹ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р°:
 
-							const long long tail_size = File_size - Line_diapazon_start + 1;     //Сколько байт осталось от байта следующего сразу за разделителем до конца файла.
+							const long long tail_size = File_size - Line_diapazon_start + 1;     //РЎРєРѕР»СЊРєРѕ Р±Р°Р№С‚ РѕСЃС‚Р°Р»РѕСЃСЊ РѕС‚ Р±Р°Р№С‚Р° СЃР»РµРґСѓСЋС‰РµРіРѕ СЃСЂР°Р·Сѓ Р·Р° СЂР°Р·РґРµР»РёС‚РµР»РµРј РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р°.
 
 							if (tail_size > size_SplitSubstr)
 							{
-								//Значит до конца файла - еще умещается, как сам разделитель так и полезные байты между ним. Поэтому просто повторяем стандартный цикл заново. Ничего не делаем и возвращаемся к новой итерации цикла.
+								//Р—РЅР°С‡РёС‚ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р° - РµС‰Рµ СѓРјРµС‰Р°РµС‚СЃСЏ, РєР°Рє СЃР°Рј СЂР°Р·РґРµР»РёС‚РµР»СЊ С‚Р°Рє Рё РїРѕР»РµР·РЅС‹Рµ Р±Р°Р№С‚С‹ РјРµР¶РґСѓ РЅРёРј. РџРѕСЌС‚РѕРјСѓ РїСЂРѕСЃС‚Рѕ РїРѕРІС‚РѕСЂСЏРµРј СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ С†РёРєР» Р·Р°РЅРѕРІРѕ. РќРёС‡РµРіРѕ РЅРµ РґРµР»Р°РµРј Рё РІРѕР·РІСЂР°С‰Р°РµРјСЃСЏ Рє РЅРѕРІРѕР№ РёС‚РµСЂР°С†РёРё С†РёРєР»Р°.
 							
 								chunk_diapazon_start = Line_diapazon_start;
 								chunk_diapazon_end = chunk_diapazon_start + size_SplitSubstr - 1;
@@ -528,7 +528,7 @@ public:
 							{
 								if (tail_size == size_SplitSubstr)
 								{
-									//Значит до конца файла - умещается или только разделитель или какая то полезная данная.
+									//Р—РЅР°С‡РёС‚ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р° - СѓРјРµС‰Р°РµС‚СЃСЏ РёР»Рё С‚РѕР»СЊРєРѕ СЂР°Р·РґРµР»РёС‚РµР»СЊ РёР»Рё РєР°РєР°СЏ С‚Рѕ РїРѕР»РµР·РЅР°СЏ РґР°РЅРЅР°СЏ.
 
 									chunk_diapazon_start = Line_diapazon_start;
 									chunk_diapazon_end = chunk_diapazon_start + size_SplitSubstr - 1;
@@ -537,11 +537,11 @@ public:
 								}
 								else
 								{
-									//Значит до конца файла - не умещается разделитель, то есть те байты, что остались не могут быть разделитлем, значит это полезные данные для Line-строки, занесем их в вектор, как Line-строку.
+									//Р—РЅР°С‡РёС‚ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р° - РЅРµ СѓРјРµС‰Р°РµС‚СЃСЏ СЂР°Р·РґРµР»РёС‚РµР»СЊ, С‚Рѕ РµСЃС‚СЊ С‚Рµ Р±Р°Р№С‚С‹, С‡С‚Рѕ РѕСЃС‚Р°Р»РёСЃСЊ РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ СЂР°Р·РґРµР»РёС‚Р»РµРј, Р·РЅР°С‡РёС‚ СЌС‚Рѕ РїРѕР»РµР·РЅС‹Рµ РґР°РЅРЅС‹Рµ РґР»СЏ Line-СЃС‚СЂРѕРєРё, Р·Р°РЅРµСЃРµРј РёС… РІ РІРµРєС‚РѕСЂ, РєР°Рє Line-СЃС‚СЂРѕРєСѓ.
 
 
 									//------------------------------------------------------------------------------
-						            //Прочитаем этот диапазон из файла:
+						            //РџСЂРѕС‡РёС‚Р°РµРј СЌС‚РѕС‚ РґРёР°РїР°Р·РѕРЅ РёР· С„Р°Р№Р»Р°:
 
 									if (number_Line == 0 || number_Line > add_Line_cntr)
 									{
@@ -564,8 +564,8 @@ public:
 					}
 					else
 					{
-						//Значит данных для копирования Line-строки нет - то есть - это ситуация, когда найденный разделитель первый в файле и до него нет никаких данных или это идущие подряд разделители, между который так же нет полезных данных.
-					    //Просто смешаем диапазон чанка на один влево:
+						//Р—РЅР°С‡РёС‚ РґР°РЅРЅС‹С… РґР»СЏ РєРѕРїРёСЂРѕРІР°РЅРёСЏ Line-СЃС‚СЂРѕРєРё РЅРµС‚ - С‚Рѕ РµСЃС‚СЊ - СЌС‚Рѕ СЃРёС‚СѓР°С†РёСЏ, РєРѕРіРґР° РЅР°Р№РґРµРЅРЅС‹Р№ СЂР°Р·РґРµР»РёС‚РµР»СЊ РїРµСЂРІС‹Р№ РІ С„Р°Р№Р»Рµ Рё РґРѕ РЅРµРіРѕ РЅРµС‚ РЅРёРєР°РєРёС… РґР°РЅРЅС‹С… РёР»Рё СЌС‚Рѕ РёРґСѓС‰РёРµ РїРѕРґСЂСЏРґ СЂР°Р·РґРµР»РёС‚РµР»Рё, РјРµР¶РґСѓ РєРѕС‚РѕСЂС‹Р№ С‚Р°Рє Р¶Рµ РЅРµС‚ РїРѕР»РµР·РЅС‹С… РґР°РЅРЅС‹С….
+					    //РџСЂРѕСЃС‚Рѕ СЃРјРµС€Р°РµРј РґРёР°РїР°Р·РѕРЅ С‡Р°РЅРєР° РЅР° РѕРґРёРЅ РІР»РµРІРѕ:
 
 						chunk_diapazon_start = chunk_diapazon_start + size_SplitSubstr;
 						chunk_diapazon_end   = chunk_diapazon_end + size_SplitSubstr;
@@ -574,17 +574,17 @@ public:
 
 						if (chunk_diapazon_end > File_size)
 						{
-							//Значит вышли за пределы файла, НО...
+							//Р—РЅР°С‡РёС‚ РІС‹С€Р»Рё Р·Р° РїСЂРµРґРµР»С‹ С„Р°Р№Р»Р°, РќРћ...
 
 							const long long tail = (File_size - chunk_diapazon_start + 1);
 
 							if (tail > 0)
 							{
-								//Значит, что хоть chunk_diapazon_end и вышел за пределы файла, но chunk_diapazon_start - еще находится в пределах файла и значит еще есть байты для обработки:
+								//Р—РЅР°С‡РёС‚, С‡С‚Рѕ С…РѕС‚СЊ chunk_diapazon_end Рё РІС‹С€РµР» Р·Р° РїСЂРµРґРµР»С‹ С„Р°Р№Р»Р°, РЅРѕ chunk_diapazon_start - РµС‰Рµ РЅР°С…РѕРґРёС‚СЃСЏ РІ РїСЂРµРґРµР»Р°С… С„Р°Р№Р»Р° Рё Р·РЅР°С‡РёС‚ РµС‰Рµ РµСЃС‚СЊ Р±Р°Р№С‚С‹ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё:
 
 								if (tail > size_SplitSubstr)
 								{
-									//Значит до конца файла - еще умещается, как сам разделитель так и полезные байты между ним. Поэтому просто повторяем стандартный цикл заново. Но корректируем "chunk_diapazon_end":
+									//Р—РЅР°С‡РёС‚ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р° - РµС‰Рµ СѓРјРµС‰Р°РµС‚СЃСЏ, РєР°Рє СЃР°Рј СЂР°Р·РґРµР»РёС‚РµР»СЊ С‚Р°Рє Рё РїРѕР»РµР·РЅС‹Рµ Р±Р°Р№С‚С‹ РјРµР¶РґСѓ РЅРёРј. РџРѕСЌС‚РѕРјСѓ РїСЂРѕСЃС‚Рѕ РїРѕРІС‚РѕСЂСЏРµРј СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ С†РёРєР» Р·Р°РЅРѕРІРѕ. РќРѕ РєРѕСЂСЂРµРєС‚РёСЂСѓРµРј "chunk_diapazon_end":
 
 									chunk_diapazon_end = File_size;
 
@@ -594,20 +594,20 @@ public:
 								{
 									if (tail == size_SplitSubstr)
 									{
-										//Значит до конца файла - умещается или только разделитель или какая то полезная данная.
+										//Р—РЅР°С‡РёС‚ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р° - СѓРјРµС‰Р°РµС‚СЃСЏ РёР»Рё С‚РѕР»СЊРєРѕ СЂР°Р·РґРµР»РёС‚РµР»СЊ РёР»Рё РєР°РєР°СЏ С‚Рѕ РїРѕР»РµР·РЅР°СЏ РґР°РЅРЅР°СЏ.
 
 										continue;
 									}
 									else
 									{
-										//Значит до конца файла - не умещается разделитель, то есть те байты, что остались не могут быть разделитлем, значит это полезные данные для Line-строки.
+										//Р—РЅР°С‡РёС‚ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р° - РЅРµ СѓРјРµС‰Р°РµС‚СЃСЏ СЂР°Р·РґРµР»РёС‚РµР»СЊ, С‚Рѕ РµСЃС‚СЊ С‚Рµ Р±Р°Р№С‚С‹, С‡С‚Рѕ РѕСЃС‚Р°Р»РёСЃСЊ РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ СЂР°Р·РґРµР»РёС‚Р»РµРј, Р·РЅР°С‡РёС‚ СЌС‚Рѕ РїРѕР»РµР·РЅС‹Рµ РґР°РЅРЅС‹Рµ РґР»СЏ Line-СЃС‚СЂРѕРєРё.
 
 										if (Line_diapazon_start != 0)
 										{
 
 
 											//------------------------------------------------------------------------------
-											//Прочитаем этот диапазон из файла:
+											//РџСЂРѕС‡РёС‚Р°РµРј СЌС‚РѕС‚ РґРёР°РїР°Р·РѕРЅ РёР· С„Р°Р№Р»Р°:
 
 											if (number_Line == 0 || number_Line > add_Line_cntr)
 											{
@@ -655,19 +655,19 @@ public:
 				}
 				else
 				{
-					//Значит прочитанный диапазон из файла - это Не разделитель: 
+					//Р—РЅР°С‡РёС‚ РїСЂРѕС‡РёС‚Р°РЅРЅС‹Р№ РґРёР°РїР°Р·РѕРЅ РёР· С„Р°Р№Р»Р° - СЌС‚Рѕ РќРµ СЂР°Р·РґРµР»РёС‚РµР»СЊ: 
 
 					chunk_diapazon_start = chunk_diapazon_start + 1;
 					chunk_diapazon_end   = chunk_diapazon_end + 1;
 
 					if (chunk_diapazon_end > File_size)
 					{
-						//Значит вышли за пределы файла, и теперь, если "Line_diapazon_start" не равен нулю, то есть ранее был найден разделитель, то в диапазоне от Line_diapazon_start до File_size находится последняя Line-строка, скопируем ее.
+						//Р—РЅР°С‡РёС‚ РІС‹С€Р»Рё Р·Р° РїСЂРµРґРµР»С‹ С„Р°Р№Р»Р°, Рё С‚РµРїРµСЂСЊ, РµСЃР»Рё "Line_diapazon_start" РЅРµ СЂР°РІРµРЅ РЅСѓР»СЋ, С‚Рѕ РµСЃС‚СЊ СЂР°РЅРµРµ Р±С‹Р» РЅР°Р№РґРµРЅ СЂР°Р·РґРµР»РёС‚РµР»СЊ, С‚Рѕ РІ РґРёР°РїР°Р·РѕРЅРµ РѕС‚ Line_diapazon_start РґРѕ File_size РЅР°С…РѕРґРёС‚СЃСЏ РїРѕСЃР»РµРґРЅСЏСЏ Line-СЃС‚СЂРѕРєР°, СЃРєРѕРїРёСЂСѓРµРј РµРµ.
 						
 						if (Line_diapazon_start != 0)
 						{
 							//------------------------------------------------------------------------------
-                            //Прочитаем этот диапазон из файла:
+                            //РџСЂРѕС‡РёС‚Р°РµРј СЌС‚РѕС‚ РґРёР°РїР°Р·РѕРЅ РёР· С„Р°Р№Р»Р°:
 
 							if (number_Line == 0 || number_Line > add_Line_cntr)
 							{
@@ -721,10 +721,10 @@ public:
 
 
 
-		//----------------------Определим размер файла:---------------------------
-		fstream_.seekg(0, std::ios::end);   //seekg - устанавливает курсор в файле при Чтении: первый параметр задает смещение относительно второго параметра: то есть смещение влево или вправо от конечного положения курсора в файле. Устанавливаем курсор в конец файла - для того, чтобы узнать кол-во байт в файле.
+		//----------------------РћРїСЂРµРґРµР»РёРј СЂР°Р·РјРµСЂ С„Р°Р№Р»Р°:---------------------------
+		fstream_.seekg(0, std::ios::end);   //seekg - СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РєСѓСЂСЃРѕСЂ РІ С„Р°Р№Р»Рµ РїСЂРё Р§С‚РµРЅРёРё: РїРµСЂРІС‹Р№ РїР°СЂР°РјРµС‚СЂ Р·Р°РґР°РµС‚ СЃРјРµС‰РµРЅРёРµ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РІС‚РѕСЂРѕРіРѕ РїР°СЂР°РјРµС‚СЂР°: С‚Рѕ РµСЃС‚СЊ СЃРјРµС‰РµРЅРёРµ РІР»РµРІРѕ РёР»Рё РІРїСЂР°РІРѕ РѕС‚ РєРѕРЅРµС‡РЅРѕРіРѕ РїРѕР»РѕР¶РµРЅРёСЏ РєСѓСЂСЃРѕСЂР° РІ С„Р°Р№Р»Рµ. РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РєСѓСЂСЃРѕСЂ РІ РєРѕРЅРµС† С„Р°Р№Р»Р° - РґР»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ СѓР·РЅР°С‚СЊ РєРѕР»-РІРѕ Р±Р°Р№С‚ РІ С„Р°Р№Р»Рµ.
 
-		size_t File_size = fstream_.tellg();    //tellg() возвращает значение позиции на котором сейчас находится курсор, то есть в данном случае, курсор поставлен в конец файла и таким образом получилим номер позцию этого курсора, тем самым мы получили кол-во байт в файле, то есть по сути размер данных файла.
+		size_t File_size = fstream_.tellg();    //tellg() РІРѕР·РІСЂР°С‰Р°РµС‚ Р·РЅР°С‡РµРЅРёРµ РїРѕР·РёС†РёРё РЅР° РєРѕС‚РѕСЂРѕРј СЃРµР№С‡Р°СЃ РЅР°С…РѕРґРёС‚СЃСЏ РєСѓСЂСЃРѕСЂ, С‚Рѕ РµСЃС‚СЊ РІ РґР°РЅРЅРѕРј СЃР»СѓС‡Р°Рµ, РєСѓСЂСЃРѕСЂ РїРѕСЃС‚Р°РІР»РµРЅ РІ РєРѕРЅРµС† С„Р°Р№Р»Р° Рё С‚Р°РєРёРј РѕР±СЂР°Р·РѕРј РїРѕР»СѓС‡РёР»РёРј РЅРѕРјРµСЂ РїРѕР·С†РёСЋ СЌС‚РѕРіРѕ РєСѓСЂСЃРѕСЂР°, С‚РµРј СЃР°РјС‹Рј РјС‹ РїРѕР»СѓС‡РёР»Рё РєРѕР»-РІРѕ Р±Р°Р№С‚ РІ С„Р°Р№Р»Рµ, С‚Рѕ РµСЃС‚СЊ РїРѕ СЃСѓС‚Рё СЂР°Р·РјРµСЂ РґР°РЅРЅС‹С… С„Р°Р№Р»Р°.
 
 		if (File_size == 0)
 		{
@@ -780,19 +780,19 @@ public:
 
 				if (chunk_string.compare(poiter_to_SplitSubstr) == 0)
 				{
-					//Значит прочитанный диапазон из файла - это разделитель:
+					//Р—РЅР°С‡РёС‚ РїСЂРѕС‡РёС‚Р°РЅРЅС‹Р№ РґРёР°РїР°Р·РѕРЅ РёР· С„Р°Р№Р»Р° - СЌС‚Рѕ СЂР°Р·РґРµР»РёС‚РµР»СЊ:
 
-					const size_t pos_delimeter = chunk_diapazon_start;   //Позиция в файле найденного разделителя.
+					const size_t pos_delimeter = chunk_diapazon_start;   //РџРѕР·РёС†РёСЏ РІ С„Р°Р№Р»Рµ РЅР°Р№РґРµРЅРЅРѕРіРѕ СЂР°Р·РґРµР»РёС‚РµР»СЏ.
 
 					Line_diapazon_end = pos_delimeter - 1;
 
 
 					if (Line_diapazon_end >= Line_diapazon_start)
 					{
-						//Значит есть данные для копирования их как Line-строки:
+						//Р—РЅР°С‡РёС‚ РµСЃС‚СЊ РґР°РЅРЅС‹Рµ РґР»СЏ РєРѕРїРёСЂРѕРІР°РЅРёСЏ РёС… РєР°Рє Line-СЃС‚СЂРѕРєРё:
 
 						//------------------------------------------------------------------------------
-						//Прочитаем этот диапазон из файла:
+						//РџСЂРѕС‡РёС‚Р°РµРј СЌС‚РѕС‚ РґРёР°РїР°Р·РѕРЅ РёР· С„Р°Р№Р»Р°:
 
 						if (number_Line == 0 || number_Line > add_Line_cntr)
 						{
@@ -814,24 +814,24 @@ public:
 						//------------------------------------------------------------------------------
 
 
-						Line_diapazon_start = pos_delimeter + size_SplitSubstr;    //Устанавливаем новую стартовую позицию для чтения следующей Line-строки из файла.
+						Line_diapazon_start = pos_delimeter + size_SplitSubstr;    //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІСѓСЋ СЃС‚Р°СЂС‚РѕРІСѓСЋ РїРѕР·РёС†РёСЋ РґР»СЏ С‡С‚РµРЅРёСЏ СЃР»РµРґСѓСЋС‰РµР№ Line-СЃС‚СЂРѕРєРё РёР· С„Р°Р№Р»Р°.
 
 
 						if (Line_diapazon_start > File_size)
 						{
-							//Значит вышли за пределы файла и все Line-строки уже сохранены.
+							//Р—РЅР°С‡РёС‚ РІС‹С€Р»Рё Р·Р° РїСЂРµРґРµР»С‹ С„Р°Р№Р»Р° Рё РІСЃРµ Line-СЃС‚СЂРѕРєРё СѓР¶Рµ СЃРѕС…СЂР°РЅРµРЅС‹.
 
 							return result_flag::OK;
 						}
 						else
 						{
-							//Значит еще есть байты до конца файла:
+							//Р—РЅР°С‡РёС‚ РµС‰Рµ РµСЃС‚СЊ Р±Р°Р№С‚С‹ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р°:
 
-							const long long tail_size = File_size - Line_diapazon_start + 1;     //Сколько байт осталось от байта следующего сразу за разделителем до конца файла.
+							const long long tail_size = File_size - Line_diapazon_start + 1;     //РЎРєРѕР»СЊРєРѕ Р±Р°Р№С‚ РѕСЃС‚Р°Р»РѕСЃСЊ РѕС‚ Р±Р°Р№С‚Р° СЃР»РµРґСѓСЋС‰РµРіРѕ СЃСЂР°Р·Сѓ Р·Р° СЂР°Р·РґРµР»РёС‚РµР»РµРј РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р°.
 
 							if (tail_size > size_SplitSubstr)
 							{
-								//Значит до конца файла - еще умещается, как сам разделитель так и полезные байты между ним. Поэтому просто повторяем стандартный цикл заново. Ничего не делаем и возвращаемся к новой итерации цикла.
+								//Р—РЅР°С‡РёС‚ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р° - РµС‰Рµ СѓРјРµС‰Р°РµС‚СЃСЏ, РєР°Рє СЃР°Рј СЂР°Р·РґРµР»РёС‚РµР»СЊ С‚Р°Рє Рё РїРѕР»РµР·РЅС‹Рµ Р±Р°Р№С‚С‹ РјРµР¶РґСѓ РЅРёРј. РџРѕСЌС‚РѕРјСѓ РїСЂРѕСЃС‚Рѕ РїРѕРІС‚РѕСЂСЏРµРј СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ С†РёРєР» Р·Р°РЅРѕРІРѕ. РќРёС‡РµРіРѕ РЅРµ РґРµР»Р°РµРј Рё РІРѕР·РІСЂР°С‰Р°РµРјСЃСЏ Рє РЅРѕРІРѕР№ РёС‚РµСЂР°С†РёРё С†РёРєР»Р°.
 
 								chunk_diapazon_start = Line_diapazon_start;
 								chunk_diapazon_end = chunk_diapazon_start + size_SplitSubstr - 1;
@@ -842,7 +842,7 @@ public:
 							{
 								if (tail_size == size_SplitSubstr)
 								{
-									//Значит до конца файла - умещается или только разделитель или какая то полезная данная.
+									//Р—РЅР°С‡РёС‚ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р° - СѓРјРµС‰Р°РµС‚СЃСЏ РёР»Рё С‚РѕР»СЊРєРѕ СЂР°Р·РґРµР»РёС‚РµР»СЊ РёР»Рё РєР°РєР°СЏ С‚Рѕ РїРѕР»РµР·РЅР°СЏ РґР°РЅРЅР°СЏ.
 
 									chunk_diapazon_start = Line_diapazon_start;
 									chunk_diapazon_end = chunk_diapazon_start + size_SplitSubstr - 1;
@@ -851,11 +851,11 @@ public:
 								}
 								else
 								{
-									//Значит до конца файла - не умещается разделитель, то есть те байты, что остались не могут быть разделитлем, значит это полезные данные для Line-строки, занесем их в вектор, как Line-строку.
+									//Р—РЅР°С‡РёС‚ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р° - РЅРµ СѓРјРµС‰Р°РµС‚СЃСЏ СЂР°Р·РґРµР»РёС‚РµР»СЊ, С‚Рѕ РµСЃС‚СЊ С‚Рµ Р±Р°Р№С‚С‹, С‡С‚Рѕ РѕСЃС‚Р°Р»РёСЃСЊ РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ СЂР°Р·РґРµР»РёС‚Р»РµРј, Р·РЅР°С‡РёС‚ СЌС‚Рѕ РїРѕР»РµР·РЅС‹Рµ РґР°РЅРЅС‹Рµ РґР»СЏ Line-СЃС‚СЂРѕРєРё, Р·Р°РЅРµСЃРµРј РёС… РІ РІРµРєС‚РѕСЂ, РєР°Рє Line-СЃС‚СЂРѕРєСѓ.
 
 
 									//------------------------------------------------------------------------------
-									//Прочитаем этот диапазон из файла:
+									//РџСЂРѕС‡РёС‚Р°РµРј СЌС‚РѕС‚ РґРёР°РїР°Р·РѕРЅ РёР· С„Р°Р№Р»Р°:
 
 									if (number_Line == 0 || number_Line > add_Line_cntr)
 									{
@@ -878,8 +878,8 @@ public:
 					}
 					else
 					{
-						//Значит данных для копирования Line-строки нет - то есть - это ситуация, когда найденный разделитель первый в файле и до него нет никаких данных или это идущие подряд разделители, между который так же нет полезных данных.
-						//Просто смешаем диапазон чанка на один влево:
+						//Р—РЅР°С‡РёС‚ РґР°РЅРЅС‹С… РґР»СЏ РєРѕРїРёСЂРѕРІР°РЅРёСЏ Line-СЃС‚СЂРѕРєРё РЅРµС‚ - С‚Рѕ РµСЃС‚СЊ - СЌС‚Рѕ СЃРёС‚СѓР°С†РёСЏ, РєРѕРіРґР° РЅР°Р№РґРµРЅРЅС‹Р№ СЂР°Р·РґРµР»РёС‚РµР»СЊ РїРµСЂРІС‹Р№ РІ С„Р°Р№Р»Рµ Рё РґРѕ РЅРµРіРѕ РЅРµС‚ РЅРёРєР°РєРёС… РґР°РЅРЅС‹С… РёР»Рё СЌС‚Рѕ РёРґСѓС‰РёРµ РїРѕРґСЂСЏРґ СЂР°Р·РґРµР»РёС‚РµР»Рё, РјРµР¶РґСѓ РєРѕС‚РѕСЂС‹Р№ С‚Р°Рє Р¶Рµ РЅРµС‚ РїРѕР»РµР·РЅС‹С… РґР°РЅРЅС‹С….
+						//РџСЂРѕСЃС‚Рѕ СЃРјРµС€Р°РµРј РґРёР°РїР°Р·РѕРЅ С‡Р°РЅРєР° РЅР° РѕРґРёРЅ РІР»РµРІРѕ:
 
 						chunk_diapazon_start = chunk_diapazon_start + size_SplitSubstr;
 						chunk_diapazon_end = chunk_diapazon_end + size_SplitSubstr;
@@ -888,17 +888,17 @@ public:
 
 						if (chunk_diapazon_end > File_size)
 						{
-							//Значит вышли за пределы файла, НО...
+							//Р—РЅР°С‡РёС‚ РІС‹С€Р»Рё Р·Р° РїСЂРµРґРµР»С‹ С„Р°Р№Р»Р°, РќРћ...
 
 							const long long tail = (File_size - chunk_diapazon_start + 1);
 
 							if (tail > 0)
 							{
-								//Значит, что хоть chunk_diapazon_end и вышел за пределы файла, но chunk_diapazon_start - еще находится в пределах файла и значит еще есть байты для обработки:
+								//Р—РЅР°С‡РёС‚, С‡С‚Рѕ С…РѕС‚СЊ chunk_diapazon_end Рё РІС‹С€РµР» Р·Р° РїСЂРµРґРµР»С‹ С„Р°Р№Р»Р°, РЅРѕ chunk_diapazon_start - РµС‰Рµ РЅР°С…РѕРґРёС‚СЃСЏ РІ РїСЂРµРґРµР»Р°С… С„Р°Р№Р»Р° Рё Р·РЅР°С‡РёС‚ РµС‰Рµ РµСЃС‚СЊ Р±Р°Р№С‚С‹ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё:
 
 								if (tail > size_SplitSubstr)
 								{
-									//Значит до конца файла - еще умещается, как сам разделитель так и полезные байты между ним. Поэтому просто повторяем стандартный цикл заново. Но корректируем "chunk_diapazon_end":
+									//Р—РЅР°С‡РёС‚ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р° - РµС‰Рµ СѓРјРµС‰Р°РµС‚СЃСЏ, РєР°Рє СЃР°Рј СЂР°Р·РґРµР»РёС‚РµР»СЊ С‚Р°Рє Рё РїРѕР»РµР·РЅС‹Рµ Р±Р°Р№С‚С‹ РјРµР¶РґСѓ РЅРёРј. РџРѕСЌС‚РѕРјСѓ РїСЂРѕСЃС‚Рѕ РїРѕРІС‚РѕСЂСЏРµРј СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ С†РёРєР» Р·Р°РЅРѕРІРѕ. РќРѕ РєРѕСЂСЂРµРєС‚РёСЂСѓРµРј "chunk_diapazon_end":
 
 									chunk_diapazon_end = File_size;
 
@@ -908,20 +908,20 @@ public:
 								{
 									if (tail == size_SplitSubstr)
 									{
-										//Значит до конца файла - умещается или только разделитель или какая то полезная данная.
+										//Р—РЅР°С‡РёС‚ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р° - СѓРјРµС‰Р°РµС‚СЃСЏ РёР»Рё С‚РѕР»СЊРєРѕ СЂР°Р·РґРµР»РёС‚РµР»СЊ РёР»Рё РєР°РєР°СЏ С‚Рѕ РїРѕР»РµР·РЅР°СЏ РґР°РЅРЅР°СЏ.
 
 										continue;
 									}
 									else
 									{
-										//Значит до конца файла - не умещается разделитель, то есть те байты, что остались не могут быть разделитлем, значит это полезные данные для Line-строки.
+										//Р—РЅР°С‡РёС‚ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р° - РЅРµ СѓРјРµС‰Р°РµС‚СЃСЏ СЂР°Р·РґРµР»РёС‚РµР»СЊ, С‚Рѕ РµСЃС‚СЊ С‚Рµ Р±Р°Р№С‚С‹, С‡С‚Рѕ РѕСЃС‚Р°Р»РёСЃСЊ РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ СЂР°Р·РґРµР»РёС‚Р»РµРј, Р·РЅР°С‡РёС‚ СЌС‚Рѕ РїРѕР»РµР·РЅС‹Рµ РґР°РЅРЅС‹Рµ РґР»СЏ Line-СЃС‚СЂРѕРєРё.
 
 										if (Line_diapazon_start != 0)
 										{
 
 
 											//------------------------------------------------------------------------------
-											//Прочитаем этот диапазон из файла:
+											//РџСЂРѕС‡РёС‚Р°РµРј СЌС‚РѕС‚ РґРёР°РїР°Р·РѕРЅ РёР· С„Р°Р№Р»Р°:
 
 											if (number_Line == 0 || number_Line > add_Line_cntr)
 											{
@@ -969,19 +969,19 @@ public:
 				}
 				else
 				{
-					//Значит прочитанный диапазон из файла - это Не разделитель: 
+					//Р—РЅР°С‡РёС‚ РїСЂРѕС‡РёС‚Р°РЅРЅС‹Р№ РґРёР°РїР°Р·РѕРЅ РёР· С„Р°Р№Р»Р° - СЌС‚Рѕ РќРµ СЂР°Р·РґРµР»РёС‚РµР»СЊ: 
 
 					chunk_diapazon_start = chunk_diapazon_start + 1;
 					chunk_diapazon_end = chunk_diapazon_end + 1;
 
 					if (chunk_diapazon_end > File_size)
 					{
-						//Значит вышли за пределы файла, и теперь, если "Line_diapazon_start" не равен нулю, то есть ранее был найден разделитель, то в диапазоне от Line_diapazon_start до File_size находится последняя Line-строка, скопируем ее.
+						//Р—РЅР°С‡РёС‚ РІС‹С€Р»Рё Р·Р° РїСЂРµРґРµР»С‹ С„Р°Р№Р»Р°, Рё С‚РµРїРµСЂСЊ, РµСЃР»Рё "Line_diapazon_start" РЅРµ СЂР°РІРµРЅ РЅСѓР»СЋ, С‚Рѕ РµСЃС‚СЊ СЂР°РЅРµРµ Р±С‹Р» РЅР°Р№РґРµРЅ СЂР°Р·РґРµР»РёС‚РµР»СЊ, С‚Рѕ РІ РґРёР°РїР°Р·РѕРЅРµ РѕС‚ Line_diapazon_start РґРѕ File_size РЅР°С…РѕРґРёС‚СЃСЏ РїРѕСЃР»РµРґРЅСЏСЏ Line-СЃС‚СЂРѕРєР°, СЃРєРѕРїРёСЂСѓРµРј РµРµ.
 
 						if (Line_diapazon_start != 0)
 						{
 							//------------------------------------------------------------------------------
-							//Прочитаем этот диапазон из файла:
+							//РџСЂРѕС‡РёС‚Р°РµРј СЌС‚РѕС‚ РґРёР°РїР°Р·РѕРЅ РёР· С„Р°Р№Р»Р°:
 
 							if (number_Line == 0 || number_Line > add_Line_cntr)
 							{
@@ -1036,10 +1036,10 @@ public:
 
 
 
-		//----------------------Определим размер файла:---------------------------
-		fstream_.seekg(0, std::ios::end);   //seekg - устанавливает курсор в файле при Чтении: первый параметр задает смещение относительно второго параметра: то есть смещение влево или вправо от конечного положения курсора в файле. Устанавливаем курсор в конец файла - для того, чтобы узнать кол-во байт в файле.
+		//----------------------РћРїСЂРµРґРµР»РёРј СЂР°Р·РјРµСЂ С„Р°Р№Р»Р°:---------------------------
+		fstream_.seekg(0, std::ios::end);   //seekg - СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РєСѓСЂСЃРѕСЂ РІ С„Р°Р№Р»Рµ РїСЂРё Р§С‚РµРЅРёРё: РїРµСЂРІС‹Р№ РїР°СЂР°РјРµС‚СЂ Р·Р°РґР°РµС‚ СЃРјРµС‰РµРЅРёРµ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РІС‚РѕСЂРѕРіРѕ РїР°СЂР°РјРµС‚СЂР°: С‚Рѕ РµСЃС‚СЊ СЃРјРµС‰РµРЅРёРµ РІР»РµРІРѕ РёР»Рё РІРїСЂР°РІРѕ РѕС‚ РєРѕРЅРµС‡РЅРѕРіРѕ РїРѕР»РѕР¶РµРЅРёСЏ РєСѓСЂСЃРѕСЂР° РІ С„Р°Р№Р»Рµ. РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РєСѓСЂСЃРѕСЂ РІ РєРѕРЅРµС† С„Р°Р№Р»Р° - РґР»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ СѓР·РЅР°С‚СЊ РєРѕР»-РІРѕ Р±Р°Р№С‚ РІ С„Р°Р№Р»Рµ.
 
-		size_t File_size = fstream_.tellg();    //tellg() возвращает значение позиции на котором сейчас находится курсор, то есть в данном случае, курсор поставлен в конец файла и таким образом получилим номер позцию этого курсора, тем самым мы получили кол-во байт в файле, то есть по сути размер данных файла.
+		size_t File_size = fstream_.tellg();    //tellg() РІРѕР·РІСЂР°С‰Р°РµС‚ Р·РЅР°С‡РµРЅРёРµ РїРѕР·РёС†РёРё РЅР° РєРѕС‚РѕСЂРѕРј СЃРµР№С‡Р°СЃ РЅР°С…РѕРґРёС‚СЃСЏ РєСѓСЂСЃРѕСЂ, С‚Рѕ РµСЃС‚СЊ РІ РґР°РЅРЅРѕРј СЃР»СѓС‡Р°Рµ, РєСѓСЂСЃРѕСЂ РїРѕСЃС‚Р°РІР»РµРЅ РІ РєРѕРЅРµС† С„Р°Р№Р»Р° Рё С‚Р°РєРёРј РѕР±СЂР°Р·РѕРј РїРѕР»СѓС‡РёР»РёРј РЅРѕРјРµСЂ РїРѕР·С†РёСЋ СЌС‚РѕРіРѕ РєСѓСЂСЃРѕСЂР°, С‚РµРј СЃР°РјС‹Рј РјС‹ РїРѕР»СѓС‡РёР»Рё РєРѕР»-РІРѕ Р±Р°Р№С‚ РІ С„Р°Р№Р»Рµ, С‚Рѕ РµСЃС‚СЊ РїРѕ СЃСѓС‚Рё СЂР°Р·РјРµСЂ РґР°РЅРЅС‹С… С„Р°Р№Р»Р°.
 
 		if (File_size == 0)
 		{
@@ -1095,19 +1095,19 @@ public:
 
 				if (chunk_string.compare(poiter_to_SplitSubstr) == 0)
 				{
-					//Значит прочитанный диапазон из файла - это разделитель:
+					//Р—РЅР°С‡РёС‚ РїСЂРѕС‡РёС‚Р°РЅРЅС‹Р№ РґРёР°РїР°Р·РѕРЅ РёР· С„Р°Р№Р»Р° - СЌС‚Рѕ СЂР°Р·РґРµР»РёС‚РµР»СЊ:
 
-					const size_t pos_delimeter = chunk_diapazon_start;   //Позиция в файле найденного разделителя.
+					const size_t pos_delimeter = chunk_diapazon_start;   //РџРѕР·РёС†РёСЏ РІ С„Р°Р№Р»Рµ РЅР°Р№РґРµРЅРЅРѕРіРѕ СЂР°Р·РґРµР»РёС‚РµР»СЏ.
 
 					Line_diapazon_end = pos_delimeter + 1; 
 
 
 					if (Line_diapazon_end <= Line_diapazon_start)
 					{
-						//Значит есть данные для копирования их как Line-строки:
+						//Р—РЅР°С‡РёС‚ РµСЃС‚СЊ РґР°РЅРЅС‹Рµ РґР»СЏ РєРѕРїРёСЂРѕРІР°РЅРёСЏ РёС… РєР°Рє Line-СЃС‚СЂРѕРєРё:
 
 						//------------------------------------------------------------------------------
-						//Прочитаем этот диапазон из файла:
+						//РџСЂРѕС‡РёС‚Р°РµРј СЌС‚РѕС‚ РґРёР°РїР°Р·РѕРЅ РёР· С„Р°Р№Р»Р°:
 
 						if (number_Line == 0 || number_Line > add_Line_cntr)
 						{
@@ -1129,24 +1129,24 @@ public:
 						//------------------------------------------------------------------------------
 
 
-						Line_diapazon_start = pos_delimeter - size_SplitSubstr;    //Устанавливаем новую стартовую позицию для чтения следующей Line-строки из файла.
+						Line_diapazon_start = pos_delimeter - size_SplitSubstr;    //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІСѓСЋ СЃС‚Р°СЂС‚РѕРІСѓСЋ РїРѕР·РёС†РёСЋ РґР»СЏ С‡С‚РµРЅРёСЏ СЃР»РµРґСѓСЋС‰РµР№ Line-СЃС‚СЂРѕРєРё РёР· С„Р°Р№Р»Р°.
 
 
 						if (Line_diapazon_start < 0)
 						{
-							//Значит вышли за пределы файла и все Line-строки уже сохранены.
+							//Р—РЅР°С‡РёС‚ РІС‹С€Р»Рё Р·Р° РїСЂРµРґРµР»С‹ С„Р°Р№Р»Р° Рё РІСЃРµ Line-СЃС‚СЂРѕРєРё СѓР¶Рµ СЃРѕС…СЂР°РЅРµРЅС‹.
 
 							return result_flag::OK;
 						}
 						else
 						{
-							//Значит еще есть байты до конца файла:
+							//Р—РЅР°С‡РёС‚ РµС‰Рµ РµСЃС‚СЊ Р±Р°Р№С‚С‹ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р°:
 
-							const long long tail_size = Line_diapazon_start + 1;     //Сколько байт осталось от байта следующего сразу за разделителем до конца файла.
+							const long long tail_size = Line_diapazon_start + 1;     //РЎРєРѕР»СЊРєРѕ Р±Р°Р№С‚ РѕСЃС‚Р°Р»РѕСЃСЊ РѕС‚ Р±Р°Р№С‚Р° СЃР»РµРґСѓСЋС‰РµРіРѕ СЃСЂР°Р·Сѓ Р·Р° СЂР°Р·РґРµР»РёС‚РµР»РµРј РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р°.
 
 							if (tail_size > size_SplitSubstr)
 							{
-								//Значит до конца файла - еще умещается, как сам разделитель так и полезные байты между ним. Поэтому просто повторяем стандартный цикл заново. Ничего не делаем и возвращаемся к новой итерации цикла.
+								//Р—РЅР°С‡РёС‚ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р° - РµС‰Рµ СѓРјРµС‰Р°РµС‚СЃСЏ, РєР°Рє СЃР°Рј СЂР°Р·РґРµР»РёС‚РµР»СЊ С‚Р°Рє Рё РїРѕР»РµР·РЅС‹Рµ Р±Р°Р№С‚С‹ РјРµР¶РґСѓ РЅРёРј. РџРѕСЌС‚РѕРјСѓ РїСЂРѕСЃС‚Рѕ РїРѕРІС‚РѕСЂСЏРµРј СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ С†РёРєР» Р·Р°РЅРѕРІРѕ. РќРёС‡РµРіРѕ РЅРµ РґРµР»Р°РµРј Рё РІРѕР·РІСЂР°С‰Р°РµРјСЃСЏ Рє РЅРѕРІРѕР№ РёС‚РµСЂР°С†РёРё С†РёРєР»Р°.
 
 								chunk_diapazon_start = Line_diapazon_start;
 								chunk_diapazon_end   = chunk_diapazon_start - size_SplitSubstr + 1;
@@ -1157,7 +1157,7 @@ public:
 							{
 								if (tail_size == size_SplitSubstr)
 								{
-									//Значит до конца файла - умещается или только разделитель или какая то полезная данная.
+									//Р—РЅР°С‡РёС‚ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р° - СѓРјРµС‰Р°РµС‚СЃСЏ РёР»Рё С‚РѕР»СЊРєРѕ СЂР°Р·РґРµР»РёС‚РµР»СЊ РёР»Рё РєР°РєР°СЏ С‚Рѕ РїРѕР»РµР·РЅР°СЏ РґР°РЅРЅР°СЏ.
 
 									chunk_diapazon_start = Line_diapazon_start;
 									chunk_diapazon_end   = chunk_diapazon_start - size_SplitSubstr + 1;
@@ -1166,11 +1166,11 @@ public:
 								}
 								else
 								{
-									//Значит до конца файла - не умещается разделитель, то есть те байты, что остались не могут быть разделитлем, значит это полезные данные для Line-строки, занесем их в вектор, как Line-строку.
+									//Р—РЅР°С‡РёС‚ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р° - РЅРµ СѓРјРµС‰Р°РµС‚СЃСЏ СЂР°Р·РґРµР»РёС‚РµР»СЊ, С‚Рѕ РµСЃС‚СЊ С‚Рµ Р±Р°Р№С‚С‹, С‡С‚Рѕ РѕСЃС‚Р°Р»РёСЃСЊ РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ СЂР°Р·РґРµР»РёС‚Р»РµРј, Р·РЅР°С‡РёС‚ СЌС‚Рѕ РїРѕР»РµР·РЅС‹Рµ РґР°РЅРЅС‹Рµ РґР»СЏ Line-СЃС‚СЂРѕРєРё, Р·Р°РЅРµСЃРµРј РёС… РІ РІРµРєС‚РѕСЂ, РєР°Рє Line-СЃС‚СЂРѕРєСѓ.
 
 
 									//------------------------------------------------------------------------------
-									//Прочитаем этот диапазон из файла:
+									//РџСЂРѕС‡РёС‚Р°РµРј СЌС‚РѕС‚ РґРёР°РїР°Р·РѕРЅ РёР· С„Р°Р№Р»Р°:
 
 									if (number_Line == 0 || number_Line > add_Line_cntr)
 									{
@@ -1193,8 +1193,8 @@ public:
 					}
 					else
 					{
-						//Значит данных для копирования Line-строки нет - то есть - это ситуация, когда найденный разделитель первый в файле и до него нет никаких данных или это идущие подряд разделители, между который так же нет полезных данных.
-						//Просто смешаем диапазон чанка на один влево:
+						//Р—РЅР°С‡РёС‚ РґР°РЅРЅС‹С… РґР»СЏ РєРѕРїРёСЂРѕРІР°РЅРёСЏ Line-СЃС‚СЂРѕРєРё РЅРµС‚ - С‚Рѕ РµСЃС‚СЊ - СЌС‚Рѕ СЃРёС‚СѓР°С†РёСЏ, РєРѕРіРґР° РЅР°Р№РґРµРЅРЅС‹Р№ СЂР°Р·РґРµР»РёС‚РµР»СЊ РїРµСЂРІС‹Р№ РІ С„Р°Р№Р»Рµ Рё РґРѕ РЅРµРіРѕ РЅРµС‚ РЅРёРєР°РєРёС… РґР°РЅРЅС‹С… РёР»Рё СЌС‚Рѕ РёРґСѓС‰РёРµ РїРѕРґСЂСЏРґ СЂР°Р·РґРµР»РёС‚РµР»Рё, РјРµР¶РґСѓ РєРѕС‚РѕСЂС‹Р№ С‚Р°Рє Р¶Рµ РЅРµС‚ РїРѕР»РµР·РЅС‹С… РґР°РЅРЅС‹С….
+						//РџСЂРѕСЃС‚Рѕ СЃРјРµС€Р°РµРј РґРёР°РїР°Р·РѕРЅ С‡Р°РЅРєР° РЅР° РѕРґРёРЅ РІР»РµРІРѕ:
 
 						chunk_diapazon_start = chunk_diapazon_start - size_SplitSubstr;
 						chunk_diapazon_end   = chunk_diapazon_end   - size_SplitSubstr;
@@ -1203,17 +1203,17 @@ public:
 
 						if (chunk_diapazon_end < 0)
 						{
-							//Значит вышли за пределы файла, НО...
+							//Р—РЅР°С‡РёС‚ РІС‹С€Р»Рё Р·Р° РїСЂРµРґРµР»С‹ С„Р°Р№Р»Р°, РќРћ...
 
 							const long long tail = (chunk_diapazon_start + 1);
 
 							if (tail > 0)
 							{
-								//Значит, что хоть chunk_diapazon_end и вышел за пределы файла, но chunk_diapazon_start - еще находится в пределах файла и значит еще есть байты для обработки:
+								//Р—РЅР°С‡РёС‚, С‡С‚Рѕ С…РѕС‚СЊ chunk_diapazon_end Рё РІС‹С€РµР» Р·Р° РїСЂРµРґРµР»С‹ С„Р°Р№Р»Р°, РЅРѕ chunk_diapazon_start - РµС‰Рµ РЅР°С…РѕРґРёС‚СЃСЏ РІ РїСЂРµРґРµР»Р°С… С„Р°Р№Р»Р° Рё Р·РЅР°С‡РёС‚ РµС‰Рµ РµСЃС‚СЊ Р±Р°Р№С‚С‹ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё:
 
 								if (tail > size_SplitSubstr)
 								{
-									//Значит до конца файла - еще умещается, как сам разделитель так и полезные байты между ним. Поэтому просто повторяем стандартный цикл заново. Но корректируем "chunk_diapazon_end":
+									//Р—РЅР°С‡РёС‚ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р° - РµС‰Рµ СѓРјРµС‰Р°РµС‚СЃСЏ, РєР°Рє СЃР°Рј СЂР°Р·РґРµР»РёС‚РµР»СЊ С‚Р°Рє Рё РїРѕР»РµР·РЅС‹Рµ Р±Р°Р№С‚С‹ РјРµР¶РґСѓ РЅРёРј. РџРѕСЌС‚РѕРјСѓ РїСЂРѕСЃС‚Рѕ РїРѕРІС‚РѕСЂСЏРµРј СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ С†РёРєР» Р·Р°РЅРѕРІРѕ. РќРѕ РєРѕСЂСЂРµРєС‚РёСЂСѓРµРј "chunk_diapazon_end":
 
 									chunk_diapazon_end = 0;
 
@@ -1223,20 +1223,20 @@ public:
 								{
 									if (tail == size_SplitSubstr)
 									{
-										//Значит до конца файла - умещается или только разделитель или какая то полезная данная.
+										//Р—РЅР°С‡РёС‚ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р° - СѓРјРµС‰Р°РµС‚СЃСЏ РёР»Рё С‚РѕР»СЊРєРѕ СЂР°Р·РґРµР»РёС‚РµР»СЊ РёР»Рё РєР°РєР°СЏ С‚Рѕ РїРѕР»РµР·РЅР°СЏ РґР°РЅРЅР°СЏ.
 
 										continue;
 									}
 									else
 									{
-										//Значит до конца файла - не умещается разделитель, то есть те байты, что остались не могут быть разделитлем, значит это полезные данные для Line-строки.
+										//Р—РЅР°С‡РёС‚ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р° - РЅРµ СѓРјРµС‰Р°РµС‚СЃСЏ СЂР°Р·РґРµР»РёС‚РµР»СЊ, С‚Рѕ РµСЃС‚СЊ С‚Рµ Р±Р°Р№С‚С‹, С‡С‚Рѕ РѕСЃС‚Р°Р»РёСЃСЊ РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ СЂР°Р·РґРµР»РёС‚Р»РµРј, Р·РЅР°С‡РёС‚ СЌС‚Рѕ РїРѕР»РµР·РЅС‹Рµ РґР°РЅРЅС‹Рµ РґР»СЏ Line-СЃС‚СЂРѕРєРё.
 
 										if (Line_diapazon_start != File_size)
 										{
 
 
 											//------------------------------------------------------------------------------
-											//Прочитаем этот диапазон из файла:
+											//РџСЂРѕС‡РёС‚Р°РµРј СЌС‚РѕС‚ РґРёР°РїР°Р·РѕРЅ РёР· С„Р°Р№Р»Р°:
 
 											if (number_Line == 0 || number_Line > add_Line_cntr)
 											{
@@ -1284,19 +1284,19 @@ public:
 				}
 				else
 				{
-					//Значит прочитанный диапазон из файла - это Не разделитель: 
+					//Р—РЅР°С‡РёС‚ РїСЂРѕС‡РёС‚Р°РЅРЅС‹Р№ РґРёР°РїР°Р·РѕРЅ РёР· С„Р°Р№Р»Р° - СЌС‚Рѕ РќРµ СЂР°Р·РґРµР»РёС‚РµР»СЊ: 
 
 					chunk_diapazon_start = chunk_diapazon_start - 1;
 					chunk_diapazon_end   = chunk_diapazon_end   - 1;
 
 					if (chunk_diapazon_end < 0)
 					{
-						//Значит вышли за пределы файла, и теперь, если "Line_diapazon_start" не равен нулю, то есть ранее был найден разделитель, то в диапазоне от Line_diapazon_start до File_size находится последняя Line-строка, скопируем ее.
+						//Р—РЅР°С‡РёС‚ РІС‹С€Р»Рё Р·Р° РїСЂРµРґРµР»С‹ С„Р°Р№Р»Р°, Рё С‚РµРїРµСЂСЊ, РµСЃР»Рё "Line_diapazon_start" РЅРµ СЂР°РІРµРЅ РЅСѓР»СЋ, С‚Рѕ РµСЃС‚СЊ СЂР°РЅРµРµ Р±С‹Р» РЅР°Р№РґРµРЅ СЂР°Р·РґРµР»РёС‚РµР»СЊ, С‚Рѕ РІ РґРёР°РїР°Р·РѕРЅРµ РѕС‚ Line_diapazon_start РґРѕ File_size РЅР°С…РѕРґРёС‚СЃСЏ РїРѕСЃР»РµРґРЅСЏСЏ Line-СЃС‚СЂРѕРєР°, СЃРєРѕРїРёСЂСѓРµРј РµРµ.
 
 						if (Line_diapazon_start != File_size)
 						{
 							//------------------------------------------------------------------------------
-							//Прочитаем этот диапазон из файла:
+							//РџСЂРѕС‡РёС‚Р°РµРј СЌС‚РѕС‚ РґРёР°РїР°Р·РѕРЅ РёР· С„Р°Р№Р»Р°:
 
 							if (number_Line == 0 || number_Line > add_Line_cntr)
 							{
@@ -1350,10 +1350,10 @@ public:
 
 
 
-		//----------------------Определим размер файла:---------------------------
-		fstream_.seekg(0, std::ios::end);   //seekg - устанавливает курсор в файле при Чтении: первый параметр задает смещение относительно второго параметра: то есть смещение влево или вправо от конечного положения курсора в файле. Устанавливаем курсор в конец файла - для того, чтобы узнать кол-во байт в файле.
+		//----------------------РћРїСЂРµРґРµР»РёРј СЂР°Р·РјРµСЂ С„Р°Р№Р»Р°:---------------------------
+		fstream_.seekg(0, std::ios::end);   //seekg - СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РєСѓСЂСЃРѕСЂ РІ С„Р°Р№Р»Рµ РїСЂРё Р§С‚РµРЅРёРё: РїРµСЂРІС‹Р№ РїР°СЂР°РјРµС‚СЂ Р·Р°РґР°РµС‚ СЃРјРµС‰РµРЅРёРµ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РІС‚РѕСЂРѕРіРѕ РїР°СЂР°РјРµС‚СЂР°: С‚Рѕ РµСЃС‚СЊ СЃРјРµС‰РµРЅРёРµ РІР»РµРІРѕ РёР»Рё РІРїСЂР°РІРѕ РѕС‚ РєРѕРЅРµС‡РЅРѕРіРѕ РїРѕР»РѕР¶РµРЅРёСЏ РєСѓСЂСЃРѕСЂР° РІ С„Р°Р№Р»Рµ. РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РєСѓСЂСЃРѕСЂ РІ РєРѕРЅРµС† С„Р°Р№Р»Р° - РґР»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ СѓР·РЅР°С‚СЊ РєРѕР»-РІРѕ Р±Р°Р№С‚ РІ С„Р°Р№Р»Рµ.
 
-		size_t File_size = fstream_.tellg();    //tellg() возвращает значение позиции на котором сейчас находится курсор, то есть в данном случае, курсор поставлен в конец файла и таким образом получилим номер позцию этого курсора, тем самым мы получили кол-во байт в файле, то есть по сути размер данных файла.
+		size_t File_size = fstream_.tellg();    //tellg() РІРѕР·РІСЂР°С‰Р°РµС‚ Р·РЅР°С‡РµРЅРёРµ РїРѕР·РёС†РёРё РЅР° РєРѕС‚РѕСЂРѕРј СЃРµР№С‡Р°СЃ РЅР°С…РѕРґРёС‚СЃСЏ РєСѓСЂСЃРѕСЂ, С‚Рѕ РµСЃС‚СЊ РІ РґР°РЅРЅРѕРј СЃР»СѓС‡Р°Рµ, РєСѓСЂСЃРѕСЂ РїРѕСЃС‚Р°РІР»РµРЅ РІ РєРѕРЅРµС† С„Р°Р№Р»Р° Рё С‚Р°РєРёРј РѕР±СЂР°Р·РѕРј РїРѕР»СѓС‡РёР»РёРј РЅРѕРјРµСЂ РїРѕР·С†РёСЋ СЌС‚РѕРіРѕ РєСѓСЂСЃРѕСЂР°, С‚РµРј СЃР°РјС‹Рј РјС‹ РїРѕР»СѓС‡РёР»Рё РєРѕР»-РІРѕ Р±Р°Р№С‚ РІ С„Р°Р№Р»Рµ, С‚Рѕ РµСЃС‚СЊ РїРѕ СЃСѓС‚Рё СЂР°Р·РјРµСЂ РґР°РЅРЅС‹С… С„Р°Р№Р»Р°.
 
 		if (File_size == 0)
 		{
@@ -1409,19 +1409,19 @@ public:
 
 				if (chunk_string.compare(poiter_to_SplitSubstr) == 0)
 				{
-					//Значит прочитанный диапазон из файла - это разделитель:
+					//Р—РЅР°С‡РёС‚ РїСЂРѕС‡РёС‚Р°РЅРЅС‹Р№ РґРёР°РїР°Р·РѕРЅ РёР· С„Р°Р№Р»Р° - СЌС‚Рѕ СЂР°Р·РґРµР»РёС‚РµР»СЊ:
 
-					const size_t pos_delimeter = chunk_diapazon_start;   //Позиция в файле найденного разделителя.
+					const size_t pos_delimeter = chunk_diapazon_start;   //РџРѕР·РёС†РёСЏ РІ С„Р°Р№Р»Рµ РЅР°Р№РґРµРЅРЅРѕРіРѕ СЂР°Р·РґРµР»РёС‚РµР»СЏ.
 
 					Line_diapazon_end = pos_delimeter + 1;
 
 
 					if (Line_diapazon_end <= Line_diapazon_start)
 					{
-						//Значит есть данные для копирования их как Line-строки:
+						//Р—РЅР°С‡РёС‚ РµСЃС‚СЊ РґР°РЅРЅС‹Рµ РґР»СЏ РєРѕРїРёСЂРѕРІР°РЅРёСЏ РёС… РєР°Рє Line-СЃС‚СЂРѕРєРё:
 
 						//------------------------------------------------------------------------------
-						//Прочитаем этот диапазон из файла:
+						//РџСЂРѕС‡РёС‚Р°РµРј СЌС‚РѕС‚ РґРёР°РїР°Р·РѕРЅ РёР· С„Р°Р№Р»Р°:
 
 						if (number_Line == 0 || number_Line > add_Line_cntr)
 						{
@@ -1443,24 +1443,24 @@ public:
 						//------------------------------------------------------------------------------
 
 
-						Line_diapazon_start = pos_delimeter - size_SplitSubstr;    //Устанавливаем новую стартовую позицию для чтения следующей Line-строки из файла.
+						Line_diapazon_start = pos_delimeter - size_SplitSubstr;    //РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РЅРѕРІСѓСЋ СЃС‚Р°СЂС‚РѕРІСѓСЋ РїРѕР·РёС†РёСЋ РґР»СЏ С‡С‚РµРЅРёСЏ СЃР»РµРґСѓСЋС‰РµР№ Line-СЃС‚СЂРѕРєРё РёР· С„Р°Р№Р»Р°.
 
 
 						if (Line_diapazon_start < 0)
 						{
-							//Значит вышли за пределы файла и все Line-строки уже сохранены.
+							//Р—РЅР°С‡РёС‚ РІС‹С€Р»Рё Р·Р° РїСЂРµРґРµР»С‹ С„Р°Р№Р»Р° Рё РІСЃРµ Line-СЃС‚СЂРѕРєРё СѓР¶Рµ СЃРѕС…СЂР°РЅРµРЅС‹.
 
 							return result_flag::OK;
 						}
 						else
 						{
-							//Значит еще есть байты до конца файла:
+							//Р—РЅР°С‡РёС‚ РµС‰Рµ РµСЃС‚СЊ Р±Р°Р№С‚С‹ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р°:
 
-							const long long tail_size = Line_diapazon_start + 1;     //Сколько байт осталось от байта следующего сразу за разделителем до конца файла.
+							const long long tail_size = Line_diapazon_start + 1;     //РЎРєРѕР»СЊРєРѕ Р±Р°Р№С‚ РѕСЃС‚Р°Р»РѕСЃСЊ РѕС‚ Р±Р°Р№С‚Р° СЃР»РµРґСѓСЋС‰РµРіРѕ СЃСЂР°Р·Сѓ Р·Р° СЂР°Р·РґРµР»РёС‚РµР»РµРј РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р°.
 
 							if (tail_size > size_SplitSubstr)
 							{
-								//Значит до конца файла - еще умещается, как сам разделитель так и полезные байты между ним. Поэтому просто повторяем стандартный цикл заново. Ничего не делаем и возвращаемся к новой итерации цикла.
+								//Р—РЅР°С‡РёС‚ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р° - РµС‰Рµ СѓРјРµС‰Р°РµС‚СЃСЏ, РєР°Рє СЃР°Рј СЂР°Р·РґРµР»РёС‚РµР»СЊ С‚Р°Рє Рё РїРѕР»РµР·РЅС‹Рµ Р±Р°Р№С‚С‹ РјРµР¶РґСѓ РЅРёРј. РџРѕСЌС‚РѕРјСѓ РїСЂРѕСЃС‚Рѕ РїРѕРІС‚РѕСЂСЏРµРј СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ С†РёРєР» Р·Р°РЅРѕРІРѕ. РќРёС‡РµРіРѕ РЅРµ РґРµР»Р°РµРј Рё РІРѕР·РІСЂР°С‰Р°РµРјСЃСЏ Рє РЅРѕРІРѕР№ РёС‚РµСЂР°С†РёРё С†РёРєР»Р°.
 
 								chunk_diapazon_start = Line_diapazon_start;
 								chunk_diapazon_end = chunk_diapazon_start - size_SplitSubstr + 1;
@@ -1471,7 +1471,7 @@ public:
 							{
 								if (tail_size == size_SplitSubstr)
 								{
-									//Значит до конца файла - умещается или только разделитель или какая то полезная данная.
+									//Р—РЅР°С‡РёС‚ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р° - СѓРјРµС‰Р°РµС‚СЃСЏ РёР»Рё С‚РѕР»СЊРєРѕ СЂР°Р·РґРµР»РёС‚РµР»СЊ РёР»Рё РєР°РєР°СЏ С‚Рѕ РїРѕР»РµР·РЅР°СЏ РґР°РЅРЅР°СЏ.
 
 									chunk_diapazon_start = Line_diapazon_start;
 									chunk_diapazon_end = chunk_diapazon_start - size_SplitSubstr + 1;
@@ -1480,11 +1480,11 @@ public:
 								}
 								else
 								{
-									//Значит до конца файла - не умещается разделитель, то есть те байты, что остались не могут быть разделитлем, значит это полезные данные для Line-строки, занесем их в вектор, как Line-строку.
+									//Р—РЅР°С‡РёС‚ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р° - РЅРµ СѓРјРµС‰Р°РµС‚СЃСЏ СЂР°Р·РґРµР»РёС‚РµР»СЊ, С‚Рѕ РµСЃС‚СЊ С‚Рµ Р±Р°Р№С‚С‹, С‡С‚Рѕ РѕСЃС‚Р°Р»РёСЃСЊ РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ СЂР°Р·РґРµР»РёС‚Р»РµРј, Р·РЅР°С‡РёС‚ СЌС‚Рѕ РїРѕР»РµР·РЅС‹Рµ РґР°РЅРЅС‹Рµ РґР»СЏ Line-СЃС‚СЂРѕРєРё, Р·Р°РЅРµСЃРµРј РёС… РІ РІРµРєС‚РѕСЂ, РєР°Рє Line-СЃС‚СЂРѕРєСѓ.
 
 
 									//------------------------------------------------------------------------------
-									//Прочитаем этот диапазон из файла:
+									//РџСЂРѕС‡РёС‚Р°РµРј СЌС‚РѕС‚ РґРёР°РїР°Р·РѕРЅ РёР· С„Р°Р№Р»Р°:
 
 									if (number_Line == 0 || number_Line > add_Line_cntr)
 									{
@@ -1507,8 +1507,8 @@ public:
 					}
 					else
 					{
-						//Значит данных для копирования Line-строки нет - то есть - это ситуация, когда найденный разделитель первый в файле и до него нет никаких данных или это идущие подряд разделители, между который так же нет полезных данных.
-						//Просто смешаем диапазон чанка на один влево:
+						//Р—РЅР°С‡РёС‚ РґР°РЅРЅС‹С… РґР»СЏ РєРѕРїРёСЂРѕРІР°РЅРёСЏ Line-СЃС‚СЂРѕРєРё РЅРµС‚ - С‚Рѕ РµСЃС‚СЊ - СЌС‚Рѕ СЃРёС‚СѓР°С†РёСЏ, РєРѕРіРґР° РЅР°Р№РґРµРЅРЅС‹Р№ СЂР°Р·РґРµР»РёС‚РµР»СЊ РїРµСЂРІС‹Р№ РІ С„Р°Р№Р»Рµ Рё РґРѕ РЅРµРіРѕ РЅРµС‚ РЅРёРєР°РєРёС… РґР°РЅРЅС‹С… РёР»Рё СЌС‚Рѕ РёРґСѓС‰РёРµ РїРѕРґСЂСЏРґ СЂР°Р·РґРµР»РёС‚РµР»Рё, РјРµР¶РґСѓ РєРѕС‚РѕСЂС‹Р№ С‚Р°Рє Р¶Рµ РЅРµС‚ РїРѕР»РµР·РЅС‹С… РґР°РЅРЅС‹С….
+						//РџСЂРѕСЃС‚Рѕ СЃРјРµС€Р°РµРј РґРёР°РїР°Р·РѕРЅ С‡Р°РЅРєР° РЅР° РѕРґРёРЅ РІР»РµРІРѕ:
 
 						chunk_diapazon_start = chunk_diapazon_start - size_SplitSubstr;
 						chunk_diapazon_end = chunk_diapazon_end - size_SplitSubstr;
@@ -1517,17 +1517,17 @@ public:
 
 						if (chunk_diapazon_end < 0)
 						{
-							//Значит вышли за пределы файла, НО...
+							//Р—РЅР°С‡РёС‚ РІС‹С€Р»Рё Р·Р° РїСЂРµРґРµР»С‹ С„Р°Р№Р»Р°, РќРћ...
 
 							const long long tail = (chunk_diapazon_start + 1);
 
 							if (tail > 0)
 							{
-								//Значит, что хоть chunk_diapazon_end и вышел за пределы файла, но chunk_diapazon_start - еще находится в пределах файла и значит еще есть байты для обработки:
+								//Р—РЅР°С‡РёС‚, С‡С‚Рѕ С…РѕС‚СЊ chunk_diapazon_end Рё РІС‹С€РµР» Р·Р° РїСЂРµРґРµР»С‹ С„Р°Р№Р»Р°, РЅРѕ chunk_diapazon_start - РµС‰Рµ РЅР°С…РѕРґРёС‚СЃСЏ РІ РїСЂРµРґРµР»Р°С… С„Р°Р№Р»Р° Рё Р·РЅР°С‡РёС‚ РµС‰Рµ РµСЃС‚СЊ Р±Р°Р№С‚С‹ РґР»СЏ РѕР±СЂР°Р±РѕС‚РєРё:
 
 								if (tail > size_SplitSubstr)
 								{
-									//Значит до конца файла - еще умещается, как сам разделитель так и полезные байты между ним. Поэтому просто повторяем стандартный цикл заново. Но корректируем "chunk_diapazon_end":
+									//Р—РЅР°С‡РёС‚ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р° - РµС‰Рµ СѓРјРµС‰Р°РµС‚СЃСЏ, РєР°Рє СЃР°Рј СЂР°Р·РґРµР»РёС‚РµР»СЊ С‚Р°Рє Рё РїРѕР»РµР·РЅС‹Рµ Р±Р°Р№С‚С‹ РјРµР¶РґСѓ РЅРёРј. РџРѕСЌС‚РѕРјСѓ РїСЂРѕСЃС‚Рѕ РїРѕРІС‚РѕСЂСЏРµРј СЃС‚Р°РЅРґР°СЂС‚РЅС‹Р№ С†РёРєР» Р·Р°РЅРѕРІРѕ. РќРѕ РєРѕСЂСЂРµРєС‚РёСЂСѓРµРј "chunk_diapazon_end":
 
 									chunk_diapazon_end = 0;
 
@@ -1537,20 +1537,20 @@ public:
 								{
 									if (tail == size_SplitSubstr)
 									{
-										//Значит до конца файла - умещается или только разделитель или какая то полезная данная.
+										//Р—РЅР°С‡РёС‚ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р° - СѓРјРµС‰Р°РµС‚СЃСЏ РёР»Рё С‚РѕР»СЊРєРѕ СЂР°Р·РґРµР»РёС‚РµР»СЊ РёР»Рё РєР°РєР°СЏ С‚Рѕ РїРѕР»РµР·РЅР°СЏ РґР°РЅРЅР°СЏ.
 
 										continue;
 									}
 									else
 									{
-										//Значит до конца файла - не умещается разделитель, то есть те байты, что остались не могут быть разделитлем, значит это полезные данные для Line-строки.
+										//Р—РЅР°С‡РёС‚ РґРѕ РєРѕРЅС†Р° С„Р°Р№Р»Р° - РЅРµ СѓРјРµС‰Р°РµС‚СЃСЏ СЂР°Р·РґРµР»РёС‚РµР»СЊ, С‚Рѕ РµСЃС‚СЊ С‚Рµ Р±Р°Р№С‚С‹, С‡С‚Рѕ РѕСЃС‚Р°Р»РёСЃСЊ РЅРµ РјРѕРіСѓС‚ Р±С‹С‚СЊ СЂР°Р·РґРµР»РёС‚Р»РµРј, Р·РЅР°С‡РёС‚ СЌС‚Рѕ РїРѕР»РµР·РЅС‹Рµ РґР°РЅРЅС‹Рµ РґР»СЏ Line-СЃС‚СЂРѕРєРё.
 
 										if (Line_diapazon_start != File_size)
 										{
 
 
 											//------------------------------------------------------------------------------
-											//Прочитаем этот диапазон из файла:
+											//РџСЂРѕС‡РёС‚Р°РµРј СЌС‚РѕС‚ РґРёР°РїР°Р·РѕРЅ РёР· С„Р°Р№Р»Р°:
 
 											if (number_Line == 0 || number_Line > add_Line_cntr)
 											{
@@ -1598,19 +1598,19 @@ public:
 				}
 				else
 				{
-					//Значит прочитанный диапазон из файла - это Не разделитель: 
+					//Р—РЅР°С‡РёС‚ РїСЂРѕС‡РёС‚Р°РЅРЅС‹Р№ РґРёР°РїР°Р·РѕРЅ РёР· С„Р°Р№Р»Р° - СЌС‚Рѕ РќРµ СЂР°Р·РґРµР»РёС‚РµР»СЊ: 
 
 					chunk_diapazon_start = chunk_diapazon_start - 1;
 					chunk_diapazon_end = chunk_diapazon_end - 1;
 
 					if (chunk_diapazon_end < 0)
 					{
-						//Значит вышли за пределы файла, и теперь, если "Line_diapazon_start" не равен нулю, то есть ранее был найден разделитель, то в диапазоне от Line_diapazon_start до File_size находится последняя Line-строка, скопируем ее.
+						//Р—РЅР°С‡РёС‚ РІС‹С€Р»Рё Р·Р° РїСЂРµРґРµР»С‹ С„Р°Р№Р»Р°, Рё С‚РµРїРµСЂСЊ, РµСЃР»Рё "Line_diapazon_start" РЅРµ СЂР°РІРµРЅ РЅСѓР»СЋ, С‚Рѕ РµСЃС‚СЊ СЂР°РЅРµРµ Р±С‹Р» РЅР°Р№РґРµРЅ СЂР°Р·РґРµР»РёС‚РµР»СЊ, С‚Рѕ РІ РґРёР°РїР°Р·РѕРЅРµ РѕС‚ Line_diapazon_start РґРѕ File_size РЅР°С…РѕРґРёС‚СЃСЏ РїРѕСЃР»РµРґРЅСЏСЏ Line-СЃС‚СЂРѕРєР°, СЃРєРѕРїРёСЂСѓРµРј РµРµ.
 
 						if (Line_diapazon_start != File_size)
 						{
 							//------------------------------------------------------------------------------
-							//Прочитаем этот диапазон из файла:
+							//РџСЂРѕС‡РёС‚Р°РµРј СЌС‚РѕС‚ РґРёР°РїР°Р·РѕРЅ РёР· С„Р°Р№Р»Р°:
 
 							if (number_Line == 0 || number_Line > add_Line_cntr)
 							{
@@ -1646,7 +1646,7 @@ public:
 
 
 	}
-	//**************************************************************************************ЧТЕНИЕ ИЗ ФАЙЛА SPLIT-LINE`ом:Конец***********************************************************************
+	//**************************************************************************************Р§РўР•РќРР• РР— Р¤РђР™Р›Рђ SPLIT-LINE`РѕРј:РљРѕРЅРµС†***********************************************************************
 
 
 
@@ -1678,18 +1678,18 @@ private:
 
 		if (fstream_.is_open() == false)
 		{
-			//Значит поток на данный момент закрыт, откроем его:
+			//Р—РЅР°С‡РёС‚ РїРѕС‚РѕРє РЅР° РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ Р·Р°РєСЂС‹С‚, РѕС‚РєСЂРѕРµРј РµРіРѕ:
 
 
 			//----------------------------------------------------------
-			fstream_.open(FS_path, std::ios::binary | std::ios_base::out | std::ios_base::in);  //Открываем сразу для Чтения и Записи чтобы не париться.
+			fstream_.open(FS_path, std::ios::binary | std::ios_base::out | std::ios_base::in);  //РћС‚РєСЂС‹РІР°РµРј СЃСЂР°Р·Сѓ РґР»СЏ Р§С‚РµРЅРёСЏ Рё Р—Р°РїРёСЃРё С‡С‚РѕР±С‹ РЅРµ РїР°СЂРёС‚СЊСЃСЏ.
 
-			//PS: при попытке открыть поток только для записи - fstream_.open(FS_path, std::ios::binary | std::ios_base::out); - std::ios_base::out открывается файл для записи - удаляя из него нахуй все содержимое. Доабвление std::ios_base::app или  std::ios_base::in - решает эту "проблему"
+			//PS: РїСЂРё РїРѕРїС‹С‚РєРµ РѕС‚РєСЂС‹С‚СЊ РїРѕС‚РѕРє С‚РѕР»СЊРєРѕ РґР»СЏ Р·Р°РїРёСЃРё - fstream_.open(FS_path, std::ios::binary | std::ios_base::out); - std::ios_base::out РѕС‚РєСЂС‹РІР°РµС‚СЃСЏ С„Р°Р№Р» РґР»СЏ Р·Р°РїРёСЃРё - СѓРґР°Р»СЏСЏ РёР· РЅРµРіРѕ РЅР°С…СѓР№ РІСЃРµ СЃРѕРґРµСЂР¶РёРјРѕРµ. Р”РѕР°Р±РІР»РµРЅРёРµ std::ios_base::app РёР»Рё  std::ios_base::in - СЂРµС€Р°РµС‚ СЌС‚Сѓ "РїСЂРѕР±Р»РµРјСѓ"
 			//----------------------------------------------------------
 
 
 			//------------------------------------------------------------------
-			return error_handler();   //Проверяем на ошибки после вызова метода "fstream_".
+			return error_handler();   //РџСЂРѕРІРµСЂСЏРµРј РЅР° РѕС€РёР±РєРё РїРѕСЃР»Рµ РІС‹Р·РѕРІР° РјРµС‚РѕРґР° "fstream_".
 			//-------------------------------------------------------------------
 
 		}
@@ -1697,10 +1697,10 @@ private:
 		{
 			if (PreClear_flag == true)
 			{
-				//Значит предудыщий режим был - режим Записи данных в файл с предварительным его обнулением. Закроем поток, и откроем занового со "стандартными параметрами":
+				//Р—РЅР°С‡РёС‚ РїСЂРµРґСѓРґС‹С‰РёР№ СЂРµР¶РёРј Р±С‹Р» - СЂРµР¶РёРј Р—Р°РїРёСЃРё РґР°РЅРЅС‹С… РІ С„Р°Р№Р» СЃ РїСЂРµРґРІР°СЂРёС‚РµР»СЊРЅС‹Рј РµРіРѕ РѕР±РЅСѓР»РµРЅРёРµРј. Р—Р°РєСЂРѕРµРј РїРѕС‚РѕРє, Рё РѕС‚РєСЂРѕРµРј Р·Р°РЅРѕРІРѕРіРѕ СЃРѕ "СЃС‚Р°РЅРґР°СЂС‚РЅС‹РјРё РїР°СЂР°РјРµС‚СЂР°РјРё":
 
 
-				PreClear_flag = false;  //Сбрасываем.
+				PreClear_flag = false;  //РЎР±СЂР°СЃС‹РІР°РµРј.
 
 
 				fstream_.close();
@@ -1708,19 +1708,19 @@ private:
 
 
 				//----------------------------------------------------------
-				fstream_.open(FS_path, std::ios::binary | std::ios_base::out | std::ios_base::in);  //Открываем сразу для Чтения и Записи чтобы не париться.
+				fstream_.open(FS_path, std::ios::binary | std::ios_base::out | std::ios_base::in);  //РћС‚РєСЂС‹РІР°РµРј СЃСЂР°Р·Сѓ РґР»СЏ Р§С‚РµРЅРёСЏ Рё Р—Р°РїРёСЃРё С‡С‚РѕР±С‹ РЅРµ РїР°СЂРёС‚СЊСЃСЏ.
 
-				//PS: при попытке открыть поток только для записи - fstream_.open(FS_path, std::ios::binary | std::ios_base::out); - std::ios_base::out открывается файл для записи - удаляя из него нахуй все содержимое. Доабвление std::ios_base::app или  std::ios_base::in - решает эту "проблему"
+				//PS: РїСЂРё РїРѕРїС‹С‚РєРµ РѕС‚РєСЂС‹С‚СЊ РїРѕС‚РѕРє С‚РѕР»СЊРєРѕ РґР»СЏ Р·Р°РїРёСЃРё - fstream_.open(FS_path, std::ios::binary | std::ios_base::out); - std::ios_base::out РѕС‚РєСЂС‹РІР°РµС‚СЃСЏ С„Р°Р№Р» РґР»СЏ Р·Р°РїРёСЃРё - СѓРґР°Р»СЏСЏ РёР· РЅРµРіРѕ РЅР°С…СѓР№ РІСЃРµ СЃРѕРґРµСЂР¶РёРјРѕРµ. Р”РѕР°Р±РІР»РµРЅРёРµ std::ios_base::app РёР»Рё  std::ios_base::in - СЂРµС€Р°РµС‚ СЌС‚Сѓ "РїСЂРѕР±Р»РµРјСѓ"
 				//----------------------------------------------------------
 
 
 				//------------------------------------------------------------------
-				return error_handler();   //Проверяем на ошибки после вызова метода "fstream_".
+				return error_handler();   //РџСЂРѕРІРµСЂСЏРµРј РЅР° РѕС€РёР±РєРё РїРѕСЃР»Рµ РІС‹Р·РѕРІР° РјРµС‚РѕРґР° "fstream_".
 				//-------------------------------------------------------------------
 			}
 			else
 			{
-				return result_flag::OK;     //Значит ничего делать не надо, поток и так открыт уже в нужном режиме.
+				return result_flag::OK;     //Р—РЅР°С‡РёС‚ РЅРёС‡РµРіРѕ РґРµР»Р°С‚СЊ РЅРµ РЅР°РґРѕ, РїРѕС‚РѕРє Рё С‚Р°Рє РѕС‚РєСЂС‹С‚ СѓР¶Рµ РІ РЅСѓР¶РЅРѕРј СЂРµР¶РёРјРµ.
 			}
 		}
 
@@ -1728,27 +1728,27 @@ private:
 	inline const result_flag open_stream_PreClear_to_Write()
 	{
 
-		PreClear_flag = true;  //Ставим флаг, что открываем файл для Записи в режиме обнуления всех данных файла.
+		PreClear_flag = true;  //РЎС‚Р°РІРёРј С„Р»Р°Рі, С‡С‚Рѕ РѕС‚РєСЂС‹РІР°РµРј С„Р°Р№Р» РґР»СЏ Р—Р°РїРёСЃРё РІ СЂРµР¶РёРјРµ РѕР±РЅСѓР»РµРЅРёСЏ РІСЃРµС… РґР°РЅРЅС‹С… С„Р°Р№Р»Р°.
 
 
 		//------------------------------------------
 		if (fstream_.is_open() == true)
 		{
-			//Значит поток на данный момент открыт, закроем его, чтобы открыть поток для записи с обнулением всего содержимого:
+			//Р—РЅР°С‡РёС‚ РїРѕС‚РѕРє РЅР° РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ РѕС‚РєСЂС‹С‚, Р·Р°РєСЂРѕРµРј РµРіРѕ, С‡С‚РѕР±С‹ РѕС‚РєСЂС‹С‚СЊ РїРѕС‚РѕРє РґР»СЏ Р·Р°РїРёСЃРё СЃ РѕР±РЅСѓР»РµРЅРёРµРј РІСЃРµРіРѕ СЃРѕРґРµСЂР¶РёРјРѕРіРѕ:
 
 			fstream_.close();
 		}
 		//------------------------------------------
 		
 		//----------------------------------------------------------
-		fstream_.open(FS_path, std::ios::binary | std::ios_base::out);  //Открываем  для  Записи с обнулением всего файла.
+		fstream_.open(FS_path, std::ios::binary | std::ios_base::out);  //РћС‚РєСЂС‹РІР°РµРј  РґР»СЏ  Р—Р°РїРёСЃРё СЃ РѕР±РЅСѓР»РµРЅРёРµРј РІСЃРµРіРѕ С„Р°Р№Р»Р°.
 
-		//PS: при попытке открыть поток только для записи - fstream_.open(FS_path, std::ios::binary | std::ios_base::out); - std::ios_base::out открывается файл для записи - удаляя из него все содержимое. Доабвление std::ios_base::app или  std::ios_base::in - решает эту "проблему"
+		//PS: РїСЂРё РїРѕРїС‹С‚РєРµ РѕС‚РєСЂС‹С‚СЊ РїРѕС‚РѕРє С‚РѕР»СЊРєРѕ РґР»СЏ Р·Р°РїРёСЃРё - fstream_.open(FS_path, std::ios::binary | std::ios_base::out); - std::ios_base::out РѕС‚РєСЂС‹РІР°РµС‚СЃСЏ С„Р°Р№Р» РґР»СЏ Р·Р°РїРёСЃРё - СѓРґР°Р»СЏСЏ РёР· РЅРµРіРѕ РІСЃРµ СЃРѕРґРµСЂР¶РёРјРѕРµ. Р”РѕР°Р±РІР»РµРЅРёРµ std::ios_base::app РёР»Рё  std::ios_base::in - СЂРµС€Р°РµС‚ СЌС‚Сѓ "РїСЂРѕР±Р»РµРјСѓ"
 		//----------------------------------------------------------
 
 
 		//------------------------------------------------------------------
-		return error_handler();   //Проверяем на ошибки после вызова метода "fstream_".
+		return error_handler();   //РџСЂРѕРІРµСЂСЏРµРј РЅР° РѕС€РёР±РєРё РїРѕСЃР»Рµ РІС‹Р·РѕРІР° РјРµС‚РѕРґР° "fstream_".
 		//-------------------------------------------------------------------
 
 	}
@@ -1761,14 +1761,14 @@ private:
 	{
 		
 		//-------------------------------------------------------------------------------------------------
-		fstream_.seekp(0, std::ios::beg);   //seekp - устанавливает курсор в файле при Записи
+		fstream_.seekp(0, std::ios::beg);   //seekp - СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РєСѓСЂСЃРѕСЂ РІ С„Р°Р№Р»Рµ РїСЂРё Р—Р°РїРёСЃРё
 
-		fstream_.write(char_p, ByteSize_for_write);      //соотвесвенно запишем все байты из указаетля размером "ByteSize_for_write" в файл.
+		fstream_.write(char_p, ByteSize_for_write);      //СЃРѕРѕС‚РІРµСЃРІРµРЅРЅРѕ Р·Р°РїРёС€РµРј РІСЃРµ Р±Р°Р№С‚С‹ РёР· СѓРєР°Р·Р°РµС‚Р»СЏ СЂР°Р·РјРµСЂРѕРј "ByteSize_for_write" РІ С„Р°Р№Р».
 		//-------------------------------------------------------------------------------------------------
 
 
 		//------------------------------------------------------------------
-		return error_handler();   //Проверяем на ошибки после вызова метода "fstream_".
+		return error_handler();   //РџСЂРѕРІРµСЂСЏРµРј РЅР° РѕС€РёР±РєРё РїРѕСЃР»Рµ РІС‹Р·РѕРІР° РјРµС‚РѕРґР° "fstream_".
 		//-------------------------------------------------------------------
 		
 	}
@@ -1778,14 +1778,14 @@ private:
 	{
 
 		//-------------------------------------------------------------------------------------------------
-		fstream_.seekp(Pos_in_File, std::ios::beg);   //seekp - устанавливает курсор в файле при Записи
+		fstream_.seekp(Pos_in_File, std::ios::beg);   //seekp - СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РєСѓСЂСЃРѕСЂ РІ С„Р°Р№Р»Рµ РїСЂРё Р—Р°РїРёСЃРё
 
-		fstream_.write(char_p, ByteSize_for_write);      //соотвесвенно запишем все байты из указаетля размером "ByteSize_for_write" в файл.
+		fstream_.write(char_p, ByteSize_for_write);      //СЃРѕРѕС‚РІРµСЃРІРµРЅРЅРѕ Р·Р°РїРёС€РµРј РІСЃРµ Р±Р°Р№С‚С‹ РёР· СѓРєР°Р·Р°РµС‚Р»СЏ СЂР°Р·РјРµСЂРѕРј "ByteSize_for_write" РІ С„Р°Р№Р».
 		//-------------------------------------------------------------------------------------------------
 
 
 		//------------------------------------------------------------------
-		return error_handler();   //Проверяем на ошибки после вызова метода "fstream_".
+		return error_handler();   //РџСЂРѕРІРµСЂСЏРµРј РЅР° РѕС€РёР±РєРё РїРѕСЃР»Рµ РІС‹Р·РѕРІР° РјРµС‚РѕРґР° "fstream_".
 		//-------------------------------------------------------------------
 
 	}
@@ -1793,14 +1793,14 @@ private:
 	{
 
 		//-------------------------------------------------------------------------------------------------
-		fstream_.seekp(-1 + offset_from_end, std::ios::end);               //seekp - устанавливает курсор в файле при Записи. Устанавливаем строго на последний байт в файле.
+		fstream_.seekp(-1 + offset_from_end, std::ios::end);               //seekp - СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РєСѓСЂСЃРѕСЂ РІ С„Р°Р№Р»Рµ РїСЂРё Р—Р°РїРёСЃРё. РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј СЃС‚СЂРѕРіРѕ РЅР° РїРѕСЃР»РµРґРЅРёР№ Р±Р°Р№С‚ РІ С„Р°Р№Р»Рµ.
 
-		fstream_.write(char_p, ByteSize_for_write);      //соотвесвенно запишем все байты из указаетля размером "ByteSize_for_write" в файл.
+		fstream_.write(char_p, ByteSize_for_write);      //СЃРѕРѕС‚РІРµСЃРІРµРЅРЅРѕ Р·Р°РїРёС€РµРј РІСЃРµ Р±Р°Р№С‚С‹ РёР· СѓРєР°Р·Р°РµС‚Р»СЏ СЂР°Р·РјРµСЂРѕРј "ByteSize_for_write" РІ С„Р°Р№Р».
 		//-------------------------------------------------------------------------------------------------
 
 
 		//------------------------------------------------------------------
-		return error_handler();   //Проверяем на ошибки после вызова метода "fstream_".
+		return error_handler();   //РџСЂРѕРІРµСЂСЏРµРј РЅР° РѕС€РёР±РєРё РїРѕСЃР»Рµ РІС‹Р·РѕРІР° РјРµС‚РѕРґР° "fstream_".
 		//-------------------------------------------------------------------
 
 	}
@@ -1813,17 +1813,17 @@ private:
 	{
 
 		//----------------------------------------------------------------------------------------------
-		const result_flag result = open_stream_PreClear_to_Write();  //Открываем поток до указанного файла с обнулением всего файла.
+		const result_flag result = open_stream_PreClear_to_Write();  //РћС‚РєСЂС‹РІР°РµРј РїРѕС‚РѕРє РґРѕ СѓРєР°Р·Р°РЅРЅРѕРіРѕ С„Р°Р№Р»Р° СЃ РѕР±РЅСѓР»РµРЅРёРµРј РІСЃРµРіРѕ С„Р°Р№Р»Р°.
 
 		if (result == result_flag::OK)
 		{
-			//Значит поток успешно открыт:
+			//Р—РЅР°С‡РёС‚ РїРѕС‚РѕРє СѓСЃРїРµС€РЅРѕ РѕС‚РєСЂС‹С‚:
 
-			return Run_Write__to_PreClear_File__(char_p, ByteSize_for_write);  //Записываем в файл.
+			return Run_Write__to_PreClear_File__(char_p, ByteSize_for_write);  //Р—Р°РїРёСЃС‹РІР°РµРј РІ С„Р°Р№Р».
 		}
 		else
 		{
-			return result;  //Ошибка.
+			return result;  //РћС€РёР±РєР°.
 		}
 		//----------------------------------------------------------------------------------------------
 	
@@ -1834,17 +1834,17 @@ private:
 	{
 
 		//----------------------------------------------------------------------------------------------
-		const result_flag result = open_stream();  //Открываем поток до указанного файла с обнулением всего файла.
+		const result_flag result = open_stream();  //РћС‚РєСЂС‹РІР°РµРј РїРѕС‚РѕРє РґРѕ СѓРєР°Р·Р°РЅРЅРѕРіРѕ С„Р°Р№Р»Р° СЃ РѕР±РЅСѓР»РµРЅРёРµРј РІСЃРµРіРѕ С„Р°Р№Р»Р°.
 
 		if (result == result_flag::OK)
 		{
-			//Значит поток успешно открыт:
+			//Р—РЅР°С‡РёС‚ РїРѕС‚РѕРє СѓСЃРїРµС€РЅРѕ РѕС‚РєСЂС‹С‚:
 
-			return Run_Write__to_SelectPos_File__(char_p, ByteSize_for_write, Pos_in_File);  //Записываем в файл.
+			return Run_Write__to_SelectPos_File__(char_p, ByteSize_for_write, Pos_in_File);  //Р—Р°РїРёСЃС‹РІР°РµРј РІ С„Р°Р№Р».
 		}
 		else
 		{
-			return result;  //Ошибка.
+			return result;  //РћС€РёР±РєР°.
 		}
 		//----------------------------------------------------------------------------------------------
 
@@ -1853,17 +1853,17 @@ private:
 	{
 
 		//----------------------------------------------------------------------------------------------
-		const result_flag result = open_stream();  //Открываем поток до указанного файла с обнулением всего файла.
+		const result_flag result = open_stream();  //РћС‚РєСЂС‹РІР°РµРј РїРѕС‚РѕРє РґРѕ СѓРєР°Р·Р°РЅРЅРѕРіРѕ С„Р°Р№Р»Р° СЃ РѕР±РЅСѓР»РµРЅРёРµРј РІСЃРµРіРѕ С„Р°Р№Р»Р°.
 
 		if (result == result_flag::OK)
 		{
-			//Значит поток успешно открыт:
+			//Р—РЅР°С‡РёС‚ РїРѕС‚РѕРє СѓСЃРїРµС€РЅРѕ РѕС‚РєСЂС‹С‚:
 
-			return Run_Write__to_SelectPos_File__OffsetEnd__(char_p, ByteSize_for_write, offset_from_end);  //Записываем в файл.
+			return Run_Write__to_SelectPos_File__OffsetEnd__(char_p, ByteSize_for_write, offset_from_end);  //Р—Р°РїРёСЃС‹РІР°РµРј РІ С„Р°Р№Р».
 		}
 		else
 		{
-			return result;  //Ошибка.
+			return result;  //РћС€РёР±РєР°.
 		}
 		//----------------------------------------------------------------------------------------------
 
@@ -1884,25 +1884,25 @@ private:
 	{
 	
 		//-------------------------------------------------------------------------------------------------
-		fstream_.seekg(0, std::ios::end);   //seekg - устанавливает курсор в файле при Чтении: первый параметр задает смещение относительно второго параметра: то есть смещение влево или вправо от конечного положения курсора в файле. Устанавливаем курсор в конец файла - для того, чтобы узнать кол-во байт в файле.
+		fstream_.seekg(0, std::ios::end);   //seekg - СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РєСѓСЂСЃРѕСЂ РІ С„Р°Р№Р»Рµ РїСЂРё Р§С‚РµРЅРёРё: РїРµСЂРІС‹Р№ РїР°СЂР°РјРµС‚СЂ Р·Р°РґР°РµС‚ СЃРјРµС‰РµРЅРёРµ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РІС‚РѕСЂРѕРіРѕ РїР°СЂР°РјРµС‚СЂР°: С‚Рѕ РµСЃС‚СЊ СЃРјРµС‰РµРЅРёРµ РІР»РµРІРѕ РёР»Рё РІРїСЂР°РІРѕ РѕС‚ РєРѕРЅРµС‡РЅРѕРіРѕ РїРѕР»РѕР¶РµРЅРёСЏ РєСѓСЂСЃРѕСЂР° РІ С„Р°Р№Р»Рµ. РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РєСѓСЂСЃРѕСЂ РІ РєРѕРЅРµС† С„Р°Р№Р»Р° - РґР»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ СѓР·РЅР°С‚СЊ РєРѕР»-РІРѕ Р±Р°Р№С‚ РІ С„Р°Р№Р»Рµ.
 
 		const size_t current_index = string_for_Read.size();
 		
-		const size_t File_size = fstream_.tellg();    //tellg() возвращает значение позиции на котором сейчас находится курсор, то есть в данном случае, курсор поставлен в конец файла и таким образом получилим номер позцию этого курсора, тем самым мы получили кол-во байт в файле, то есть по сути размер данных файла.
+		const size_t File_size = fstream_.tellg();    //tellg() РІРѕР·РІСЂР°С‰Р°РµС‚ Р·РЅР°С‡РµРЅРёРµ РїРѕР·РёС†РёРё РЅР° РєРѕС‚РѕСЂРѕРј СЃРµР№С‡Р°СЃ РЅР°С…РѕРґРёС‚СЃСЏ РєСѓСЂСЃРѕСЂ, С‚Рѕ РµСЃС‚СЊ РІ РґР°РЅРЅРѕРј СЃР»СѓС‡Р°Рµ, РєСѓСЂСЃРѕСЂ РїРѕСЃС‚Р°РІР»РµРЅ РІ РєРѕРЅРµС† С„Р°Р№Р»Р° Рё С‚Р°РєРёРј РѕР±СЂР°Р·РѕРј РїРѕР»СѓС‡РёР»РёРј РЅРѕРјРµСЂ РїРѕР·С†РёСЋ СЌС‚РѕРіРѕ РєСѓСЂСЃРѕСЂР°, С‚РµРј СЃР°РјС‹Рј РјС‹ РїРѕР»СѓС‡РёР»Рё РєРѕР»-РІРѕ Р±Р°Р№С‚ РІ С„Р°Р№Р»Рµ, С‚Рѕ РµСЃС‚СЊ РїРѕ СЃСѓС‚Рё СЂР°Р·РјРµСЂ РґР°РЅРЅС‹С… С„Р°Р№Р»Р°.
 
 
-		try { string_for_Read.resize(string_for_Read.size() + File_size); } catch (const std::bad_alloc& e) { ErrorName = e.what(); return  result_flag::bad_alloc_error; }  //Выделим в конец место для записи данных из файла.
+		try { string_for_Read.resize(string_for_Read.size() + File_size); } catch (const std::bad_alloc& e) { ErrorName = e.what(); return  result_flag::bad_alloc_error; }  //Р’С‹РґРµР»РёРј РІ РєРѕРЅРµС† РјРµСЃС‚Рѕ РґР»СЏ Р·Р°РїРёСЃРё РґР°РЅРЅС‹С… РёР· С„Р°Р№Р»Р°.
 
 
-		fstream_.seekg(0, std::ios::beg);               //перемещаем позицию курсора обратно в начало файла, откуда и будем читать.
+		fstream_.seekg(0, std::ios::beg);               //РїРµСЂРµРјРµС‰Р°РµРј РїРѕР·РёС†РёСЋ РєСѓСЂСЃРѕСЂР° РѕР±СЂР°С‚РЅРѕ РІ РЅР°С‡Р°Р»Рѕ С„Р°Р№Р»Р°, РѕС‚РєСѓРґР° Рё Р±СѓРґРµРј С‡РёС‚Р°С‚СЊ.
 
-		fstream_.read(&(string_for_Read[current_index]), File_size);     // соотвесвенно прочитаем все байты из файла в наш динамически выделнный буффер.
+		fstream_.read(&(string_for_Read[current_index]), File_size);     // СЃРѕРѕС‚РІРµСЃРІРµРЅРЅРѕ РїСЂРѕС‡РёС‚Р°РµРј РІСЃРµ Р±Р°Р№С‚С‹ РёР· С„Р°Р№Р»Р° РІ РЅР°С€ РґРёРЅР°РјРёС‡РµСЃРєРё РІС‹РґРµР»РЅРЅС‹Р№ Р±СѓС„С„РµСЂ.
 		//-------------------------------------------------------------------------------------------------
 
 
 
 		//------------------------------------------------------------------
-		return error_handler();   //Проверяем на ошибки после вызова метода "fstream_".
+		return error_handler();   //РџСЂРѕРІРµСЂСЏРµРј РЅР° РѕС€РёР±РєРё РїРѕСЃР»Рµ РІС‹Р·РѕРІР° РјРµС‚РѕРґР° "fstream_".
 		//-------------------------------------------------------------------
 
 	}
@@ -1910,49 +1910,49 @@ private:
 	inline const result_flag Run_Read_PartFile_to_StringBack__(std::string& string_for_Read, const size_t PosInFile_beg, const size_t PosInFile_end)
 	{
 
-		//PosInFile_beg - номер байта в файле откуда включительно необходимо читать.  Нумерация стандартная первый байт - начинается с нуля.
-		//PosInFile_end - номер байта в файле до куда включительно необходимо читать. Нумерация стандартная первый байт - начинается с нуля.
+		//PosInFile_beg - РЅРѕРјРµСЂ Р±Р°Р№С‚Р° РІ С„Р°Р№Р»Рµ РѕС‚РєСѓРґР° РІРєР»СЋС‡РёС‚РµР»СЊРЅРѕ РЅРµРѕР±С…РѕРґРёРјРѕ С‡РёС‚Р°С‚СЊ.  РќСѓРјРµСЂР°С†РёСЏ СЃС‚Р°РЅРґР°СЂС‚РЅР°СЏ РїРµСЂРІС‹Р№ Р±Р°Р№С‚ - РЅР°С‡РёРЅР°РµС‚СЃСЏ СЃ РЅСѓР»СЏ.
+		//PosInFile_end - РЅРѕРјРµСЂ Р±Р°Р№С‚Р° РІ С„Р°Р№Р»Рµ РґРѕ РєСѓРґР° РІРєР»СЋС‡РёС‚РµР»СЊРЅРѕ РЅРµРѕР±С…РѕРґРёРјРѕ С‡РёС‚Р°С‚СЊ. РќСѓРјРµСЂР°С†РёСЏ СЃС‚Р°РЅРґР°СЂС‚РЅР°СЏ РїРµСЂРІС‹Р№ Р±Р°Р№С‚ - РЅР°С‡РёРЅР°РµС‚СЃСЏ СЃ РЅСѓР»СЏ.
 
 
 		//-------------------------------------------------------------------------
-		fstream_.seekg(PosInFile_beg, std::ios::beg);   //Смещаем курсор относительно начала файла "std::ios::beg" на значение "PosInFile_beg".
+		fstream_.seekg(PosInFile_beg, std::ios::beg);   //РЎРјРµС‰Р°РµРј РєСѓСЂСЃРѕСЂ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РЅР°С‡Р°Р»Р° С„Р°Р№Р»Р° "std::ios::beg" РЅР° Р·РЅР°С‡РµРЅРёРµ "PosInFile_beg".
 
 		const size_t current_index = string_for_Read.size();
 
 		const size_t size_for_read = PosInFile_end - PosInFile_beg + 1;
 
-		try { string_for_Read.resize(string_for_Read.size() + size_for_read); } catch (const std::bad_alloc& e) { ErrorName = e.what(); return  result_flag::bad_alloc_error; }      //Выделим в конец место для записи данных из файла.
+		try { string_for_Read.resize(string_for_Read.size() + size_for_read); } catch (const std::bad_alloc& e) { ErrorName = e.what(); return  result_flag::bad_alloc_error; }      //Р’С‹РґРµР»РёРј РІ РєРѕРЅРµС† РјРµСЃС‚Рѕ РґР»СЏ Р·Р°РїРёСЃРё РґР°РЅРЅС‹С… РёР· С„Р°Р№Р»Р°.
 
-		fstream_.read(&(string_for_Read[current_index]), size_for_read);     // Читаем.
+		fstream_.read(&(string_for_Read[current_index]), size_for_read);     // Р§РёС‚Р°РµРј.
 		//-------------------------------------------------------------------------
 
 
 
 		//------------------------------------------------------------------
-		return error_handler();   //Проверяем на ошибки после вызова метода "fstream_".
+		return error_handler();   //РџСЂРѕРІРµСЂСЏРµРј РЅР° РѕС€РёР±РєРё РїРѕСЃР»Рµ РІС‹Р·РѕРІР° РјРµС‚РѕРґР° "fstream_".
 		//-------------------------------------------------------------------
 	}
 
 	inline const result_flag Run_Read_PartFile_to_StringBack__OffsetEnd__(std::string& string_for_Read, const size_t PosInFile_beg, const size_t offset_from_end)
 	{
 
-		//PosInFile_beg - номер байта в файле откуда включительно необходимо читать.  Нумерация стандартная первый байт - начинается с нуля.
-		//offset_from_end - Пользовательское смещение от самого послденего байта в файле.
+		//PosInFile_beg - РЅРѕРјРµСЂ Р±Р°Р№С‚Р° РІ С„Р°Р№Р»Рµ РѕС‚РєСѓРґР° РІРєР»СЋС‡РёС‚РµР»СЊРЅРѕ РЅРµРѕР±С…РѕРґРёРјРѕ С‡РёС‚Р°С‚СЊ.  РќСѓРјРµСЂР°С†РёСЏ СЃС‚Р°РЅРґР°СЂС‚РЅР°СЏ РїРµСЂРІС‹Р№ Р±Р°Р№С‚ - РЅР°С‡РёРЅР°РµС‚СЃСЏ СЃ РЅСѓР»СЏ.
+		//offset_from_end - РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ СЃРјРµС‰РµРЅРёРµ РѕС‚ СЃР°РјРѕРіРѕ РїРѕСЃР»РґРµРЅРµРіРѕ Р±Р°Р№С‚Р° РІ С„Р°Р№Р»Рµ.
 
 
 		//-------------------------------------------------------------------------
 	
-		//*****************Получим позицию конца файла и применим Пользовательское "offset_from_end" смешение к нему:Начало****************
+		//*****************РџРѕР»СѓС‡РёРј РїРѕР·РёС†РёСЋ РєРѕРЅС†Р° С„Р°Р№Р»Р° Рё РїСЂРёРјРµРЅРёРј РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ "offset_from_end" СЃРјРµС€РµРЅРёРµ Рє РЅРµРјСѓ:РќР°С‡Р°Р»Рѕ****************
 		
 		fstream_.seekg(-1 - offset_from_end, std::ios::end);
 
 		const size_t PosInFile_end = fstream_.tellg();
 
-		//*****************Получим позицию конца файла и применим Пользовательское "offset_from_end" смешение к нему:Начало****************
+		//*****************РџРѕР»СѓС‡РёРј РїРѕР·РёС†РёСЋ РєРѕРЅС†Р° С„Р°Р№Р»Р° Рё РїСЂРёРјРµРЅРёРј РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ "offset_from_end" СЃРјРµС€РµРЅРёРµ Рє РЅРµРјСѓ:РќР°С‡Р°Р»Рѕ****************
 
 
 		//-------------------------------------------------------------------------
-		fstream_.seekg(PosInFile_beg, std::ios::beg);   //Смещаем курсор относительно начала файла "std::ios::beg" на значение "PosInFile_beg".
+		fstream_.seekg(PosInFile_beg, std::ios::beg);   //РЎРјРµС‰Р°РµРј РєСѓСЂСЃРѕСЂ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РЅР°С‡Р°Р»Р° С„Р°Р№Р»Р° "std::ios::beg" РЅР° Р·РЅР°С‡РµРЅРёРµ "PosInFile_beg".
 
 		const size_t current_index = string_for_Read.size();
 
@@ -1960,27 +1960,27 @@ private:
 		const size_t size_for_read = PosInFile_end - PosInFile_beg + 1;
 
 
-		try { string_for_Read.resize(string_for_Read.size() + size_for_read); } catch (const std::bad_alloc& e) { ErrorName = e.what(); return  result_flag::bad_alloc_error; }      //Выделим в конец место для записи данных из файла.
+		try { string_for_Read.resize(string_for_Read.size() + size_for_read); } catch (const std::bad_alloc& e) { ErrorName = e.what(); return  result_flag::bad_alloc_error; }      //Р’С‹РґРµР»РёРј РІ РєРѕРЅРµС† РјРµСЃС‚Рѕ РґР»СЏ Р·Р°РїРёСЃРё РґР°РЅРЅС‹С… РёР· С„Р°Р№Р»Р°.
 
-		fstream_.read(&(string_for_Read[current_index]), size_for_read);     // Читаем.
+		fstream_.read(&(string_for_Read[current_index]), size_for_read);     // Р§РёС‚Р°РµРј.
 		//-------------------------------------------------------------------------
 
 
 
 		//------------------------------------------------------------------
-		return error_handler();   //Проверяем на ошибки после вызова метода "fstream_".
+		return error_handler();   //РџСЂРѕРІРµСЂСЏРµРј РЅР° РѕС€РёР±РєРё РїРѕСЃР»Рµ РІС‹Р·РѕРІР° РјРµС‚РѕРґР° "fstream_".
 		//-------------------------------------------------------------------
 	}
 	inline const result_flag Run_Read_PartFile_to_StringBack__DoubleOffsetEnd__(std::string& string_for_Read, const size_t Beg_offset_from_end, const size_t End_offset_from_end)
 	{
 
-		//Beg_offset_from_end - начальное смещение слева от Последнего байта.
-		//End_offset_from_end - конечное смещение справа от Последнего байта.
+		//Beg_offset_from_end - РЅР°С‡Р°Р»СЊРЅРѕРµ СЃРјРµС‰РµРЅРёРµ СЃР»РµРІР° РѕС‚ РџРѕСЃР»РµРґРЅРµРіРѕ Р±Р°Р№С‚Р°.
+		//End_offset_from_end - РєРѕРЅРµС‡РЅРѕРµ СЃРјРµС‰РµРЅРёРµ СЃРїСЂР°РІР° РѕС‚ РџРѕСЃР»РµРґРЅРµРіРѕ Р±Р°Р№С‚Р°.
 
 
 		//-------------------------------------------------------------------------
 
-		//*****************Получим позицию конца файла и применим Пользовательское "offset_from_end" смешение к нему:Начало****************
+		//*****************РџРѕР»СѓС‡РёРј РїРѕР·РёС†РёСЋ РєРѕРЅС†Р° С„Р°Р№Р»Р° Рё РїСЂРёРјРµРЅРёРј РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ "offset_from_end" СЃРјРµС€РµРЅРёРµ Рє РЅРµРјСѓ:РќР°С‡Р°Р»Рѕ****************
 
 		fstream_.seekg(-1 - Beg_offset_from_end, std::ios::end);
 
@@ -1992,11 +1992,11 @@ private:
 
 		const size_t PosInFile_end = fstream_.tellg();
 
-		//*****************Получим позицию конца файла и применим Пользовательское "offset_from_end" смешение к нему:Начало****************
+		//*****************РџРѕР»СѓС‡РёРј РїРѕР·РёС†РёСЋ РєРѕРЅС†Р° С„Р°Р№Р»Р° Рё РїСЂРёРјРµРЅРёРј РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ "offset_from_end" СЃРјРµС€РµРЅРёРµ Рє РЅРµРјСѓ:РќР°С‡Р°Р»Рѕ****************
 
 
 		//-------------------------------------------------------------------------
-		fstream_.seekg(PosInFile_beg, std::ios::beg);   //Смещаем курсор относительно начала файла "std::ios::beg" на значение "PosInFile_beg".
+		fstream_.seekg(PosInFile_beg, std::ios::beg);   //РЎРјРµС‰Р°РµРј РєСѓСЂСЃРѕСЂ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РЅР°С‡Р°Р»Р° С„Р°Р№Р»Р° "std::ios::beg" РЅР° Р·РЅР°С‡РµРЅРёРµ "PosInFile_beg".
 
 		const size_t current_index = string_for_Read.size();
 
@@ -2005,15 +2005,15 @@ private:
 
 
 		try { string_for_Read.resize(string_for_Read.size() + size_for_read); }
-		catch (const std::bad_alloc& e) { ErrorName = e.what(); return  result_flag::bad_alloc_error; }      //Выделим в конец место для записи данных из файла.
+		catch (const std::bad_alloc& e) { ErrorName = e.what(); return  result_flag::bad_alloc_error; }      //Р’С‹РґРµР»РёРј РІ РєРѕРЅРµС† РјРµСЃС‚Рѕ РґР»СЏ Р·Р°РїРёСЃРё РґР°РЅРЅС‹С… РёР· С„Р°Р№Р»Р°.
 
-		fstream_.read(&(string_for_Read[current_index]), size_for_read);     // Читаем.
+		fstream_.read(&(string_for_Read[current_index]), size_for_read);     // Р§РёС‚Р°РµРј.
 		//-------------------------------------------------------------------------
 
 
 
 		//------------------------------------------------------------------
-		return error_handler();   //Проверяем на ошибки после вызова метода "fstream_".
+		return error_handler();   //РџСЂРѕРІРµСЂСЏРµРј РЅР° РѕС€РёР±РєРё РїРѕСЃР»Рµ РІС‹Р·РѕРІР° РјРµС‚РѕРґР° "fstream_".
 		//-------------------------------------------------------------------
 	}
 	//----------------------------------------------------------------------
@@ -2022,68 +2022,68 @@ private:
 	{
 
 		//-------------------------------------------------------------------------
-		fstream_.seekg(0, std::ios::end);                 //seekg - устанавливает курсор в файле при Чтении: первый параметр задает смещение относительно второго параметра: то есть смещение влево или вправо от конечного положения курсора в файле. Устанавливаем курсор в конец файла - для того, чтобы узнать кол-во байт в файле.
+		fstream_.seekg(0, std::ios::end);                 //seekg - СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РєСѓСЂСЃРѕСЂ РІ С„Р°Р№Р»Рµ РїСЂРё Р§С‚РµРЅРёРё: РїРµСЂРІС‹Р№ РїР°СЂР°РјРµС‚СЂ Р·Р°РґР°РµС‚ СЃРјРµС‰РµРЅРёРµ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РІС‚РѕСЂРѕРіРѕ РїР°СЂР°РјРµС‚СЂР°: С‚Рѕ РµСЃС‚СЊ СЃРјРµС‰РµРЅРёРµ РІР»РµРІРѕ РёР»Рё РІРїСЂР°РІРѕ РѕС‚ РєРѕРЅРµС‡РЅРѕРіРѕ РїРѕР»РѕР¶РµРЅРёСЏ РєСѓСЂСЃРѕСЂР° РІ С„Р°Р№Р»Рµ. РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РєСѓСЂСЃРѕСЂ РІ РєРѕРЅРµС† С„Р°Р№Р»Р° - РґР»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ СѓР·РЅР°С‚СЊ РєРѕР»-РІРѕ Р±Р°Р№С‚ РІ С„Р°Р№Р»Рµ.
 
-		const size_t File_size = fstream_.tellg();        //tellg() возвращает значение позиции на котором сейчас находится курсор, то есть в данном случае, курсор поставлен в конец файла и таким образом получилим номер позцию этого курсора, тем самым мы получили кол-во байт в файле, то есть по сути размер данных файла.
+		const size_t File_size = fstream_.tellg();        //tellg() РІРѕР·РІСЂР°С‰Р°РµС‚ Р·РЅР°С‡РµРЅРёРµ РїРѕР·РёС†РёРё РЅР° РєРѕС‚РѕСЂРѕРј СЃРµР№С‡Р°СЃ РЅР°С…РѕРґРёС‚СЃСЏ РєСѓСЂСЃРѕСЂ, С‚Рѕ РµСЃС‚СЊ РІ РґР°РЅРЅРѕРј СЃР»СѓС‡Р°Рµ, РєСѓСЂСЃРѕСЂ РїРѕСЃС‚Р°РІР»РµРЅ РІ РєРѕРЅРµС† С„Р°Р№Р»Р° Рё С‚Р°РєРёРј РѕР±СЂР°Р·РѕРј РїРѕР»СѓС‡РёР»РёРј РЅРѕРјРµСЂ РїРѕР·С†РёСЋ СЌС‚РѕРіРѕ РєСѓСЂСЃРѕСЂР°, С‚РµРј СЃР°РјС‹Рј РјС‹ РїРѕР»СѓС‡РёР»Рё РєРѕР»-РІРѕ Р±Р°Р№С‚ РІ С„Р°Р№Р»Рµ, С‚Рѕ РµСЃС‚СЊ РїРѕ СЃСѓС‚Рё СЂР°Р·РјРµСЂ РґР°РЅРЅС‹С… С„Р°Р№Р»Р°.
 
-		fstream_.seekg(0, std::ios::beg);                //перемещаем позицию курсора обратно в начало файла, откуда и будем читать.
+		fstream_.seekg(0, std::ios::beg);                //РїРµСЂРµРјРµС‰Р°РµРј РїРѕР·РёС†РёСЋ РєСѓСЂСЃРѕСЂР° РѕР±СЂР°С‚РЅРѕ РІ РЅР°С‡Р°Р»Рѕ С„Р°Р№Р»Р°, РѕС‚РєСѓРґР° Рё Р±СѓРґРµРј С‡РёС‚Р°С‚СЊ.
 
-		fstream_.read(CharPointer, File_size);           //соотвесвенно прочитаем все байты из файла с начала указателя.
+		fstream_.read(CharPointer, File_size);           //СЃРѕРѕС‚РІРµСЃРІРµРЅРЅРѕ РїСЂРѕС‡РёС‚Р°РµРј РІСЃРµ Р±Р°Р№С‚С‹ РёР· С„Р°Р№Р»Р° СЃ РЅР°С‡Р°Р»Р° СѓРєР°Р·Р°С‚РµР»СЏ.
 		//-------------------------------------------------------------------------
 
 
 
 		//------------------------------------------------------------------
-		return error_handler();   //Проверяем на ошибки после вызова метода "fstream_".
+		return error_handler();   //РџСЂРѕРІРµСЂСЏРµРј РЅР° РѕС€РёР±РєРё РїРѕСЃР»Рµ РІС‹Р·РѕРІР° РјРµС‚РѕРґР° "fstream_".
 		//-------------------------------------------------------------------
 	}
 
 	inline const result_flag Run_Read_PartFile_to_FixSizeCharPointer__(char* CharPointer, const size_t PosInFile_beg, const size_t PosInFile_end)
 	{
 
-		//PosInFile_beg - номер байта в файле откуда включительно необходимо читать.  Нумерация стандартная первый байт - начинается с нуля.
-		//PosInFile_end - номер байта в файле до куда включительно необходимо читать. Нумерация стандартная первый байт - начинается с нуля.
+		//PosInFile_beg - РЅРѕРјРµСЂ Р±Р°Р№С‚Р° РІ С„Р°Р№Р»Рµ РѕС‚РєСѓРґР° РІРєР»СЋС‡РёС‚РµР»СЊРЅРѕ РЅРµРѕР±С…РѕРґРёРјРѕ С‡РёС‚Р°С‚СЊ.  РќСѓРјРµСЂР°С†РёСЏ СЃС‚Р°РЅРґР°СЂС‚РЅР°СЏ РїРµСЂРІС‹Р№ Р±Р°Р№С‚ - РЅР°С‡РёРЅР°РµС‚СЃСЏ СЃ РЅСѓР»СЏ.
+		//PosInFile_end - РЅРѕРјРµСЂ Р±Р°Р№С‚Р° РІ С„Р°Р№Р»Рµ РґРѕ РєСѓРґР° РІРєР»СЋС‡РёС‚РµР»СЊРЅРѕ РЅРµРѕР±С…РѕРґРёРјРѕ С‡РёС‚Р°С‚СЊ. РќСѓРјРµСЂР°С†РёСЏ СЃС‚Р°РЅРґР°СЂС‚РЅР°СЏ РїРµСЂРІС‹Р№ Р±Р°Р№С‚ - РЅР°С‡РёРЅР°РµС‚СЃСЏ СЃ РЅСѓР»СЏ.
 
 
 		//-------------------------------------------------------------------------
-		fstream_.seekg(PosInFile_beg, std::ios::beg);   //Смещаем курсор относительно начала файла "std::ios::beg" на значение "PosInFile_beg".
+		fstream_.seekg(PosInFile_beg, std::ios::beg);   //РЎРјРµС‰Р°РµРј РєСѓСЂСЃРѕСЂ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РЅР°С‡Р°Р»Р° С„Р°Р№Р»Р° "std::ios::beg" РЅР° Р·РЅР°С‡РµРЅРёРµ "PosInFile_beg".
 
 		const size_t size_for_read = PosInFile_end - PosInFile_beg + 1;
 
-		fstream_.read(CharPointer, size_for_read);     // Читаем.
+		fstream_.read(CharPointer, size_for_read);     // Р§РёС‚Р°РµРј.
 		//-------------------------------------------------------------------------
 
 
 
 		//------------------------------------------------------------------
-		return error_handler();   //Проверяем на ошибки после вызова метода "fstream_".
+		return error_handler();   //РџСЂРѕРІРµСЂСЏРµРј РЅР° РѕС€РёР±РєРё РїРѕСЃР»Рµ РІС‹Р·РѕРІР° РјРµС‚РѕРґР° "fstream_".
 		//-------------------------------------------------------------------
 	}
 	
 	inline const result_flag Run_Read_PartFile_to_FixSizeCharPointer__OffsetEnd__(char* CharPointer, const size_t PosInFile_beg, const size_t offset_from_end, size_t& read_size_ref)
 	{
 
-		//PosInFile_beg   - номер байта в файле откуда включительно необходимо читать.  Нумерация стандартная первый байт - начинается с нуля.
-		//offset_from_end - Пользовательское смещение от самого послденего байта в файле.
+		//PosInFile_beg   - РЅРѕРјРµСЂ Р±Р°Р№С‚Р° РІ С„Р°Р№Р»Рµ РѕС‚РєСѓРґР° РІРєР»СЋС‡РёС‚РµР»СЊРЅРѕ РЅРµРѕР±С…РѕРґРёРјРѕ С‡РёС‚Р°С‚СЊ.  РќСѓРјРµСЂР°С†РёСЏ СЃС‚Р°РЅРґР°СЂС‚РЅР°СЏ РїРµСЂРІС‹Р№ Р±Р°Р№С‚ - РЅР°С‡РёРЅР°РµС‚СЃСЏ СЃ РЅСѓР»СЏ.
+		//offset_from_end - РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ СЃРјРµС‰РµРЅРёРµ РѕС‚ СЃР°РјРѕРіРѕ РїРѕСЃР»РґРµРЅРµРіРѕ Р±Р°Р№С‚Р° РІ С„Р°Р№Р»Рµ.
 
 
 
-		//*****************Получим позицию конца файла и применим Пользовательское "offset_from_end" смешение к нему:Начало****************
+		//*****************РџРѕР»СѓС‡РёРј РїРѕР·РёС†РёСЋ РєРѕРЅС†Р° С„Р°Р№Р»Р° Рё РїСЂРёРјРµРЅРёРј РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ "offset_from_end" СЃРјРµС€РµРЅРёРµ Рє РЅРµРјСѓ:РќР°С‡Р°Р»Рѕ****************
 
 		fstream_.seekg(-1 - offset_from_end, std::ios::end);
 
 		const size_t PosInFile_end = fstream_.tellg();
 
-		//*****************Получим позицию конца файла и применим Пользовательское "offset_from_end" смешение к нему:Начало****************
+		//*****************РџРѕР»СѓС‡РёРј РїРѕР·РёС†РёСЋ РєРѕРЅС†Р° С„Р°Р№Р»Р° Рё РїСЂРёРјРµРЅРёРј РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ "offset_from_end" СЃРјРµС€РµРЅРёРµ Рє РЅРµРјСѓ:РќР°С‡Р°Р»Рѕ****************
 
 
 
 		//-------------------------------------------------------------------------
-		fstream_.seekg(PosInFile_beg, std::ios::beg);   //Смещаем курсор относительно начала файла "std::ios::beg" на значение "PosInFile_beg".
+		fstream_.seekg(PosInFile_beg, std::ios::beg);   //РЎРјРµС‰Р°РµРј РєСѓСЂСЃРѕСЂ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РЅР°С‡Р°Р»Р° С„Р°Р№Р»Р° "std::ios::beg" РЅР° Р·РЅР°С‡РµРЅРёРµ "PosInFile_beg".
 
 		const size_t size_for_read = PosInFile_end - PosInFile_beg + 1;
 
-		fstream_.read(CharPointer, size_for_read);     // Читаем.
+		fstream_.read(CharPointer, size_for_read);     // Р§РёС‚Р°РµРј.
 		//-------------------------------------------------------------------------
 
 
@@ -2093,18 +2093,18 @@ private:
 
 
 		//------------------------------------------------------------------
-		return error_handler();   //Проверяем на ошибки после вызова метода "fstream_".
+		return error_handler();   //РџСЂРѕРІРµСЂСЏРµРј РЅР° РѕС€РёР±РєРё РїРѕСЃР»Рµ РІС‹Р·РѕРІР° РјРµС‚РѕРґР° "fstream_".
 		//-------------------------------------------------------------------
 	}
 	inline const result_flag Run_Read_PartFile_to_FixSizeCharPointer__DoubleOffsetEnd__(char* CharPointer, const size_t Beg_offset_from_end, const size_t End_offset_from_end, size_t& read_size_ref)
 	{
 
-		//Beg_offset_from_end - начальное смещение слева от Последнего байта.
-		//End_offset_from_end - конечное смещение справа от Последнего байта.
+		//Beg_offset_from_end - РЅР°С‡Р°Р»СЊРЅРѕРµ СЃРјРµС‰РµРЅРёРµ СЃР»РµРІР° РѕС‚ РџРѕСЃР»РµРґРЅРµРіРѕ Р±Р°Р№С‚Р°.
+		//End_offset_from_end - РєРѕРЅРµС‡РЅРѕРµ СЃРјРµС‰РµРЅРёРµ СЃРїСЂР°РІР° РѕС‚ РџРѕСЃР»РµРґРЅРµРіРѕ Р±Р°Р№С‚Р°.
 
 
 
-		//*****************Получим позицию конца файла и применим Пользовательское "offset_from_end" смешение к нему:Начало****************
+		//*****************РџРѕР»СѓС‡РёРј РїРѕР·РёС†РёСЋ РєРѕРЅС†Р° С„Р°Р№Р»Р° Рё РїСЂРёРјРµРЅРёРј РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ "offset_from_end" СЃРјРµС€РµРЅРёРµ Рє РЅРµРјСѓ:РќР°С‡Р°Р»Рѕ****************
 
 		fstream_.seekg(-1 - Beg_offset_from_end, std::ios::end);
 
@@ -2116,16 +2116,16 @@ private:
 
 		const size_t PosInFile_end = fstream_.tellg();
 
-		//*****************Получим позицию конца файла и применим Пользовательское "offset_from_end" смешение к нему:Начало****************
+		//*****************РџРѕР»СѓС‡РёРј РїРѕР·РёС†РёСЋ РєРѕРЅС†Р° С„Р°Р№Р»Р° Рё РїСЂРёРјРµРЅРёРј РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ "offset_from_end" СЃРјРµС€РµРЅРёРµ Рє РЅРµРјСѓ:РќР°С‡Р°Р»Рѕ****************
 
 
 
 		//-------------------------------------------------------------------------
-		fstream_.seekg(PosInFile_beg, std::ios::beg);   //Смещаем курсор относительно начала файла "std::ios::beg" на значение "PosInFile_beg".
+		fstream_.seekg(PosInFile_beg, std::ios::beg);   //РЎРјРµС‰Р°РµРј РєСѓСЂСЃРѕСЂ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РЅР°С‡Р°Р»Р° С„Р°Р№Р»Р° "std::ios::beg" РЅР° Р·РЅР°С‡РµРЅРёРµ "PosInFile_beg".
 
 		const size_t size_for_read = PosInFile_end - PosInFile_beg + 1;
 
-		fstream_.read(CharPointer, size_for_read);     // Читаем.
+		fstream_.read(CharPointer, size_for_read);     // Р§РёС‚Р°РµРј.
 		//-------------------------------------------------------------------------
 
 
@@ -2135,7 +2135,7 @@ private:
 
 
 		//------------------------------------------------------------------
-		return error_handler();   //Проверяем на ошибки после вызова метода "fstream_".
+		return error_handler();   //РџСЂРѕРІРµСЂСЏРµРј РЅР° РѕС€РёР±РєРё РїРѕСЃР»Рµ РІС‹Р·РѕРІР° РјРµС‚РѕРґР° "fstream_".
 		//-------------------------------------------------------------------
 	}
 	//----------------------------------------------------------------------
@@ -2144,15 +2144,15 @@ private:
 	{
 
 		//-------------------------------------------------------------------------------------------------
-		fstream_.seekg(0, std::ios::end);   //seekg - устанавливает курсор в файле при Чтении: первый параметр задает смещение относительно второго параметра: то есть смещение влево или вправо от конечного положения курсора в файле. Устанавливаем курсор в конец файла - для того, чтобы узнать кол-во байт в файле.
+		fstream_.seekg(0, std::ios::end);   //seekg - СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РєСѓСЂСЃРѕСЂ РІ С„Р°Р№Р»Рµ РїСЂРё Р§С‚РµРЅРёРё: РїРµСЂРІС‹Р№ РїР°СЂР°РјРµС‚СЂ Р·Р°РґР°РµС‚ СЃРјРµС‰РµРЅРёРµ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РІС‚РѕСЂРѕРіРѕ РїР°СЂР°РјРµС‚СЂР°: С‚Рѕ РµСЃС‚СЊ СЃРјРµС‰РµРЅРёРµ РІР»РµРІРѕ РёР»Рё РІРїСЂР°РІРѕ РѕС‚ РєРѕРЅРµС‡РЅРѕРіРѕ РїРѕР»РѕР¶РµРЅРёСЏ РєСѓСЂСЃРѕСЂР° РІ С„Р°Р№Р»Рµ. РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РєСѓСЂСЃРѕСЂ РІ РєРѕРЅРµС† С„Р°Р№Р»Р° - РґР»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ СѓР·РЅР°С‚СЊ РєРѕР»-РІРѕ Р±Р°Р№С‚ РІ С„Р°Р№Р»Рµ.
 
-		const size_t File_size = fstream_.tellg();    //tellg() возвращает значение позиции на котором сейчас находится курсор, то есть в данном случае, курсор поставлен в конец файла и таким образом получилим номер позцию этого курсора, тем самым мы получили кол-во байт в файле, то есть по сути размер данных файла.
+		const size_t File_size = fstream_.tellg();    //tellg() РІРѕР·РІСЂР°С‰Р°РµС‚ Р·РЅР°С‡РµРЅРёРµ РїРѕР·РёС†РёРё РЅР° РєРѕС‚РѕСЂРѕРј СЃРµР№С‡Р°СЃ РЅР°С…РѕРґРёС‚СЃСЏ РєСѓСЂСЃРѕСЂ, С‚Рѕ РµСЃС‚СЊ РІ РґР°РЅРЅРѕРј СЃР»СѓС‡Р°Рµ, РєСѓСЂСЃРѕСЂ РїРѕСЃС‚Р°РІР»РµРЅ РІ РєРѕРЅРµС† С„Р°Р№Р»Р° Рё С‚Р°РєРёРј РѕР±СЂР°Р·РѕРј РїРѕР»СѓС‡РёР»РёРј РЅРѕРјРµСЂ РїРѕР·С†РёСЋ СЌС‚РѕРіРѕ РєСѓСЂСЃРѕСЂР°, С‚РµРј СЃР°РјС‹Рј РјС‹ РїРѕР»СѓС‡РёР»Рё РєРѕР»-РІРѕ Р±Р°Р№С‚ РІ С„Р°Р№Р»Рµ, С‚Рѕ РµСЃС‚СЊ РїРѕ СЃСѓС‚Рё СЂР°Р·РјРµСЂ РґР°РЅРЅС‹С… С„Р°Р№Р»Р°.
 
-		try { *char_p_p = new char[File_size + 1]; } catch (const std::bad_alloc& e) { ErrorName = e.what(); return  result_flag::bad_alloc_error; }  //Выделяем память. +1 - под завершающий ноль.
+		try { *char_p_p = new char[File_size + 1]; } catch (const std::bad_alloc& e) { ErrorName = e.what(); return  result_flag::bad_alloc_error; }  //Р’С‹РґРµР»СЏРµРј РїР°РјСЏС‚СЊ. +1 - РїРѕРґ Р·Р°РІРµСЂС€Р°СЋС‰РёР№ РЅРѕР»СЊ.
 
-		fstream_.seekg(0, std::ios::beg);               //перемещаем позицию курсора обратно в начало файла, откуда и будем читать.
+		fstream_.seekg(0, std::ios::beg);               //РїРµСЂРµРјРµС‰Р°РµРј РїРѕР·РёС†РёСЋ РєСѓСЂСЃРѕСЂР° РѕР±СЂР°С‚РЅРѕ РІ РЅР°С‡Р°Р»Рѕ С„Р°Р№Р»Р°, РѕС‚РєСѓРґР° Рё Р±СѓРґРµРј С‡РёС‚Р°С‚СЊ.
 
-		fstream_.read(*char_p_p, File_size);     // соотвесвенно прочитаем все байты из файла в наш динамически выделнный буффер.
+		fstream_.read(*char_p_p, File_size);     // СЃРѕРѕС‚РІРµСЃРІРµРЅРЅРѕ РїСЂРѕС‡РёС‚Р°РµРј РІСЃРµ Р±Р°Р№С‚С‹ РёР· С„Р°Р№Р»Р° РІ РЅР°С€ РґРёРЅР°РјРёС‡РµСЃРєРё РІС‹РґРµР»РЅРЅС‹Р№ Р±СѓС„С„РµСЂ.
 			
 		(*char_p_p)[File_size] = 0;
 		//-------------------------------------------------------------------------------------------------
@@ -2162,27 +2162,27 @@ private:
 
 
 		//------------------------------------------------------------------
-		return error_handler();   //Проверяем на ошибки после вызова метода "fstream_".
+		return error_handler();   //РџСЂРѕРІРµСЂСЏРµРј РЅР° РѕС€РёР±РєРё РїРѕСЃР»Рµ РІС‹Р·РѕРІР° РјРµС‚РѕРґР° "fstream_".
 		//-------------------------------------------------------------------
 	}
 
 	inline const result_flag Run_Read_PartFile_to_DynamicRawPointer__(char** char_p_p, const size_t PosInFile_beg, const size_t PosInFile_end)
 	{
 
-		//PosInFile_beg - номер байта в файле откуда включительно необходимо читать.  Нумерация стандартная первый байт - начинается с нуля.
-		//PosInFile_end - номер байта в файле до куда включительно необходимо читать. Нумерация стандартная первый байт - начинается с нуля.
+		//PosInFile_beg - РЅРѕРјРµСЂ Р±Р°Р№С‚Р° РІ С„Р°Р№Р»Рµ РѕС‚РєСѓРґР° РІРєР»СЋС‡РёС‚РµР»СЊРЅРѕ РЅРµРѕР±С…РѕРґРёРјРѕ С‡РёС‚Р°С‚СЊ.  РќСѓРјРµСЂР°С†РёСЏ СЃС‚Р°РЅРґР°СЂС‚РЅР°СЏ РїРµСЂРІС‹Р№ Р±Р°Р№С‚ - РЅР°С‡РёРЅР°РµС‚СЃСЏ СЃ РЅСѓР»СЏ.
+		//PosInFile_end - РЅРѕРјРµСЂ Р±Р°Р№С‚Р° РІ С„Р°Р№Р»Рµ РґРѕ РєСѓРґР° РІРєР»СЋС‡РёС‚РµР»СЊРЅРѕ РЅРµРѕР±С…РѕРґРёРјРѕ С‡РёС‚Р°С‚СЊ. РќСѓРјРµСЂР°С†РёСЏ СЃС‚Р°РЅРґР°СЂС‚РЅР°СЏ РїРµСЂРІС‹Р№ Р±Р°Р№С‚ - РЅР°С‡РёРЅР°РµС‚СЃСЏ СЃ РЅСѓР»СЏ.
 
 
 		//-------------------------------------------------------------------------
-		fstream_.seekg(PosInFile_beg, std::ios::beg);   //Смещаем курсор относительно начала файла "std::ios::beg" на значение "PosInFile_beg".
+		fstream_.seekg(PosInFile_beg, std::ios::beg);   //РЎРјРµС‰Р°РµРј РєСѓСЂСЃРѕСЂ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РЅР°С‡Р°Р»Р° С„Р°Р№Р»Р° "std::ios::beg" РЅР° Р·РЅР°С‡РµРЅРёРµ "PosInFile_beg".
 
 		const size_t size_for_read = PosInFile_end - PosInFile_beg + 1;
 
 
-		try { *char_p_p = new char[size_for_read + 1]; } catch (const std::bad_alloc& e) { ErrorName = e.what(); return  result_flag::bad_alloc_error; }  //Выделяем память. +1 - под завершающий ноль.
+		try { *char_p_p = new char[size_for_read + 1]; } catch (const std::bad_alloc& e) { ErrorName = e.what(); return  result_flag::bad_alloc_error; }  //Р’С‹РґРµР»СЏРµРј РїР°РјСЏС‚СЊ. +1 - РїРѕРґ Р·Р°РІРµСЂС€Р°СЋС‰РёР№ РЅРѕР»СЊ.
 
 
-		fstream_.read(*char_p_p, size_for_read);     // Читаем.
+		fstream_.read(*char_p_p, size_for_read);     // Р§РёС‚Р°РµРј.
 
 		(*char_p_p)[size_for_read] = 0;
 		//-------------------------------------------------------------------------
@@ -2190,38 +2190,38 @@ private:
 
 
 		//------------------------------------------------------------------
-		return error_handler();   //Проверяем на ошибки после вызова метода "fstream_".
+		return error_handler();   //РџСЂРѕРІРµСЂСЏРµРј РЅР° РѕС€РёР±РєРё РїРѕСЃР»Рµ РІС‹Р·РѕРІР° РјРµС‚РѕРґР° "fstream_".
 		//-------------------------------------------------------------------
 	}
 
 	inline const result_flag Run_Read_PartFile_to_DynamicRawPointer__OffsetEnd__(char** char_p_p, const size_t PosInFile_beg, const size_t offset_from_end, size_t& read_size_ref)
 	{
 
-		//PosInFile_beg - номер байта в файле откуда включительно необходимо читать.  Нумерация стандартная первый байт - начинается с нуля.
-	    //offset_from_end - Пользовательское смещение от самого послденего байта в файле.
+		//PosInFile_beg - РЅРѕРјРµСЂ Р±Р°Р№С‚Р° РІ С„Р°Р№Р»Рµ РѕС‚РєСѓРґР° РІРєР»СЋС‡РёС‚РµР»СЊРЅРѕ РЅРµРѕР±С…РѕРґРёРјРѕ С‡РёС‚Р°С‚СЊ.  РќСѓРјРµСЂР°С†РёСЏ СЃС‚Р°РЅРґР°СЂС‚РЅР°СЏ РїРµСЂРІС‹Р№ Р±Р°Р№С‚ - РЅР°С‡РёРЅР°РµС‚СЃСЏ СЃ РЅСѓР»СЏ.
+	    //offset_from_end - РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ СЃРјРµС‰РµРЅРёРµ РѕС‚ СЃР°РјРѕРіРѕ РїРѕСЃР»РґРµРЅРµРіРѕ Р±Р°Р№С‚Р° РІ С„Р°Р№Р»Рµ.
 
 
 
-		//*****************Получим позицию конца файла и применим Пользовательское "offset_from_end" смешение к нему:Начало****************
+		//*****************РџРѕР»СѓС‡РёРј РїРѕР·РёС†РёСЋ РєРѕРЅС†Р° С„Р°Р№Р»Р° Рё РїСЂРёРјРµРЅРёРј РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ "offset_from_end" СЃРјРµС€РµРЅРёРµ Рє РЅРµРјСѓ:РќР°С‡Р°Р»Рѕ****************
 
 		fstream_.seekg(-1 - offset_from_end, std::ios::end);
 
 		const size_t PosInFile_end = fstream_.tellg();
 
-		//*****************Получим позицию конца файла и применим Пользовательское "offset_from_end" смешение к нему:Начало****************
+		//*****************РџРѕР»СѓС‡РёРј РїРѕР·РёС†РёСЋ РєРѕРЅС†Р° С„Р°Р№Р»Р° Рё РїСЂРёРјРµРЅРёРј РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ "offset_from_end" СЃРјРµС€РµРЅРёРµ Рє РЅРµРјСѓ:РќР°С‡Р°Р»Рѕ****************
 
 
 
 		//-------------------------------------------------------------------------
-		fstream_.seekg(PosInFile_beg, std::ios::beg);   //Смещаем курсор относительно начала файла "std::ios::beg" на значение "PosInFile_beg".
+		fstream_.seekg(PosInFile_beg, std::ios::beg);   //РЎРјРµС‰Р°РµРј РєСѓСЂСЃРѕСЂ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РЅР°С‡Р°Р»Р° С„Р°Р№Р»Р° "std::ios::beg" РЅР° Р·РЅР°С‡РµРЅРёРµ "PosInFile_beg".
 
 		const size_t size_for_read = PosInFile_end - PosInFile_beg + 1;
 
 
-		try { *char_p_p = new char[size_for_read + 1]; } catch (const std::bad_alloc& e) { ErrorName = e.what(); return  result_flag::bad_alloc_error; }  //Выделяем память. +1 - под завершающий ноль.
+		try { *char_p_p = new char[size_for_read + 1]; } catch (const std::bad_alloc& e) { ErrorName = e.what(); return  result_flag::bad_alloc_error; }  //Р’С‹РґРµР»СЏРµРј РїР°РјСЏС‚СЊ. +1 - РїРѕРґ Р·Р°РІРµСЂС€Р°СЋС‰РёР№ РЅРѕР»СЊ.
 
 
-		fstream_.read(*char_p_p, size_for_read);     // Читаем.
+		fstream_.read(*char_p_p, size_for_read);     // Р§РёС‚Р°РµРј.
 
 		(*char_p_p)[size_for_read] = 0;
 		//-------------------------------------------------------------------------
@@ -2231,18 +2231,18 @@ private:
 
 
 		//------------------------------------------------------------------
-		return error_handler();   //Проверяем на ошибки после вызова метода "fstream_".
+		return error_handler();   //РџСЂРѕРІРµСЂСЏРµРј РЅР° РѕС€РёР±РєРё РїРѕСЃР»Рµ РІС‹Р·РѕРІР° РјРµС‚РѕРґР° "fstream_".
 		//-------------------------------------------------------------------
 	}
 	inline const result_flag Run_Read_PartFile_to_DynamicRawPointer__DoubleOffsetEnd__(char** char_p_p, const size_t Beg_offset_from_end, const size_t End_offset_from_end, size_t& read_size_ref)
 	{
 
-		//PosInFile_beg - номер байта в файле откуда включительно необходимо читать.  Нумерация стандартная первый байт - начинается с нуля.
-		//offset_from_end - Пользовательское смещение от самого послденего байта в файле.
+		//PosInFile_beg - РЅРѕРјРµСЂ Р±Р°Р№С‚Р° РІ С„Р°Р№Р»Рµ РѕС‚РєСѓРґР° РІРєР»СЋС‡РёС‚РµР»СЊРЅРѕ РЅРµРѕР±С…РѕРґРёРјРѕ С‡РёС‚Р°С‚СЊ.  РќСѓРјРµСЂР°С†РёСЏ СЃС‚Р°РЅРґР°СЂС‚РЅР°СЏ РїРµСЂРІС‹Р№ Р±Р°Р№С‚ - РЅР°С‡РёРЅР°РµС‚СЃСЏ СЃ РЅСѓР»СЏ.
+		//offset_from_end - РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ СЃРјРµС‰РµРЅРёРµ РѕС‚ СЃР°РјРѕРіРѕ РїРѕСЃР»РґРµРЅРµРіРѕ Р±Р°Р№С‚Р° РІ С„Р°Р№Р»Рµ.
 
 
 
-		//*****************Получим позицию конца файла и применим Пользовательское "offset_from_end" смешение к нему:Начало****************
+		//*****************РџРѕР»СѓС‡РёРј РїРѕР·РёС†РёСЋ РєРѕРЅС†Р° С„Р°Р№Р»Р° Рё РїСЂРёРјРµРЅРёРј РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ "offset_from_end" СЃРјРµС€РµРЅРёРµ Рє РЅРµРјСѓ:РќР°С‡Р°Р»Рѕ****************
 
 		fstream_.seekg(-1 - Beg_offset_from_end, std::ios::end);
 
@@ -2254,21 +2254,21 @@ private:
 
 		const size_t PosInFile_end = fstream_.tellg();
 
-		//*****************Получим позицию конца файла и применим Пользовательское "offset_from_end" смешение к нему:Начало****************
+		//*****************РџРѕР»СѓС‡РёРј РїРѕР·РёС†РёСЋ РєРѕРЅС†Р° С„Р°Р№Р»Р° Рё РїСЂРёРјРµРЅРёРј РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРµ "offset_from_end" СЃРјРµС€РµРЅРёРµ Рє РЅРµРјСѓ:РќР°С‡Р°Р»Рѕ****************
 
 
 
 		//-------------------------------------------------------------------------
-		fstream_.seekg(PosInFile_beg, std::ios::beg);   //Смещаем курсор относительно начала файла "std::ios::beg" на значение "PosInFile_beg".
+		fstream_.seekg(PosInFile_beg, std::ios::beg);   //РЎРјРµС‰Р°РµРј РєСѓСЂСЃРѕСЂ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РЅР°С‡Р°Р»Р° С„Р°Р№Р»Р° "std::ios::beg" РЅР° Р·РЅР°С‡РµРЅРёРµ "PosInFile_beg".
 
 		const size_t size_for_read = PosInFile_end - PosInFile_beg + 1;
 
 
 		try { *char_p_p = new char[size_for_read + 1]; }
-		catch (const std::bad_alloc& e) { ErrorName = e.what(); return  result_flag::bad_alloc_error; }  //Выделяем память. +1 - под завершающий ноль.
+		catch (const std::bad_alloc& e) { ErrorName = e.what(); return  result_flag::bad_alloc_error; }  //Р’С‹РґРµР»СЏРµРј РїР°РјСЏС‚СЊ. +1 - РїРѕРґ Р·Р°РІРµСЂС€Р°СЋС‰РёР№ РЅРѕР»СЊ.
 
 
-		fstream_.read(*char_p_p, size_for_read);     // Читаем.
+		fstream_.read(*char_p_p, size_for_read);     // Р§РёС‚Р°РµРј.
 
 		(*char_p_p)[size_for_read] = 0;
 		//-------------------------------------------------------------------------
@@ -2278,7 +2278,7 @@ private:
 
 
 		//------------------------------------------------------------------
-		return error_handler();   //Проверяем на ошибки после вызова метода "fstream_".
+		return error_handler();   //РџСЂРѕРІРµСЂСЏРµРј РЅР° РѕС€РёР±РєРё РїРѕСЃР»Рµ РІС‹Р·РѕРІР° РјРµС‚РѕРґР° "fstream_".
 		//-------------------------------------------------------------------
 	}
 	//----------------------------------------------------------------------
@@ -2290,17 +2290,17 @@ private:
 	{
 
 			//----------------------------------------------------------------------------------------------
-			const result_flag result = open_stream();  //Открываем поток до указанного файла.
+			const result_flag result = open_stream();  //РћС‚РєСЂС‹РІР°РµРј РїРѕС‚РѕРє РґРѕ СѓРєР°Р·Р°РЅРЅРѕРіРѕ С„Р°Р№Р»Р°.
 
 			if (result == result_flag::OK)
 			{
-				//Значит поток успешно открыт или был открыт до этого:
+				//Р—РЅР°С‡РёС‚ РїРѕС‚РѕРє СѓСЃРїРµС€РЅРѕ РѕС‚РєСЂС‹С‚ РёР»Рё Р±С‹Р» РѕС‚РєСЂС‹С‚ РґРѕ СЌС‚РѕРіРѕ:
 
-				return Run_Read_FullFile_to_StringBack__(string_for_read);  //Читаем файл целиком в конец "string_for_read".
+				return Run_Read_FullFile_to_StringBack__(string_for_read);  //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РєРѕРЅРµС† "string_for_read".
 			}
 			else
 			{
-				return result;  //Ошибка.
+				return result;  //РћС€РёР±РєР°.
 			}
 			//----------------------------------------------------------------------------------------------
 
@@ -2310,17 +2310,17 @@ private:
 	{
 
 			//----------------------------------------------------------------------------------------------
-			const result_flag result = open_stream();  //Открываем поток до указанного файла.
+			const result_flag result = open_stream();  //РћС‚РєСЂС‹РІР°РµРј РїРѕС‚РѕРє РґРѕ СѓРєР°Р·Р°РЅРЅРѕРіРѕ С„Р°Р№Р»Р°.
 
 			if (result == result_flag::OK)
 			{
-				//Значит поток успешно открыт или был открыт до этого:
+				//Р—РЅР°С‡РёС‚ РїРѕС‚РѕРє СѓСЃРїРµС€РЅРѕ РѕС‚РєСЂС‹С‚ РёР»Рё Р±С‹Р» РѕС‚РєСЂС‹С‚ РґРѕ СЌС‚РѕРіРѕ:
 
-				return Run_Read_PartFile_to_StringBack__(string_for_read, PosInFile_beg, PosInFile_end);   //Читаем указанную часть файла в конец "string_for_read".
+				return Run_Read_PartFile_to_StringBack__(string_for_read, PosInFile_beg, PosInFile_end);   //Р§РёС‚Р°РµРј СѓРєР°Р·Р°РЅРЅСѓСЋ С‡Р°СЃС‚СЊ С„Р°Р№Р»Р° РІ РєРѕРЅРµС† "string_for_read".
 			}
 			else
 			{
-				return result;  //Ошибка.
+				return result;  //РћС€РёР±РєР°.
 			}
 			//----------------------------------------------------------------------------------------------
 
@@ -2330,17 +2330,17 @@ private:
 	{
 
 		//----------------------------------------------------------------------------------------------
-		const result_flag result = open_stream();  //Открываем поток до указанного файла.
+		const result_flag result = open_stream();  //РћС‚РєСЂС‹РІР°РµРј РїРѕС‚РѕРє РґРѕ СѓРєР°Р·Р°РЅРЅРѕРіРѕ С„Р°Р№Р»Р°.
 
 		if (result == result_flag::OK)
 		{
-			//Значит поток успешно открыт или был открыт до этого:
+			//Р—РЅР°С‡РёС‚ РїРѕС‚РѕРє СѓСЃРїРµС€РЅРѕ РѕС‚РєСЂС‹С‚ РёР»Рё Р±С‹Р» РѕС‚РєСЂС‹С‚ РґРѕ СЌС‚РѕРіРѕ:
 
-			return Run_Read_PartFile_to_StringBack__OffsetEnd__(string_for_read, PosInFile_beg, offset_from_end);   //Читаем указанную часть файла в конец "string_for_read".
+			return Run_Read_PartFile_to_StringBack__OffsetEnd__(string_for_read, PosInFile_beg, offset_from_end);   //Р§РёС‚Р°РµРј СѓРєР°Р·Р°РЅРЅСѓСЋ С‡Р°СЃС‚СЊ С„Р°Р№Р»Р° РІ РєРѕРЅРµС† "string_for_read".
 		}
 		else
 		{
-			return result;  //Ошибка.
+			return result;  //РћС€РёР±РєР°.
 		}
 		//----------------------------------------------------------------------------------------------
 
@@ -2349,17 +2349,17 @@ private:
 	{
 
 		//----------------------------------------------------------------------------------------------
-		const result_flag result = open_stream();  //Открываем поток до указанного файла.
+		const result_flag result = open_stream();  //РћС‚РєСЂС‹РІР°РµРј РїРѕС‚РѕРє РґРѕ СѓРєР°Р·Р°РЅРЅРѕРіРѕ С„Р°Р№Р»Р°.
 
 		if (result == result_flag::OK)
 		{
-			//Значит поток успешно открыт или был открыт до этого:
+			//Р—РЅР°С‡РёС‚ РїРѕС‚РѕРє СѓСЃРїРµС€РЅРѕ РѕС‚РєСЂС‹С‚ РёР»Рё Р±С‹Р» РѕС‚РєСЂС‹С‚ РґРѕ СЌС‚РѕРіРѕ:
 
-			return Run_Read_PartFile_to_StringBack__DoubleOffsetEnd__(string_for_read, Beg_offset_from_end, End_offset_from_end);   //Читаем указанную часть файла в конец "string_for_read".
+			return Run_Read_PartFile_to_StringBack__DoubleOffsetEnd__(string_for_read, Beg_offset_from_end, End_offset_from_end);   //Р§РёС‚Р°РµРј СѓРєР°Р·Р°РЅРЅСѓСЋ С‡Р°СЃС‚СЊ С„Р°Р№Р»Р° РІ РєРѕРЅРµС† "string_for_read".
 		}
 		else
 		{
-			return result;  //Ошибка.
+			return result;  //РћС€РёР±РєР°.
 		}
 		//----------------------------------------------------------------------------------------------
 
@@ -2370,17 +2370,17 @@ private:
 	{
 
 			//----------------------------------------------------------------------------------------------
-			const result_flag result = open_stream();  //Открываем поток до указанного файла.
+			const result_flag result = open_stream();  //РћС‚РєСЂС‹РІР°РµРј РїРѕС‚РѕРє РґРѕ СѓРєР°Р·Р°РЅРЅРѕРіРѕ С„Р°Р№Р»Р°.
 
 			if (result == result_flag::OK)
 			{
-				//Значит поток успешно открыт или был открыт до этого:
+				//Р—РЅР°С‡РёС‚ РїРѕС‚РѕРє СѓСЃРїРµС€РЅРѕ РѕС‚РєСЂС‹С‚ РёР»Рё Р±С‹Р» РѕС‚РєСЂС‹С‚ РґРѕ СЌС‚РѕРіРѕ:
 
-				return Run_Read_FullFile_to_FixSizeCharPointer__(CharPointer);   //Читаем файл целиком в переданный указатель.
+				return Run_Read_FullFile_to_FixSizeCharPointer__(CharPointer);   //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РїРµСЂРµРґР°РЅРЅС‹Р№ СѓРєР°Р·Р°С‚РµР»СЊ.
 			}
 			else
 			{
-				return result;  //Ошибка.
+				return result;  //РћС€РёР±РєР°.
 			}
 			//----------------------------------------------------------------------------------------------
 
@@ -2390,17 +2390,17 @@ private:
 	{
 
 			//----------------------------------------------------------------------------------------------
-			const result_flag result = open_stream();  //Открываем поток до указанного файла.
+			const result_flag result = open_stream();  //РћС‚РєСЂС‹РІР°РµРј РїРѕС‚РѕРє РґРѕ СѓРєР°Р·Р°РЅРЅРѕРіРѕ С„Р°Р№Р»Р°.
 
 			if (result == result_flag::OK)
 			{
-				//Значит поток успешно открыт или был открыт до этого:
+				//Р—РЅР°С‡РёС‚ РїРѕС‚РѕРє СѓСЃРїРµС€РЅРѕ РѕС‚РєСЂС‹С‚ РёР»Рё Р±С‹Р» РѕС‚РєСЂС‹С‚ РґРѕ СЌС‚РѕРіРѕ:
 
 				return Run_Read_PartFile_to_FixSizeCharPointer__(CharPointer, PosInFile_beg, PosInFile_end);    
 			}
 			else
 			{
-				return result;  //Ошибка.
+				return result;  //РћС€РёР±РєР°.
 			}
 			//----------------------------------------------------------------------------------------------
 	}
@@ -2409,17 +2409,17 @@ private:
 	{
 
 		//----------------------------------------------------------------------------------------------
-		const result_flag result = open_stream();  //Открываем поток до указанного файла.
+		const result_flag result = open_stream();  //РћС‚РєСЂС‹РІР°РµРј РїРѕС‚РѕРє РґРѕ СѓРєР°Р·Р°РЅРЅРѕРіРѕ С„Р°Р№Р»Р°.
 
 		if (result == result_flag::OK)
 		{
-			//Значит поток успешно открыт или был открыт до этого:
+			//Р—РЅР°С‡РёС‚ РїРѕС‚РѕРє СѓСЃРїРµС€РЅРѕ РѕС‚РєСЂС‹С‚ РёР»Рё Р±С‹Р» РѕС‚РєСЂС‹С‚ РґРѕ СЌС‚РѕРіРѕ:
 
 			return Run_Read_PartFile_to_FixSizeCharPointer__OffsetEnd__(CharPointer, PosInFile_beg, offset_from_end, read_size);    
 		}
 		else
 		{
-			return result;  //Ошибка.
+			return result;  //РћС€РёР±РєР°.
 		}
 		//----------------------------------------------------------------------------------------------
 	}
@@ -2427,17 +2427,17 @@ private:
 	{
 
 		//----------------------------------------------------------------------------------------------
-		const result_flag result = open_stream();  //Открываем поток до указанного файла.
+		const result_flag result = open_stream();  //РћС‚РєСЂС‹РІР°РµРј РїРѕС‚РѕРє РґРѕ СѓРєР°Р·Р°РЅРЅРѕРіРѕ С„Р°Р№Р»Р°.
 
 		if (result == result_flag::OK)
 		{
-			//Значит поток успешно открыт или был открыт до этого:
+			//Р—РЅР°С‡РёС‚ РїРѕС‚РѕРє СѓСЃРїРµС€РЅРѕ РѕС‚РєСЂС‹С‚ РёР»Рё Р±С‹Р» РѕС‚РєСЂС‹С‚ РґРѕ СЌС‚РѕРіРѕ:
 
 			return Run_Read_PartFile_to_FixSizeCharPointer__DoubleOffsetEnd__(CharPointer, Beg_offset_from_end, End_offset_from_end, read_size);    
 		}
 		else
 		{
-			return result;  //Ошибка.
+			return result;  //РћС€РёР±РєР°.
 		}
 		//----------------------------------------------------------------------------------------------
 	}
@@ -2446,17 +2446,17 @@ private:
 	const result_flag Run_Read_FullFile_to_DynamicRawPointer(char** char_p_p, size_t& read_size)
 	{
 			//----------------------------------------------------------------------------------------------
-			const result_flag result = open_stream();  //Открываем поток до указанного файла.
+			const result_flag result = open_stream();  //РћС‚РєСЂС‹РІР°РµРј РїРѕС‚РѕРє РґРѕ СѓРєР°Р·Р°РЅРЅРѕРіРѕ С„Р°Р№Р»Р°.
 
 			if (result == result_flag::OK)
 			{
-				//Значит поток успешно открыт или был открыт до этого:
+				//Р—РЅР°С‡РёС‚ РїРѕС‚РѕРє СѓСЃРїРµС€РЅРѕ РѕС‚РєСЂС‹С‚ РёР»Рё Р±С‹Р» РѕС‚РєСЂС‹С‚ РґРѕ СЌС‚РѕРіРѕ:
 
-				return Run_Read_FullFile_to_DynamicRawPointer__(char_p_p, read_size);  //Читаем файл целиком в выделенную память.
+				return Run_Read_FullFile_to_DynamicRawPointer__(char_p_p, read_size);  //Р§РёС‚Р°РµРј С„Р°Р№Р» С†РµР»РёРєРѕРј РІ РІС‹РґРµР»РµРЅРЅСѓСЋ РїР°РјСЏС‚СЊ.
 			}
 			else
 			{
-				return result;  //Ошибка.
+				return result;  //РћС€РёР±РєР°.
 			}
 			//----------------------------------------------------------------------------------------------
 
@@ -2466,17 +2466,17 @@ private:
 	{
 
 			//----------------------------------------------------------------------------------------------
-			const result_flag result = open_stream();  //Открываем поток до указанного файла.
+			const result_flag result = open_stream();  //РћС‚РєСЂС‹РІР°РµРј РїРѕС‚РѕРє РґРѕ СѓРєР°Р·Р°РЅРЅРѕРіРѕ С„Р°Р№Р»Р°.
 
 			if (result == result_flag::OK)
 			{
-				//Значит поток успешно открыт или был открыт до этого:
+				//Р—РЅР°С‡РёС‚ РїРѕС‚РѕРє СѓСЃРїРµС€РЅРѕ РѕС‚РєСЂС‹С‚ РёР»Рё Р±С‹Р» РѕС‚РєСЂС‹С‚ РґРѕ СЌС‚РѕРіРѕ:
 
-				return Run_Read_PartFile_to_DynamicRawPointer__(char_p_p, PosInFile_beg, PosInFile_end);   //Читаем указанную часть файла в выделенную память.
+				return Run_Read_PartFile_to_DynamicRawPointer__(char_p_p, PosInFile_beg, PosInFile_end);   //Р§РёС‚Р°РµРј СѓРєР°Р·Р°РЅРЅСѓСЋ С‡Р°СЃС‚СЊ С„Р°Р№Р»Р° РІ РІС‹РґРµР»РµРЅРЅСѓСЋ РїР°РјСЏС‚СЊ.
 			}
 			else
 			{
-				return result;  //Ошибка.
+				return result;  //РћС€РёР±РєР°.
 			}
 			//----------------------------------------------------------------------------------------------
 
@@ -2486,17 +2486,17 @@ private:
 	{
 
 		//----------------------------------------------------------------------------------------------
-		const result_flag result = open_stream();  //Открываем поток до указанного файла.
+		const result_flag result = open_stream();  //РћС‚РєСЂС‹РІР°РµРј РїРѕС‚РѕРє РґРѕ СѓРєР°Р·Р°РЅРЅРѕРіРѕ С„Р°Р№Р»Р°.
 
 		if (result == result_flag::OK)
 		{
-			//Значит поток успешно открыт или был открыт до этого:
+			//Р—РЅР°С‡РёС‚ РїРѕС‚РѕРє СѓСЃРїРµС€РЅРѕ РѕС‚РєСЂС‹С‚ РёР»Рё Р±С‹Р» РѕС‚РєСЂС‹С‚ РґРѕ СЌС‚РѕРіРѕ:
 
-			return Run_Read_PartFile_to_DynamicRawPointer__OffsetEnd__(char_p_p, PosInFile_beg, offset_from_end, read_size);   //Читаем указанную часть файла в выделенную память.
+			return Run_Read_PartFile_to_DynamicRawPointer__OffsetEnd__(char_p_p, PosInFile_beg, offset_from_end, read_size);   //Р§РёС‚Р°РµРј СѓРєР°Р·Р°РЅРЅСѓСЋ С‡Р°СЃС‚СЊ С„Р°Р№Р»Р° РІ РІС‹РґРµР»РµРЅРЅСѓСЋ РїР°РјСЏС‚СЊ.
 		}
 		else
 		{
-			return result;  //Ошибка.
+			return result;  //РћС€РёР±РєР°.
 		}
 		//----------------------------------------------------------------------------------------------
 
@@ -2505,17 +2505,17 @@ private:
 	{
 
 		//----------------------------------------------------------------------------------------------
-		const result_flag result = open_stream();  //Открываем поток до указанного файла.
+		const result_flag result = open_stream();  //РћС‚РєСЂС‹РІР°РµРј РїРѕС‚РѕРє РґРѕ СѓРєР°Р·Р°РЅРЅРѕРіРѕ С„Р°Р№Р»Р°.
 
 		if (result == result_flag::OK)
 		{
-			//Значит поток успешно открыт или был открыт до этого:
+			//Р—РЅР°С‡РёС‚ РїРѕС‚РѕРє СѓСЃРїРµС€РЅРѕ РѕС‚РєСЂС‹С‚ РёР»Рё Р±С‹Р» РѕС‚РєСЂС‹С‚ РґРѕ СЌС‚РѕРіРѕ:
 
-			return Run_Read_PartFile_to_DynamicRawPointer__DoubleOffsetEnd__(char_p_p, Beg_offset_from_end, End_offset_from_end, read_size);   //Читаем указанную часть файла в выделенную память.
+			return Run_Read_PartFile_to_DynamicRawPointer__DoubleOffsetEnd__(char_p_p, Beg_offset_from_end, End_offset_from_end, read_size);   //Р§РёС‚Р°РµРј СѓРєР°Р·Р°РЅРЅСѓСЋ С‡Р°СЃС‚СЊ С„Р°Р№Р»Р° РІ РІС‹РґРµР»РµРЅРЅСѓСЋ РїР°РјСЏС‚СЊ.
 		}
 		else
 		{
-			return result;  //Ошибка.
+			return result;  //РћС€РёР±РєР°.
 		}
 		//----------------------------------------------------------------------------------------------
 
@@ -2540,27 +2540,27 @@ private:
 		}
 		//-------------------------------------------------------------------------
 
-		//---------------------------------------------------1:Проверка на новый путь:Начало-----------------------------------------------------------------------------------
+		//---------------------------------------------------1:РџСЂРѕРІРµСЂРєР° РЅР° РЅРѕРІС‹Р№ РїСѓС‚СЊ:РќР°С‡Р°Р»Рѕ-----------------------------------------------------------------------------------
 		if (FS_check != FS_path)
 		{
-			//Значит Пользователь вызвал метод с новый путем, который был до этого, значит закроем поток к предыдущему файлу со старым путем:
+			//Р—РЅР°С‡РёС‚ РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РІС‹Р·РІР°Р» РјРµС‚РѕРґ СЃ РЅРѕРІС‹Р№ РїСѓС‚РµРј, РєРѕС‚РѕСЂС‹Р№ Р±С‹Р» РґРѕ СЌС‚РѕРіРѕ, Р·РЅР°С‡РёС‚ Р·Р°РєСЂРѕРµРј РїРѕС‚РѕРє Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ СЃРѕ СЃС‚Р°СЂС‹Рј РїСѓС‚РµРј:
 
 			fstream_.close();
 
-			FS_path = std::move(FS_check);  //Перемещаем новый путь в рабочий путь.
+			FS_path = std::move(FS_check);  //РџРµСЂРµРјРµС‰Р°РµРј РЅРѕРІС‹Р№ РїСѓС‚СЊ РІ СЂР°Р±РѕС‡РёР№ РїСѓС‚СЊ.
 
 			return result_flag::OK;
 		}
-		//---------------------------------------------------1:Проверка на новый путь:Конец-----------------------------------------------------------------------------------
+		//---------------------------------------------------1:РџСЂРѕРІРµСЂРєР° РЅР° РЅРѕРІС‹Р№ РїСѓС‚СЊ:РљРѕРЅРµС†-----------------------------------------------------------------------------------
 
 
 
-		//---------------------------------------------------2:Если Пользователь вызовал метод записи в файл с предварительным очишением файла:Начало--------------------------
+		//---------------------------------------------------2:Р•СЃР»Рё РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РІС‹Р·РѕРІР°Р» РјРµС‚РѕРґ Р·Р°РїРёСЃРё РІ С„Р°Р№Р» СЃ РїСЂРµРґРІР°СЂРёС‚РµР»СЊРЅС‹Рј РѕС‡РёС€РµРЅРёРµРј С„Р°Р№Р»Р°:РќР°С‡Р°Р»Рѕ--------------------------
 		if (ForcedClose == true)
 		{
 			fstream_.close();
 		}
-		//---------------------------------------------------2:Если Пользователь вызовал метод записи в файл с предварительным очишением файла:Конец--------------------------
+		//---------------------------------------------------2:Р•СЃР»Рё РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РІС‹Р·РѕРІР°Р» РјРµС‚РѕРґ Р·Р°РїРёСЃРё РІ С„Р°Р№Р» СЃ РїСЂРµРґРІР°СЂРёС‚РµР»СЊРЅС‹Рј РѕС‡РёС€РµРЅРёРµРј С„Р°Р№Р»Р°:РљРѕРЅРµС†--------------------------
 
 
 
@@ -2584,27 +2584,27 @@ private:
 		//-------------------------------------------------------------------------
 
 
-		//---------------------------------------------------1:Проверка на новый путь:Начало-----------------------------------------------------------------------------------
+		//---------------------------------------------------1:РџСЂРѕРІРµСЂРєР° РЅР° РЅРѕРІС‹Р№ РїСѓС‚СЊ:РќР°С‡Р°Р»Рѕ-----------------------------------------------------------------------------------
 		if (FS_check != FS_path)
 		{
-			//Значит Пользователь вызвал метод с новый путем, который был до этого, значит закроем поток к предыдущему файлу со старым путем:
+			//Р—РЅР°С‡РёС‚ РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РІС‹Р·РІР°Р» РјРµС‚РѕРґ СЃ РЅРѕРІС‹Р№ РїСѓС‚РµРј, РєРѕС‚РѕСЂС‹Р№ Р±С‹Р» РґРѕ СЌС‚РѕРіРѕ, Р·РЅР°С‡РёС‚ Р·Р°РєСЂРѕРµРј РїРѕС‚РѕРє Рє РїСЂРµРґС‹РґСѓС‰РµРјСѓ С„Р°Р№Р»Сѓ СЃРѕ СЃС‚Р°СЂС‹Рј РїСѓС‚РµРј:
 
 			fstream_.close();
 
-			FS_path = std::move(FS_check);  //Перемещаем новый путь в рабочий путь.
+			FS_path = std::move(FS_check);  //РџРµСЂРµРјРµС‰Р°РµРј РЅРѕРІС‹Р№ РїСѓС‚СЊ РІ СЂР°Р±РѕС‡РёР№ РїСѓС‚СЊ.
 
 			return result_flag::OK;
 		}
-		//---------------------------------------------------1:Проверка на новый путь:Конец-----------------------------------------------------------------------------------
+		//---------------------------------------------------1:РџСЂРѕРІРµСЂРєР° РЅР° РЅРѕРІС‹Р№ РїСѓС‚СЊ:РљРѕРЅРµС†-----------------------------------------------------------------------------------
 
 
 
-		//---------------------------------------------------2:Если Пользователь вызвал метод записи в файл с предварительным очишением файла:Начало--------------------------
+		//---------------------------------------------------2:Р•СЃР»Рё РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РІС‹Р·РІР°Р» РјРµС‚РѕРґ Р·Р°РїРёСЃРё РІ С„Р°Р№Р» СЃ РїСЂРµРґРІР°СЂРёС‚РµР»СЊРЅС‹Рј РѕС‡РёС€РµРЅРёРµРј С„Р°Р№Р»Р°:РќР°С‡Р°Р»Рѕ--------------------------
 		if (ForcedClose == true)
 		{
 			fstream_.close();
 		}
-		//---------------------------------------------------2:Если Пользователь вызвал метод записи в файл с предварительным очишением файла:Конец--------------------------
+		//---------------------------------------------------2:Р•СЃР»Рё РџРѕР»СЊР·РѕРІР°С‚РµР»СЊ РІС‹Р·РІР°Р» РјРµС‚РѕРґ Р·Р°РїРёСЃРё РІ С„Р°Р№Р» СЃ РїСЂРµРґРІР°СЂРёС‚РµР»СЊРЅС‹Рј РѕС‡РёС€РµРЅРёРµРј С„Р°Р№Р»Р°:РљРѕРЅРµС†--------------------------
 
 
 
@@ -2648,22 +2648,22 @@ private:
 		//------------------------------------------------------------------------------
 		if (fstream_.is_open() == true)
 		{
-			//Значит поток на данный момент открыт, так как очень вероятно он открыт для другого файла, то закроем его:
+			//Р—РЅР°С‡РёС‚ РїРѕС‚РѕРє РЅР° РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ РѕС‚РєСЂС‹С‚, С‚Р°Рє РєР°Рє РѕС‡РµРЅСЊ РІРµСЂРѕСЏС‚РЅРѕ РѕРЅ РѕС‚РєСЂС‹С‚ РґР»СЏ РґСЂСѓРіРѕРіРѕ С„Р°Р№Р»Р°, С‚Рѕ Р·Р°РєСЂРѕРµРј РµРіРѕ:
 
 			fstream_.close();
 		}
 
-		fstream_.open(FS_path, std::ios::binary | std::ios_base::in);  //Открываем поток для Чтения.
+		fstream_.open(FS_path, std::ios::binary | std::ios_base::in);  //РћС‚РєСЂС‹РІР°РµРј РїРѕС‚РѕРє РґР»СЏ Р§С‚РµРЅРёСЏ.
 
 
-		fstream_.seekg(0, std::ios::end);   //seekg - устанавливает курсор в файле при Чтении: первый параметр задает смещение относительно второго параметра: то есть смещение влево или вправо от конечного положения курсора в файле. Устанавливаем курсор в конец файла - для того, чтобы узнать кол-во байт в файле.
+		fstream_.seekg(0, std::ios::end);   //seekg - СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РєСѓСЂСЃРѕСЂ РІ С„Р°Р№Р»Рµ РїСЂРё Р§С‚РµРЅРёРё: РїРµСЂРІС‹Р№ РїР°СЂР°РјРµС‚СЂ Р·Р°РґР°РµС‚ СЃРјРµС‰РµРЅРёРµ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РІС‚РѕСЂРѕРіРѕ РїР°СЂР°РјРµС‚СЂР°: С‚Рѕ РµСЃС‚СЊ СЃРјРµС‰РµРЅРёРµ РІР»РµРІРѕ РёР»Рё РІРїСЂР°РІРѕ РѕС‚ РєРѕРЅРµС‡РЅРѕРіРѕ РїРѕР»РѕР¶РµРЅРёСЏ РєСѓСЂСЃРѕСЂР° РІ С„Р°Р№Р»Рµ. РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РєСѓСЂСЃРѕСЂ РІ РєРѕРЅРµС† С„Р°Р№Р»Р° - РґР»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ СѓР·РЅР°С‚СЊ РєРѕР»-РІРѕ Р±Р°Р№С‚ РІ С„Р°Р№Р»Рµ.
 
-		File_size = fstream_.tellg();    //tellg() возвращает значение позиции на котором сейчас находится курсор, то есть в данном случае, курсор поставлен в конец файла и таким образом получилим номер позцию этого курсора, тем самым мы получили кол-во байт в файле, то есть по сути размер данных файла.
+		File_size = fstream_.tellg();    //tellg() РІРѕР·РІСЂР°С‰Р°РµС‚ Р·РЅР°С‡РµРЅРёРµ РїРѕР·РёС†РёРё РЅР° РєРѕС‚РѕСЂРѕРј СЃРµР№С‡Р°СЃ РЅР°С…РѕРґРёС‚СЃСЏ РєСѓСЂСЃРѕСЂ, С‚Рѕ РµСЃС‚СЊ РІ РґР°РЅРЅРѕРј СЃР»СѓС‡Р°Рµ, РєСѓСЂСЃРѕСЂ РїРѕСЃС‚Р°РІР»РµРЅ РІ РєРѕРЅРµС† С„Р°Р№Р»Р° Рё С‚Р°РєРёРј РѕР±СЂР°Р·РѕРј РїРѕР»СѓС‡РёР»РёРј РЅРѕРјРµСЂ РїРѕР·С†РёСЋ СЌС‚РѕРіРѕ РєСѓСЂСЃРѕСЂР°, С‚РµРј СЃР°РјС‹Рј РјС‹ РїРѕР»СѓС‡РёР»Рё РєРѕР»-РІРѕ Р±Р°Р№С‚ РІ С„Р°Р№Р»Рµ, С‚Рѕ РµСЃС‚СЊ РїРѕ СЃСѓС‚Рё СЂР°Р·РјРµСЂ РґР°РЅРЅС‹С… С„Р°Р№Р»Р°.
 		//------------------------------------------------------------------------------
 
 
 		//------------------------------------------------------------------
-		return error_handler();   //Проверяем на ошибки после вызова метода "fstream_".
+		return error_handler();   //РџСЂРѕРІРµСЂСЏРµРј РЅР° РѕС€РёР±РєРё РїРѕСЃР»Рµ РІС‹Р·РѕРІР° РјРµС‚РѕРґР° "fstream_".
 		//-------------------------------------------------------------------
 
 	}
@@ -2702,7 +2702,7 @@ private:
 		//------------------------------------------------------------------------------
 		if (fstream_.is_open() == true)
 		{
-			//Значит поток на данный момент открыт, так как очень вероятно он открыт для другого файла, то закроем его:
+			//Р—РЅР°С‡РёС‚ РїРѕС‚РѕРє РЅР° РґР°РЅРЅС‹Р№ РјРѕРјРµРЅС‚ РѕС‚РєСЂС‹С‚, С‚Р°Рє РєР°Рє РѕС‡РµРЅСЊ РІРµСЂРѕСЏС‚РЅРѕ РѕРЅ РѕС‚РєСЂС‹С‚ РґР»СЏ РґСЂСѓРіРѕРіРѕ С„Р°Р№Р»Р°, С‚Рѕ Р·Р°РєСЂРѕРµРј РµРіРѕ:
 
 			fstream_.close();
 		}
@@ -2717,16 +2717,16 @@ private:
 
 		fstream_.write("", 0);
 
-		fstream_.close();            // закроем поток до файла.
+		fstream_.close();            // Р·Р°РєСЂРѕРµРј РїРѕС‚РѕРє РґРѕ С„Р°Р№Р»Р°.
 
 
-		//Будет создан пустой файл с нулевым размером
+		//Р‘СѓРґРµС‚ СЃРѕР·РґР°РЅ РїСѓСЃС‚РѕР№ С„Р°Р№Р» СЃ РЅСѓР»РµРІС‹Рј СЂР°Р·РјРµСЂРѕРј
 
 		//----------------------------------------------------------------------------------------------------------------------------------
 
 
 		//------------------------------------------------------------------
-		return error_handler();   //Проверяем на ошибки после вызова метода "fstream_".
+		return error_handler();   //РџСЂРѕРІРµСЂСЏРµРј РЅР° РѕС€РёР±РєРё РїРѕСЃР»Рµ РІС‹Р·РѕРІР° РјРµС‚РѕРґР° "fstream_".
 		//-------------------------------------------------------------------
 
 	}
@@ -2737,9 +2737,9 @@ private:
 
 	inline const size_t get__CurrentOpenStream_FileSize_()
 	{
-		fstream_.seekg(0, std::ios::end);   //seekg - устанавливает курсор в файле при Чтении: первый параметр задает смещение относительно второго параметра: то есть смещение влево или вправо от конечного положения курсора в файле. Устанавливаем курсор в конец файла - для того, чтобы узнать кол-во байт в файле.
+		fstream_.seekg(0, std::ios::end);   //seekg - СѓСЃС‚Р°РЅР°РІР»РёРІР°РµС‚ РєСѓСЂСЃРѕСЂ РІ С„Р°Р№Р»Рµ РїСЂРё Р§С‚РµРЅРёРё: РїРµСЂРІС‹Р№ РїР°СЂР°РјРµС‚СЂ Р·Р°РґР°РµС‚ СЃРјРµС‰РµРЅРёРµ РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ РІС‚РѕСЂРѕРіРѕ РїР°СЂР°РјРµС‚СЂР°: С‚Рѕ РµСЃС‚СЊ СЃРјРµС‰РµРЅРёРµ РІР»РµРІРѕ РёР»Рё РІРїСЂР°РІРѕ РѕС‚ РєРѕРЅРµС‡РЅРѕРіРѕ РїРѕР»РѕР¶РµРЅРёСЏ РєСѓСЂСЃРѕСЂР° РІ С„Р°Р№Р»Рµ. РЈСЃС‚Р°РЅР°РІР»РёРІР°РµРј РєСѓСЂСЃРѕСЂ РІ РєРѕРЅРµС† С„Р°Р№Р»Р° - РґР»СЏ С‚РѕРіРѕ, С‡С‚РѕР±С‹ СѓР·РЅР°С‚СЊ РєРѕР»-РІРѕ Р±Р°Р№С‚ РІ С„Р°Р№Р»Рµ.
 
-		return fstream_.tellg();    //tellg() возвращает значение позиции на котором сейчас находится курсор, то есть в данном случае, курсор поставлен в конец файла и таким образом получилим номер позцию этого курсора, тем самым мы получили кол-во байт в файле, то есть по сути размер данных файла.
+		return fstream_.tellg();    //tellg() РІРѕР·РІСЂР°С‰Р°РµС‚ Р·РЅР°С‡РµРЅРёРµ РїРѕР·РёС†РёРё РЅР° РєРѕС‚РѕСЂРѕРј СЃРµР№С‡Р°СЃ РЅР°С…РѕРґРёС‚СЃСЏ РєСѓСЂСЃРѕСЂ, С‚Рѕ РµСЃС‚СЊ РІ РґР°РЅРЅРѕРј СЃР»СѓС‡Р°Рµ, РєСѓСЂСЃРѕСЂ РїРѕСЃС‚Р°РІР»РµРЅ РІ РєРѕРЅРµС† С„Р°Р№Р»Р° Рё С‚Р°РєРёРј РѕР±СЂР°Р·РѕРј РїРѕР»СѓС‡РёР»РёРј РЅРѕРјРµСЂ РїРѕР·С†РёСЋ СЌС‚РѕРіРѕ РєСѓСЂСЃРѕСЂР°, С‚РµРј СЃР°РјС‹Рј РјС‹ РїРѕР»СѓС‡РёР»Рё РєРѕР»-РІРѕ Р±Р°Р№С‚ РІ С„Р°Р№Р»Рµ, С‚Рѕ РµСЃС‚СЊ РїРѕ СЃСѓС‚Рё СЂР°Р·РјРµСЂ РґР°РЅРЅС‹С… С„Р°Р№Р»Р°.
 	}
 
 	inline const result_flag error_handler()
@@ -2748,13 +2748,13 @@ private:
 		//------------------------------------------------------------------
 		if (fstream_.good() == true)
 		{
-			//Значит поток до файла успешно октрылся:
+			//Р—РЅР°С‡РёС‚ РїРѕС‚РѕРє РґРѕ С„Р°Р№Р»Р° СѓСЃРїРµС€РЅРѕ РѕРєС‚СЂС‹Р»СЃСЏ:
 
 			return result_flag::OK;
 		}
 		else
 		{
-			//Значит поток к файл не открылся и выдал ошибку.
+			//Р—РЅР°С‡РёС‚ РїРѕС‚РѕРє Рє С„Р°Р№Р» РЅРµ РѕС‚РєСЂС‹Р»СЃСЏ Рё РІС‹РґР°Р» РѕС€РёР±РєСѓ.
 
 
 			const std::ios::iostate error_flag = fstream_.rdstate();
@@ -2783,10 +2783,10 @@ private:
 
 			jump:
 
-			fstream_.clear();  //Сбросим внутрение флаги ошибки.
+			fstream_.clear();  //РЎР±СЂРѕСЃРёРј РІРЅСѓС‚СЂРµРЅРёРµ С„Р»Р°РіРё РѕС€РёР±РєРё.
 
 
-			stream_close();  //Закрываем поток.
+			stream_close();  //Р—Р°РєСЂС‹РІР°РµРј РїРѕС‚РѕРє.
 
 
 			return result_flag::fstream_error;
