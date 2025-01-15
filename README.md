@@ -26,7 +26,8 @@
        //stream_close() - принудительно закрывает поток до файла, если необходимо.
        //ЧТЕНИЕ ИЗ ФАЙЛА В Line-СТРОКИ ЧЕРЕЗ РАЗДЕЛИТЕЛЬ(С НАЧАЛА ФАЙЛА)
        //ЧТЕНИЕ ИЗ ФАЙЛА В Line-СТРОКИ ЧЕРЕЗ РАЗДЕЛИТЕЛЬ(С КОНЦА ФАЙЛА)
-
+       //ПОИСК ПОЗИЦИИ ПОДСТРОКИ В ФАЙЛЕ(С НАЧАЛА ФАЙЛА)
+       //ПОИСК ПОЗИЦИИ ПОДСТРОКИ В ФАЙЛЕ(С КОНЦА ФАЙЛА)
 
 
 	//***********************Создание пустого файла:начало*******************
@@ -183,7 +184,7 @@
 
 
 
-    //*****************************************************************
+        //*****************************************************************
 	// void stream_close()                    - принудительно закрывает поток до файла, если необходимо.
 
 	// const std::string& get__NameError()    - возвращает строку с общим описанием ошибки в случае, если функция возвращает результат отличный от "ReadWrite_FromDisk_Cpp17__class::result_flag::OK".
@@ -191,7 +192,7 @@
 
 
 
-	//****************ЧТЕНИЕ ИЗ ФАЙЛА В Line-СТРОКИ ЧЕРЕЗ РАЗДЕЛИТЕЛЬ(С НАЧАЛА ФАЙЛА):начало***********************************
+        //****************ЧТЕНИЕ ИЗ ФАЙЛА В Line-СТРОКИ ЧЕРЕЗ РАЗДЕЛИТЕЛЬ(С НАЧАЛА ФАЙЛА):начало***********************************
     //31: template<typename T> const result_flag read__SplitLine_From_Begin(const T& path_name, const T& file_name, const char* poiter_to_SplitSubstr, const size_t size_SplitSubstr, std::vector<std::string>& vec__SplitLine_result, const size_t number_Line)
     
 	//32: template<typename T> const result_flag read__SplitLine_From_Begin(const T& FullPath_name, const char* poiter_to_SplitSubstr, const size_t size_SplitSubstr, std::vector<std::string>& vec__SplitLine_result, const size_t number_Line)
@@ -205,6 +206,20 @@
 	//34: template<typename T> const result_flag read__SplitLine_From_End(const T& FullPath_name, const char* poiter_to_SplitSubstr, const size_t size_SplitSubstr, std::vector<std::string>& vec__SplitLine_result, const size_t number_Line)
 	//****************ЧТЕНИЕ ИЗ ФАЙЛА В Line-СТРОКИ ЧЕРЕЗ РАЗДЕЛИТЕЛЬ(С КОНЦА ФАЙЛА):начало***********************************
 
+
+
+     //**************************************************************************************Поиск позиции подстроки а файле(С НАЧАЛА ФАЙЛА):Начало***********************************************************************
+     //35: template<typename T> const result_flag FindPos_substring_From_Begin(const T& path_name, const T& file_name, const char* poiter_to_Substr, const size_t size_Substr, const size_t start_byte, std::vector<size_t>& vec_pos, const size_t user_limit_iteration)
+     
+    //36: template<typename T> const result_flag FindPos_substring_From_Begin(const T& FullPath_name, const char* poiter_to_Substr, const size_t size_Substr, const size_t start_byte, std::vector<size_t>& vec_pos, const size_t user_limit_iteration)
+    //**************************************************************************************Поиск позиции подстроки а файле(С НАЧАЛА ФАЙЛА):Начало***********************************************************************
+
+
+    //**************************************************************************************Поиск позиции подстроки а файле(С КОНЦА ФАЙЛА):Начало***********************************************************************
+    //37: template<typename T> const result_flag FindPos_substring_From_End(const T& path_name, const T& file_name, const char* poiter_to_Substr, const size_t size_Substr, const size_t start_byte, std::vector<size_t>& vec_pos, const size_t user_limit_iteration)
+
+    //38: template<typename T> const result_flag FindPos_substring_From_End(const T& FullPath_name, const char* poiter_to_Substr, const size_t size_Substr, const size_t start_byte, std::vector<size_t>& vec_pos, const size_t user_limit_iteration)
+    //**************************************************************************************Поиск позиции подстроки а файле(С КОНЦА ФАЙЛА):Начало***********************************************************************
 
 
 
