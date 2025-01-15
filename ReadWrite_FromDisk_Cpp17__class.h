@@ -1651,6 +1651,654 @@ public:
 
 
 
+
+
+
+	//**************************************************************************************Поиск позиции подстроки а файле:Начало***********************************************************************
+	template<typename T> const result_flag FindPos_substring_From_Begin(const T& path_name, const T& file_name, const char* poiter_to_Substr, const size_t size_Substr, const size_t start_byte, std::vector<size_t>& vec_pos, const size_t user_limit_iteration)
+	{
+
+
+		//****************************************************************************************************************
+
+		Check_for_SetNewPath_and_CheckStreamClose<T>(path_name, file_name, false);
+
+
+		//-------------------------------------------------
+		result_flag res = open_stream();
+
+		if (res != result_flag::OK)
+		{
+			return res;
+		}
+		//-------------------------------------------------
+
+
+
+
+		//----------------------Определим размер файла:---------------------------
+		fstream_.seekg(0, std::ios::end);   //seekg - устанавливает курсор в файле при Чтении: первый параметр задает смещение относительно второго параметра: то есть смещение влево или вправо от конечного положения курсора в файле. Устанавливаем курсор в конец файла - для того, чтобы узнать кол-во байт в файле.
+
+		size_t File_size = fstream_.tellg();    //tellg() возвращает значение позиции на котором сейчас находится курсор, то есть в данном случае, курсор поставлен в конец файла и таким образом получилим номер позцию этого курсора, тем самым мы получили кол-во байт в файле, то есть по сути размер данных файла.
+
+		if (File_size == 0)
+		{
+			ErrorName = "FindPos_substring_From_Begin:File_empty";
+			return result_flag::File_empty;
+		}
+
+		File_size = File_size - 1;
+		//------------------------------------------------------------------------
+
+
+
+		//------------------------------------------
+		if (size_Substr > (File_size + 1))
+		{
+			return result_flag::NotFound;
+		}
+		//------------------------------------------
+
+		//****************************************************************************************************************
+
+
+
+		//-----------------------------
+		std::string string_for_Read;
+		//-----------------------------
+
+
+		//-----------------------------
+		size_t left_byte = start_byte;
+		size_t right_byte = (start_byte + size_Substr) - 1;
+
+		size_t limit_iteration_cntr = 0;
+		//-----------------------------
+
+
+		//------------------------------------------
+		if (left_byte > File_size || right_byte > File_size)
+		{
+			return result_flag::NotFound;
+		}
+		//------------------------------------------
+
+
+
+		//--------------------------------------------------------------------------------------------------------------
+		for (;;)
+		{
+
+			string_for_Read.resize(0);
+			res = Run_Read_PartFile_to_StringBack__(string_for_Read, left_byte, right_byte);
+
+			if (res != result_flag::OK)
+			{
+				return res;
+			}
+
+			const char* find_char_p = strstr(string_for_Read.c_str(), poiter_to_Substr);
+
+			if (find_char_p != 0)
+			{
+				vec_pos.push_back(left_byte + (find_char_p - string_for_Read.c_str()));
+
+				limit_iteration_cntr++;
+
+				if (user_limit_iteration != 0)
+				{
+					if (limit_iteration_cntr == user_limit_iteration)
+					{
+						return result_flag::OK;
+					}
+				}
+
+				//~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`
+				left_byte = left_byte + 1;
+				right_byte = right_byte + 1;
+
+				if (left_byte > File_size || right_byte > File_size)
+				{
+					//Значит вышли за пределы файла.
+
+					if (limit_iteration_cntr == 0)
+					{
+						//Значит так ничего и не нашли.
+
+						return result_flag::NotFound;
+					}
+					else
+					{
+						return result_flag::OK;
+					}
+				}
+				else
+				{
+					//Значит еше не выщли за пределы файла, значит еще есть место для поиска: просто переходим к новой итерации поиска.
+				}
+				//~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`
+			}
+			else
+			{
+
+				//~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`
+				left_byte = left_byte + 1;
+				right_byte = right_byte + 1;
+
+				if (left_byte > File_size || right_byte > File_size)
+				{
+					//Значит вышли за пределы файла.
+
+					if (limit_iteration_cntr == 0)
+					{
+						//Значит так ничего и не нашли.
+
+						return result_flag::NotFound;
+					}
+					else
+					{
+						return result_flag::OK;
+					}
+				}
+				else
+				{
+					//Значит еше не выщли за пределы файла, значит еще есть место для поиска: просто переходим к новой итерации поиска.
+				}
+				//~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`
+
+			}
+		}
+		//--------------------------------------------------------------------------------------------------------------
+
+
+
+
+	}
+	template<typename T> const result_flag FindPos_substring_From_Begin(const T& FullPath_name, const char* poiter_to_Substr, const size_t size_Substr, const size_t start_byte, std::vector<size_t>& vec_pos, const size_t user_limit_iteration)
+	{
+
+
+		//****************************************************************************************************************
+
+		Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false);
+
+
+		//-------------------------------------------------
+		result_flag res = open_stream();
+
+		if (res != result_flag::OK)
+		{
+			return res;
+		}
+		//-------------------------------------------------
+
+
+
+
+		//----------------------Определим размер файла:---------------------------
+		fstream_.seekg(0, std::ios::end);   //seekg - устанавливает курсор в файле при Чтении: первый параметр задает смещение относительно второго параметра: то есть смещение влево или вправо от конечного положения курсора в файле. Устанавливаем курсор в конец файла - для того, чтобы узнать кол-во байт в файле.
+
+		size_t File_size = fstream_.tellg();    //tellg() возвращает значение позиции на котором сейчас находится курсор, то есть в данном случае, курсор поставлен в конец файла и таким образом получилим номер позцию этого курсора, тем самым мы получили кол-во байт в файле, то есть по сути размер данных файла.
+
+		if (File_size == 0)
+		{
+			ErrorName = "FindPos_substring_From_Begin:File_empty";
+			return result_flag::File_empty;
+		}
+
+		File_size = File_size - 1;
+		//------------------------------------------------------------------------
+
+
+
+		//------------------------------------------
+		if (size_Substr > (File_size + 1))
+		{
+			return result_flag::NotFound;
+		}
+		//------------------------------------------
+
+		//****************************************************************************************************************
+
+
+
+		//-----------------------------
+		std::string string_for_Read;
+		//-----------------------------
+
+
+		//-----------------------------
+		size_t left_byte = start_byte;
+		size_t right_byte = (start_byte + size_Substr) - 1;
+
+		size_t limit_iteration_cntr = 0;
+		//-----------------------------
+
+
+		//------------------------------------------
+		if (left_byte > File_size || right_byte > File_size)
+		{
+			return result_flag::NotFound;
+		}
+		//------------------------------------------
+
+
+
+		//--------------------------------------------------------------------------------------------------------------
+		for (;;)
+		{
+
+			string_for_Read.resize(0);
+			res = Run_Read_PartFile_to_StringBack__(string_for_Read, left_byte, right_byte);
+
+			if (res != result_flag::OK)
+			{
+				return res;
+			}
+
+			const char* find_char_p = strstr(string_for_Read.c_str(), poiter_to_Substr);
+
+			if (find_char_p != 0)
+			{
+				vec_pos.push_back(left_byte + (find_char_p - string_for_Read.c_str()));
+
+				limit_iteration_cntr++;
+
+				if (user_limit_iteration != 0)
+				{
+					if (limit_iteration_cntr == user_limit_iteration)
+					{
+						return result_flag::OK;
+					}
+				}
+
+				//~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`
+				left_byte = left_byte + 1;
+				right_byte = right_byte + 1;
+
+				if (left_byte > File_size || right_byte > File_size)
+				{
+					//Значит вышли за пределы файла.
+
+					if (limit_iteration_cntr == 0)
+					{
+						//Значит так ничего и не нашли.
+
+						return result_flag::NotFound;
+					}
+					else
+					{
+						return result_flag::OK;
+					}
+				}
+				else
+				{
+					//Значит еше не выщли за пределы файла, значит еще есть место для поиска: просто переходим к новой итерации поиска.
+				}
+				//~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`
+			}
+			else
+			{
+
+				//~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`
+				left_byte = left_byte + 1;
+				right_byte = right_byte + 1;
+
+				if (left_byte > File_size || right_byte > File_size)
+				{
+					//Значит вышли за пределы файла.
+
+					if (limit_iteration_cntr == 0)
+					{
+						//Значит так ничего и не нашли.
+
+						return result_flag::NotFound;
+					}
+					else
+					{
+						return result_flag::OK;
+					}
+				}
+				else
+				{
+					//Значит еше не выщли за пределы файла, значит еще есть место для поиска: просто переходим к новой итерации поиска.
+				}
+				//~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`
+
+			}
+		}
+		//--------------------------------------------------------------------------------------------------------------
+
+
+
+
+	}
+
+	template<typename T> const result_flag FindPos_substring_From_End(const T& path_name, const T& file_name, const char* poiter_to_Substr, const size_t size_Substr, const size_t start_byte, std::vector<size_t>& vec_pos, const size_t user_limit_iteration)
+	{
+
+
+		//****************************************************************************************************************
+
+		Check_for_SetNewPath_and_CheckStreamClose<T>(path_name, file_name, false);
+
+
+		//-------------------------------------------------
+		result_flag res = open_stream();
+
+		if (res != result_flag::OK)
+		{
+			return res;
+		}
+		//-------------------------------------------------
+
+
+
+
+		//----------------------Определим размер файла:---------------------------
+		fstream_.seekg(0, std::ios::end);   //seekg - устанавливает курсор в файле при Чтении: первый параметр задает смещение относительно второго параметра: то есть смещение влево или вправо от конечного положения курсора в файле. Устанавливаем курсор в конец файла - для того, чтобы узнать кол-во байт в файле.
+
+		size_t File_size = fstream_.tellg();    //tellg() возвращает значение позиции на котором сейчас находится курсор, то есть в данном случае, курсор поставлен в конец файла и таким образом получилим номер позцию этого курсора, тем самым мы получили кол-во байт в файле, то есть по сути размер данных файла.
+
+		if (File_size == 0)
+		{
+			ErrorName = "FindPos_substring_From_Begin:File_empty";
+			return result_flag::File_empty;
+		}
+
+		File_size = File_size - 1;
+		//------------------------------------------------------------------------
+
+
+
+		//------------------------------------------
+		if (size_Substr > (File_size + 1))
+		{
+			return result_flag::NotFound;
+		}
+		//------------------------------------------
+
+		//****************************************************************************************************************
+
+
+
+		//-----------------------------
+		std::string string_for_Read;
+		//-----------------------------
+
+
+		//-----------------------------
+		long long left_byte  = (File_size - size_Substr - start_byte) + 1;
+		long long right_byte = File_size  - start_byte;
+
+		size_t limit_iteration_cntr = 0;
+		//-----------------------------
+
+
+		//------------------------------------------
+		if (left_byte < 0 || right_byte < 0)
+		{
+			return result_flag::NotFound;
+		}
+		//------------------------------------------
+
+
+
+		//--------------------------------------------------------------------------------------------------------------
+		for (;;)
+		{
+
+			string_for_Read.resize(0);
+			res = Run_Read_PartFile_to_StringBack__(string_for_Read, left_byte, right_byte);
+
+			if (res != result_flag::OK)
+			{
+				return res;
+			}
+
+			const char* find_char_p = strstr(string_for_Read.c_str(), poiter_to_Substr);
+
+			if (find_char_p != 0)
+			{
+				vec_pos.push_back(left_byte + (find_char_p - string_for_Read.c_str()));
+
+				limit_iteration_cntr++;
+				
+				if (user_limit_iteration != 0)
+				{
+					if (limit_iteration_cntr == user_limit_iteration)
+					{
+						return result_flag::OK;
+					}
+				}
+
+				//~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`
+				left_byte  = left_byte - 1;
+				right_byte = right_byte - 1;
+
+				if (left_byte < 0 || right_byte < 0)
+				{
+					//Значит вышли за пределы файла.
+
+					if (limit_iteration_cntr == 0)
+					{
+						//Значит так ничего и не нашли.
+
+						return result_flag::NotFound;
+					}
+					else
+					{
+						return result_flag::OK;
+					}
+				}
+				else
+				{
+					//Значит еше не выщли за пределы файла, значит еще есть место для поиска: просто переходим к новой итерации поиска.
+				}
+				//~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`
+			}
+			else
+			{
+
+				//~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`
+				left_byte  = left_byte - 1;
+				right_byte = right_byte - 1;
+
+				if (left_byte < 0 || right_byte < 0)
+				{
+					//Значит вышли за пределы файла.
+
+					if (limit_iteration_cntr == 0)
+					{
+						//Значит так ничего и не нашли.
+
+						return result_flag::NotFound;
+					}
+					else
+					{
+						return result_flag::OK;
+					}
+				}
+				else
+				{
+					//Значит еше не выщли за пределы файла, значит еще есть место для поиска: просто переходим к новой итерации поиска.
+				}
+				//~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`
+
+			}
+		}
+		//--------------------------------------------------------------------------------------------------------------
+
+
+
+
+	}
+	template<typename T> const result_flag FindPos_substring_From_End(const T& FullPath_name, const char* poiter_to_Substr, const size_t size_Substr, const size_t start_byte, std::vector<size_t>& vec_pos, const size_t user_limit_iteration)
+	{
+
+
+		//****************************************************************************************************************
+
+		Check_for_SetNewPath_and_CheckStreamClose<T>(FullPath_name, false);
+
+
+		//-------------------------------------------------
+		result_flag res = open_stream();
+
+		if (res != result_flag::OK)
+		{
+			return res;
+		}
+		//-------------------------------------------------
+
+
+
+
+		//----------------------Определим размер файла:---------------------------
+		fstream_.seekg(0, std::ios::end);   //seekg - устанавливает курсор в файле при Чтении: первый параметр задает смещение относительно второго параметра: то есть смещение влево или вправо от конечного положения курсора в файле. Устанавливаем курсор в конец файла - для того, чтобы узнать кол-во байт в файле.
+
+		size_t File_size = fstream_.tellg();    //tellg() возвращает значение позиции на котором сейчас находится курсор, то есть в данном случае, курсор поставлен в конец файла и таким образом получилим номер позцию этого курсора, тем самым мы получили кол-во байт в файле, то есть по сути размер данных файла.
+
+		if (File_size == 0)
+		{
+			ErrorName = "FindPos_substring_From_Begin:File_empty";
+			return result_flag::File_empty;
+		}
+
+		File_size = File_size - 1;
+		//------------------------------------------------------------------------
+
+
+
+		//------------------------------------------
+		if (size_Substr > (File_size + 1))
+		{
+			return result_flag::NotFound;
+		}
+		//------------------------------------------
+
+		//****************************************************************************************************************
+
+
+
+		//-----------------------------
+		std::string string_for_Read;
+		//-----------------------------
+
+
+		//-----------------------------
+		long long left_byte = (File_size - size_Substr - start_byte) + 1;
+		long long right_byte = File_size - start_byte;
+
+		size_t limit_iteration_cntr = 0;
+		//-----------------------------
+
+
+		//------------------------------------------
+		if (left_byte < 0 || right_byte < 0)
+		{
+			return result_flag::NotFound;
+		}
+		//------------------------------------------
+
+
+
+		//--------------------------------------------------------------------------------------------------------------
+		for (;;)
+		{
+
+			string_for_Read.resize(0);
+			res = Run_Read_PartFile_to_StringBack__(string_for_Read, left_byte, right_byte);
+
+			if (res != result_flag::OK)
+			{
+				return res;
+			}
+
+			const char* find_char_p = strstr(string_for_Read.c_str(), poiter_to_Substr);
+
+			if (find_char_p != 0)
+			{
+				vec_pos.push_back(left_byte + (find_char_p - string_for_Read.c_str()));
+
+				limit_iteration_cntr++;
+
+				if (user_limit_iteration != 0)
+				{
+					if (limit_iteration_cntr == user_limit_iteration)
+					{
+						return result_flag::OK;
+					}
+				}
+
+				//~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`
+				left_byte = left_byte - 1;
+				right_byte = right_byte - 1;
+
+				if (left_byte < 0 || right_byte < 0)
+				{
+					//Значит вышли за пределы файла.
+
+					if (limit_iteration_cntr == 0)
+					{
+						//Значит так ничего и не нашли.
+
+						return result_flag::NotFound;
+					}
+					else
+					{
+						return result_flag::OK;
+					}
+				}
+				else
+				{
+					//Значит еше не выщли за пределы файла, значит еще есть место для поиска: просто переходим к новой итерации поиска.
+				}
+				//~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`
+			}
+			else
+			{
+
+				//~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`
+				left_byte = left_byte - 1;
+				right_byte = right_byte - 1;
+
+				if (left_byte < 0 || right_byte < 0)
+				{
+					//Значит вышли за пределы файла.
+
+					if (limit_iteration_cntr == 0)
+					{
+						//Значит так ничего и не нашли.
+
+						return result_flag::NotFound;
+					}
+					else
+					{
+						return result_flag::OK;
+					}
+				}
+				else
+				{
+					//Значит еше не выщли за пределы файла, значит еще есть место для поиска: просто переходим к новой итерации поиска.
+				}
+				//~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`~`
+
+			}
+		}
+		//--------------------------------------------------------------------------------------------------------------
+
+
+
+
+	}
+	//**************************************************************************************Поиск позиции подстроки а файле:КОНЕЦ***********************************************************************
+
+
+
+
+
+
 private:
 
 	//--------------------------------------------
